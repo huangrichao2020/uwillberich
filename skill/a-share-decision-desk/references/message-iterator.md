@@ -4,6 +4,8 @@ This module is for persistent news intake.
 
 It continuously polls public RSS feeds, scores headlines, and stores high-signal alerts into a local SQLite database.
 
+It also converts those alerts into event-driven stock pools automatically, so the desk does not wait for manual watchlist updates.
+
 ## Target Alert Types
 
 1. `huge_future`
@@ -28,6 +30,16 @@ For each high-signal item it stores:
 - matched entities and keywords
 - impacted watchlist groups
 - score and signal strength
+
+For each reporting window it also builds:
+
+- `event_focus_huge_conflict_benefit`
+- `event_focus_huge_conflict_headwind`
+- `event_focus_huge_conflict_defensive`
+- `event_focus_huge_future`
+- `event_focus_huge_name_release`
+
+These pools are written into `event_watchlists.json` and can be pulled directly into the morning brief and opening checklist.
 
 ## Default Market Mapping
 
@@ -88,13 +100,18 @@ By default it writes:
 - `news_iterator.sqlite3`
 - `latest_alerts.md`
 - `alerts.jsonl`
+- `event_watchlists.json`
 
 ## Practical Workflow
 
 1. Let the iterator run in the background.
 2. Check the markdown report when you prepare the next session.
-3. If the top alerts skew to `huge_conflict`, shift attention to wartime overlays.
-4. If the top alerts skew to `huge_future` or `huge_name_release`, narrow into technology watchlists.
+3. Let the auto-generated event stock pools flow into the desk reports.
+4. If the top alerts skew to `huge_conflict`, use the split pools:
+   - benefit: oil and coal
+   - headwind: compute power, IDC, and power names
+   - defensive: low-volatility shelters
+5. If the top alerts skew to `huge_future` or `huge_name_release`, narrow into the generated technology pool first, then the static quality pools.
 
 ## Classification Notes
 

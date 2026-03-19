@@ -19,6 +19,7 @@ Best fit:
 - watchlist-based decision notes
 - distinguishing defensive leadership from true market repair
 - persistent message iteration that maps high-attention news into watchlist overlays
+- automatic event-driven stock pools that feed directly into desk reports
 
 ## Core Workflow
 
@@ -58,7 +59,7 @@ Use these scripts before writing the decision note:
 - `scripts/opening_window_checklist.py`
   - Builds a first-30-minute observation sheet with time gates, group scoreboards, and watchlist signal tables.
 - `scripts/news_iterator.py`
-  - Continuously polls public RSS feeds, classifies high-attention events, and maps them into watchlist overlays.
+  - Continuously polls public RSS feeds, classifies high-attention events, maps them into watchlist overlays, and writes dynamic event-driven stock pools.
 - `scripts/install_news_iterator_launchd.py`
   - Installs the news iterator as a `launchd` job on macOS for long-running local polling.
 - `scripts/smoke_test.py`
@@ -83,7 +84,7 @@ Read only what you need:
 - `references/event-regime-watchlists.md`
   - How to use war-shock and energy-spike watchlists as temporary overlays.
 - `references/message-iterator.md`
-  - How to run the persistent RSS iterator and use its event categories inside the desk workflow.
+  - How to run the persistent RSS iterator, generate event-driven stock pools, and feed them into the desk workflow.
 
 ## Output Standard
 

@@ -29,7 +29,7 @@ It is designed for one job: turn today’s tape and overnight developments into 
 - `scripts/fetch_quotes.py`: Tencent quote watchlist snapshot
 - `scripts/morning_brief.py`: one-command markdown morning brief
 - `scripts/opening_window_checklist.py`: first-30-minute decision sheet
-- `scripts/news_iterator.py`: RSS polling, classification, SQLite state, markdown/jsonl outputs
+- `scripts/news_iterator.py`: RSS polling, classification, SQLite state, markdown/jsonl outputs, and automatic event stock pools
 - `scripts/install_news_iterator_launchd.py`: macOS launchd installer for scheduled polling
 - `scripts/smoke_test.py`: local smoke test for the bundled scripts
 
@@ -48,6 +48,8 @@ python3 scripts/opening_window_checklist.py --groups tech_repair defensive_gauge
 python3 scripts/news_iterator.py poll
 python3 scripts/news_iterator.py report --hours 12
 python3 scripts/install_news_iterator_launchd.py install --interval-seconds 300
+python3 scripts/morning_brief.py
+python3 scripts/opening_window_checklist.py
 ```
 
 ## ClawHub Publish
@@ -56,7 +58,7 @@ From this folder:
 
 ```bash
 clawhub login
-clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.6 --tags latest,finance,a-share,china,markets
+clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.7 --tags latest,finance,a-share,china,markets
 ```
 
 ## Notes
@@ -69,3 +71,4 @@ clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-
 - For geopolitical shocks, treat `war_benefit_oil_coal` and `war_headwind_compute_power` as temporary regime overlays, not permanent core watchlists.
 - If you only want one wartime overlay, start with `war_shock_core12`.
 - For continuous event intake, run `news_iterator.py` as a local service and treat the alert stream as an overlay, not a replacement for tape and breadth.
+- The morning brief and opening checklist can automatically append event-driven stock pools when `event_watchlists.json` exists in the default state directory.

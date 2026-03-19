@@ -12,6 +12,7 @@ import sys
 import time
 import urllib.request
 import xml.etree.ElementTree as ET
+from collections import Counter
 from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
@@ -20,10 +21,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG = ROOT / "assets" / "news_iterator_config.json"
+DEFAULT_WATCHLIST = ROOT / "assets" / "default_watchlists.json"
 DEFAULT_STATE_DIR = Path.home() / ".a-share-decision-desk" / "news-iterator"
 DEFAULT_DB = DEFAULT_STATE_DIR / "news_iterator.sqlite3"
 DEFAULT_MARKDOWN = DEFAULT_STATE_DIR / "latest_alerts.md"
 DEFAULT_JSONL = DEFAULT_STATE_DIR / "alerts.jsonl"
+DEFAULT_EVENT_WATCHLIST = DEFAULT_STATE_DIR / "event_watchlists.json"
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 
@@ -74,6 +77,7 @@ def open_db(path: Path) -> sqlite3.Connection:
             score INTEGER NOT NULL,
             signal TEXT NOT NULL,
             impacted_watchlists_json TEXT NOT NULL,
+            watchlist_scores_json TEXT NOT NULL DEFAULT '{}',
             matched_entities_json TEXT NOT NULL,
             matched_keywords_json TEXT NOT NULL,
             created_at TEXT NOT NULL,
@@ -81,6 +85,9 @@ def open_db(path: Path) -> sqlite3.Connection:
         )
         """
     )
+    columns = {row[1] for row in conn.execute("PRAGMA table_info(alerts)").fetchall()}
+    if "watchlist_scores_json" not in columns:
+        conn.execute("ALTER TABLE alerts ADD COLUMN watchlist_scores_json TEXT NOT NULL DEFAULT '{}'")
     return conn
 
 
@@ -188,42 +195,56 @@ def match_terms(text: str, terms: list[str]) -> list[str]:
     return sorted({term for term in terms if text_contains_term(text, term)})
 
 
-def derive_watchlists(
+def bump_watchlist_scores(scores: dict[str, int], groups: list[str], points: int) -> None:
+    for group in groups:
+        scores[group] = scores.get(group, 0) + points
+
+
+def derive_watchlist_scores(
     text: str,
     matched_entities: list[str],
     config: dict,
     categories: list[str],
-) -> list[str]:
-    watchlists: set[str] = set()
+) -> dict[str, int]:
+    watchlist_scores: dict[str, int] = {}
 
     for entity in matched_entities:
-        watchlists.update(config.get("entity_watchlists", {}).get(entity.lower(), []))
+        bump_watchlist_scores(
+            watchlist_scores,
+            config.get("entity_watchlists", {}).get(entity.lower(), []),
+            points=2,
+        )
 
     for keyword, groups in config.get("keyword_watchlists", {}).items():
         if text_contains_term(text, keyword):
-            watchlists.update(groups)
+            bump_watchlist_scores(watchlist_scores, groups, points=2)
 
     if "huge_future" in categories:
-        watchlists.update(
+        bump_watchlist_scores(
+            watchlist_scores,
             [
                 "cross_cycle_anchor12",
                 "cross_cycle_ai_hardware",
                 "cross_cycle_semis",
                 "cross_cycle_software_platforms",
-            ]
+            ],
+            points=1,
         )
     if "huge_name_release" in categories:
-        watchlists.update(["cross_cycle_anchor12"])
+        bump_watchlist_scores(watchlist_scores, ["cross_cycle_anchor12"], points=1)
     if "huge_conflict" in categories:
-        watchlists.update(
+        bump_watchlist_scores(
+            watchlist_scores,
             [
                 "war_shock_core12",
-                "war_benefit_oil_coal",
-                "war_headwind_compute_power",
                 "defensive_gauge",
             ]
+            ,
+            points=1,
         )
-    return sorted(watchlists)
+        bump_watchlist_scores(watchlist_scores, ["war_benefit_oil_coal"], points=1)
+        bump_watchlist_scores(watchlist_scores, ["war_headwind_compute_power"], points=1)
+    return watchlist_scores
 
 
 def score_to_signal(score: int) -> str:
@@ -250,7 +271,7 @@ def classify_item(item: FeedItem, config: dict) -> list[dict]:
     if matched_future and not matched_conflict and not matched_conflict_entities:
         score = len(matched_future) * 2 + (2 if matched_entities else 0)
         categories = ["huge_future"]
-        watchlists = derive_watchlists(text, matched_entities, config, categories)
+        watchlist_scores = derive_watchlist_scores(text, matched_entities, config, categories)
         alerts.append(
             {
                 "category": "huge_future",
@@ -258,14 +279,18 @@ def classify_item(item: FeedItem, config: dict) -> list[dict]:
                 "signal": score_to_signal(score),
                 "matched_entities": matched_entities,
                 "matched_keywords": matched_future,
-                "impacted_watchlists": watchlists,
+                "impacted_watchlists": sorted(
+                    watchlist_scores,
+                    key=lambda group: (-watchlist_scores[group], group),
+                ),
+                "watchlist_scores": watchlist_scores,
             }
         )
 
     if matched_entities and matched_release:
         score = len(matched_entities) * 3 + len(matched_release) * 2
         categories = ["huge_name_release"]
-        watchlists = derive_watchlists(text, matched_entities, config, categories)
+        watchlist_scores = derive_watchlist_scores(text, matched_entities, config, categories)
         alerts.append(
             {
                 "category": "huge_name_release",
@@ -273,7 +298,11 @@ def classify_item(item: FeedItem, config: dict) -> list[dict]:
                 "signal": score_to_signal(score),
                 "matched_entities": matched_entities,
                 "matched_keywords": matched_release,
-                "impacted_watchlists": watchlists,
+                "impacted_watchlists": sorted(
+                    watchlist_scores,
+                    key=lambda group: (-watchlist_scores[group], group),
+                ),
+                "watchlist_scores": watchlist_scores,
             }
         )
 
@@ -285,7 +314,7 @@ def classify_item(item: FeedItem, config: dict) -> list[dict]:
             score += 1
         categories = ["huge_conflict"]
         all_entities = sorted(set(matched_conflict_entities + matched_entities))
-        watchlists = derive_watchlists(text, all_entities, config, categories)
+        watchlist_scores = derive_watchlist_scores(text, all_entities, config, categories)
         alerts.append(
             {
                 "category": "huge_conflict",
@@ -293,7 +322,11 @@ def classify_item(item: FeedItem, config: dict) -> list[dict]:
                 "signal": score_to_signal(score),
                 "matched_entities": all_entities,
                 "matched_keywords": sorted(set(matched_conflict + matched_energy + matched_compute_power)),
-                "impacted_watchlists": watchlists,
+                "impacted_watchlists": sorted(
+                    watchlist_scores,
+                    key=lambda group: (-watchlist_scores[group], group),
+                ),
+                "watchlist_scores": watchlist_scores,
             }
         )
 
@@ -331,8 +364,8 @@ def insert_alert(conn: sqlite3.Connection, item: FeedItem, alert: dict) -> bool:
         """
         INSERT OR IGNORE INTO alerts (
             item_key, category, score, signal, impacted_watchlists_json, matched_entities_json,
-            matched_keywords_json, created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            matched_keywords_json, watchlist_scores_json, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         (
             item.item_key,
@@ -342,6 +375,7 @@ def insert_alert(conn: sqlite3.Connection, item: FeedItem, alert: dict) -> bool:
             json.dumps(alert["impacted_watchlists"], ensure_ascii=False),
             json.dumps(alert["matched_entities"], ensure_ascii=False),
             json.dumps(alert["matched_keywords"], ensure_ascii=False),
+            json.dumps(alert.get("watchlist_scores", {}), ensure_ascii=False),
             datetime.now(UTC).isoformat(),
         ),
     )
@@ -412,6 +446,7 @@ def append_jsonl(new_alerts: list[dict], jsonl_path: Path) -> None:
                         "score": alert["score"],
                         "signal": alert["signal"],
                         "impacted_watchlists": alert["impacted_watchlists"],
+                        "watchlist_scores": alert.get("watchlist_scores", {}),
                         "matched_entities": alert["matched_entities"],
                         "matched_keywords": alert["matched_keywords"],
                     },
@@ -432,6 +467,7 @@ def fetch_recent_alerts(conn: sqlite3.Connection, hours: int) -> list[dict]:
             a.score,
             a.signal,
             a.impacted_watchlists_json,
+            a.watchlist_scores_json,
             a.matched_entities_json,
             a.matched_keywords_json,
             i.title,
@@ -454,12 +490,13 @@ def fetch_recent_alerts(conn: sqlite3.Connection, hours: int) -> list[dict]:
                 "score": row[1],
                 "signal": row[2],
                 "watchlists": json.loads(row[3]),
-                "entities": json.loads(row[4]),
-                "keywords": json.loads(row[5]),
-                "title": row[6],
-                "link": row[7],
-                "source": row[8],
-                "published_at": row[9],
+                "watchlist_scores": json.loads(row[4] or "{}"),
+                "entities": json.loads(row[5]),
+                "keywords": json.loads(row[6]),
+                "title": row[7],
+                "link": row[8],
+                "source": row[9],
+                "published_at": row[10],
             }
         )
     return result
@@ -495,6 +532,260 @@ def render_system_errors(rows: list[dict]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def load_base_watchlists(path: str) -> dict:
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def merge_item_details(existing: dict, incoming: dict) -> dict:
+    merged = dict(existing)
+    for key, value in incoming.items():
+        if not merged.get(key) and value:
+            merged[key] = value
+    return merged
+
+
+def build_base_item_index(base_watchlists: dict) -> tuple[dict[str, dict], dict[str, list[dict]]]:
+    symbol_index: dict[str, dict] = {}
+    group_index: dict[str, list[dict]] = {}
+    for group, items in base_watchlists.items():
+        group_index[group] = []
+        for item in items:
+            symbol = item["symbol"]
+            if symbol in symbol_index:
+                symbol_index[symbol] = merge_item_details(symbol_index[symbol], item)
+            else:
+                symbol_index[symbol] = dict(item)
+            group_index[group].append(symbol_index[symbol])
+    return symbol_index, group_index
+
+
+def shorten_driver(category: str, keywords: Counter[str], entities: Counter[str]) -> str:
+    top_terms = [term for term, _ in keywords.most_common(3)]
+    top_entities = [entity for entity, _ in entities.most_common(2)]
+    parts = [category]
+    if top_terms:
+        parts.append("/".join(top_terms))
+    if top_entities:
+        parts.append(",".join(top_entities))
+    return " | ".join(parts)
+
+
+def build_event_item(category: str, item: dict, stats: dict) -> dict:
+    category_label = category.replace("event_focus_", "") if category.startswith("event_focus_") else category
+    role = item.get("role", "")
+    strong_signal = item.get("strong_signal") or "消息驱动仍在扩散时，优先看它能否领涨并放量。"
+    weak_signal = item.get("weak_signal") or "消息很多但股价不跟，说明事件交易开始钝化。"
+    return {
+        "symbol": item["symbol"],
+        "name": item.get("name", ""),
+        "role": role,
+        "event_score": stats["event_score"],
+        "trigger_count": stats["trigger_count"],
+        "event_driver": shorten_driver(category_label, stats["keywords"], stats["entities"]),
+        "source_groups": sorted(stats["source_groups"]),
+        "trigger_categories": sorted(stats["categories"]),
+        "strong_signal": strong_signal,
+        "weak_signal": weak_signal,
+    }
+
+
+def aggregate_alerts_into_pool(
+    alerts: list[dict],
+    group_index: dict[str, list[dict]],
+    symbol_index: dict[str, dict],
+    allowed_groups: set[str] | None = None,
+) -> dict[str, dict]:
+    symbol_stats: dict[str, dict] = {}
+    for alert in alerts:
+        symbol_weights: dict[str, int] = {}
+        symbol_source_groups: dict[str, set[str]] = {}
+        watchlist_scores = alert.get("watchlist_scores") or {group: 1 for group in alert.get("watchlists", [])}
+        for group, group_weight in watchlist_scores.items():
+            if group not in group_index:
+                continue
+            if allowed_groups is not None and group not in allowed_groups:
+                continue
+            for item in group_index[group]:
+                symbol = item["symbol"]
+                symbol_weights[symbol] = max(symbol_weights.get(symbol, 0), group_weight)
+                symbol_source_groups.setdefault(symbol, set()).add(group)
+        if not symbol_weights:
+            continue
+        for symbol, weight in symbol_weights.items():
+            if symbol not in symbol_stats:
+                symbol_stats[symbol] = {
+                    "event_score": 0,
+                    "trigger_count": 0,
+                    "keywords": Counter(),
+                    "entities": Counter(),
+                    "categories": set(),
+                    "source_groups": set(),
+                }
+            stats = symbol_stats[symbol]
+            stats["event_score"] += alert["score"] * weight
+            stats["trigger_count"] += 1
+            stats["keywords"].update(alert.get("keywords", []))
+            stats["entities"].update(alert.get("entities", []))
+            stats["categories"].add(alert["category"])
+            stats["source_groups"].update(symbol_source_groups.get(symbol, set()))
+    return symbol_stats
+
+
+def rank_pool_items(symbol_stats: dict[str, dict], symbol_index: dict[str, dict], limit: int, category: str) -> list[dict]:
+    ranked = sorted(
+        symbol_stats.items(),
+        key=lambda pair: (-pair[1]["event_score"], -pair[1]["trigger_count"], pair[0]),
+    )
+    items: list[dict] = []
+    for symbol, stats in ranked[:limit]:
+        if symbol not in symbol_index:
+            continue
+        items.append(build_event_item(category, symbol_index[symbol], stats))
+    return items
+
+
+def summarize_alert_categories(alerts: list[dict]) -> list[dict]:
+    category_map: dict[str, dict] = {}
+    for alert in alerts:
+        bucket = category_map.setdefault(
+            alert["category"],
+            {"category": alert["category"], "alert_count": 0, "total_score": 0, "top_keywords": Counter()},
+        )
+        bucket["alert_count"] += 1
+        bucket["total_score"] += alert["score"]
+        bucket["top_keywords"].update(alert.get("keywords", []))
+    summary = []
+    for bucket in category_map.values():
+        summary.append(
+            {
+                "category": bucket["category"],
+                "alert_count": bucket["alert_count"],
+                "total_score": bucket["total_score"],
+                "top_keywords": [term for term, _ in bucket["top_keywords"].most_common(3)],
+            }
+        )
+    return sorted(summary, key=lambda item: (-item["total_score"], -item["alert_count"], item["category"]))
+
+
+def build_event_watchlists_payload(alerts: list[dict], base_watchlists: dict, hours: int) -> dict:
+    symbol_index, group_index = build_base_item_index(base_watchlists)
+    groups: dict[str, list[dict]] = {}
+
+    all_stats = aggregate_alerts_into_pool(alerts, group_index, symbol_index)
+    groups["event_focus_core"] = rank_pool_items(all_stats, symbol_index, limit=12, category="event_focus_core")
+
+    category_summary = summarize_alert_categories(alerts)
+    for category in ["huge_conflict", "huge_future", "huge_name_release"]:
+        category_alerts = [alert for alert in alerts if alert["category"] == category]
+        if not category_alerts:
+            continue
+        stats = aggregate_alerts_into_pool(category_alerts, group_index, symbol_index)
+        groups[f"event_focus_{category}"] = rank_pool_items(
+            stats,
+            symbol_index,
+            limit=10,
+            category=f"event_focus_{category}",
+        )
+
+    conflict_alerts = [alert for alert in alerts if alert["category"] == "huge_conflict"]
+    if conflict_alerts:
+        benefit_stats = aggregate_alerts_into_pool(
+            conflict_alerts,
+            group_index,
+            symbol_index,
+            allowed_groups={"war_benefit_oil_coal"},
+        )
+        headwind_stats = aggregate_alerts_into_pool(
+            conflict_alerts,
+            group_index,
+            symbol_index,
+            allowed_groups={"war_headwind_compute_power"},
+        )
+        defensive_stats = aggregate_alerts_into_pool(
+            conflict_alerts,
+            group_index,
+            symbol_index,
+            allowed_groups={"defensive_gauge"},
+        )
+        groups["event_focus_huge_conflict_benefit"] = rank_pool_items(
+            benefit_stats,
+            symbol_index,
+            limit=8,
+            category="event_focus_huge_conflict_benefit",
+        )
+        groups["event_focus_huge_conflict_headwind"] = rank_pool_items(
+            headwind_stats,
+            symbol_index,
+            limit=8,
+            category="event_focus_huge_conflict_headwind",
+        )
+        groups["event_focus_huge_conflict_defensive"] = rank_pool_items(
+            defensive_stats,
+            symbol_index,
+            limit=6,
+            category="event_focus_huge_conflict_defensive",
+        )
+
+    default_report_groups: list[str] = []
+    for item in category_summary[:2]:
+        if item["category"] == "huge_conflict":
+            for group_name in [
+                "event_focus_huge_conflict_benefit",
+                "event_focus_huge_conflict_headwind",
+                "event_focus_huge_conflict_defensive",
+            ]:
+                if group_name in groups:
+                    default_report_groups.append(group_name)
+            continue
+        group_name = f"event_focus_{item['category']}"
+        if group_name in groups:
+            default_report_groups.append(group_name)
+    if not default_report_groups and groups.get("event_focus_core"):
+        default_report_groups.append("event_focus_core")
+
+    return {
+        "generated_at": datetime.now(UTC).isoformat(),
+        "lookback_hours": hours,
+        "summary": category_summary,
+        "default_report_groups": list(dict.fromkeys(default_report_groups)),
+        "groups": {name: items for name, items in groups.items() if items},
+    }
+
+
+def write_event_watchlists(payload: dict, path: Path) -> None:
+    ensure_state_dir(path.parent)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def render_event_watchlists(payload: dict) -> str:
+    groups = payload.get("groups", {})
+    if not groups:
+        return ""
+
+    lines = ["\n## Event Pools"]
+    summary = payload.get("summary", [])
+    if summary:
+        lines.append("")
+        lines.append("| Category | Alerts | Total Score | Top Keywords |")
+        lines.append("| --- | ---: | ---: | --- |")
+        for item in summary:
+            keywords = ", ".join(item.get("top_keywords", [])) or "n/a"
+            lines.append(
+                f"| {item['category']} | {item['alert_count']} | {item['total_score']} | {keywords} |"
+            )
+
+    for group_name in payload.get("default_report_groups", []):
+        items = groups.get(group_name, [])
+        if not items:
+            continue
+        lines.append(f"\n### {group_name}")
+        for item in items[:6]:
+            lines.append(
+                f"- {item['name']} `{item['symbol'][2:]}` | score `{item['event_score']}` | triggers `{item['trigger_count']}` | {item['event_driver']}"
+            )
+    return "\n".join(lines) + "\n"
+
+
 def run_poll(args: argparse.Namespace) -> int:
     config = load_config(args.config)
     conn = open_db(Path(args.db_path))
@@ -502,7 +793,14 @@ def run_poll(args: argparse.Namespace) -> int:
         new_alerts = fetch_and_classify(conn, config)
         append_jsonl(new_alerts, Path(args.jsonl_path))
         recent_alerts = fetch_recent_alerts(conn, args.report_hours)
+        event_payload = build_event_watchlists_payload(
+            recent_alerts,
+            load_base_watchlists(args.watchlist_path),
+            args.report_hours,
+        )
+        write_event_watchlists(event_payload, Path(args.event_watchlist_path))
         markdown = render_report(recent_alerts, args.report_hours)
+        markdown += render_event_watchlists(event_payload)
         system_errors = [row for row in new_alerts if row.get("system_error")]
         markdown += render_system_errors(system_errors)
         Path(args.markdown_path).write_text(markdown, encoding="utf-8")
@@ -541,7 +839,16 @@ def run_report(args: argparse.Namespace) -> int:
     conn = open_db(Path(args.db_path))
     try:
         alerts = fetch_recent_alerts(conn, args.hours)
-        print(render_report(alerts, args.hours))
+        report = render_report(alerts, args.hours)
+        event_payload = build_event_watchlists_payload(
+            alerts,
+            load_base_watchlists(args.watchlist_path),
+            args.hours,
+        )
+        report += render_event_watchlists(event_payload)
+        if args.event_watchlist_path:
+            write_event_watchlists(event_payload, Path(args.event_watchlist_path))
+        print(report)
         return 0
     finally:
         conn.close()
@@ -551,6 +858,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Persistent RSS-based news iterator for A-share idea intake.")
     parser.add_argument("--config", default=str(DEFAULT_CONFIG), help="Path to news iterator config JSON.")
     parser.add_argument("--state-dir", default=str(DEFAULT_STATE_DIR), help="State directory for reports and DB.")
+    parser.add_argument(
+        "--watchlist-path",
+        default=str(DEFAULT_WATCHLIST),
+        help="Base watchlist JSON used to build dynamic event-driven stock pools.",
+    )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     def add_common_io(subparser: argparse.ArgumentParser) -> None:
@@ -568,6 +880,11 @@ def build_parser() -> argparse.ArgumentParser:
             "--jsonl-path",
             default=str(DEFAULT_JSONL),
             help="JSONL alert output path.",
+        )
+        subparser.add_argument(
+            "--event-watchlist-path",
+            default=str(DEFAULT_EVENT_WATCHLIST),
+            help="Output path for the dynamic event-driven watchlists JSON.",
         )
         subparser.add_argument(
             "--report-hours",
@@ -592,6 +909,11 @@ def build_parser() -> argparse.ArgumentParser:
         default=str(DEFAULT_DB),
         help="SQLite database path. Defaults under the state directory.",
     )
+    report.add_argument(
+        "--event-watchlist-path",
+        default=str(DEFAULT_EVENT_WATCHLIST),
+        help="Optional output path for the dynamic event-driven watchlists JSON.",
+    )
     report.add_argument("--hours", type=int, default=12, help="Lookback window in hours.")
     report.set_defaults(func=run_report)
 
@@ -610,6 +932,8 @@ def main() -> int:
         args.markdown_path = str(state_dir / DEFAULT_MARKDOWN.name)
     if getattr(args, "jsonl_path", None) == str(DEFAULT_JSONL):
         args.jsonl_path = str(state_dir / DEFAULT_JSONL.name)
+    if getattr(args, "event_watchlist_path", None) == str(DEFAULT_EVENT_WATCHLIST):
+        args.event_watchlist_path = str(state_dir / DEFAULT_EVENT_WATCHLIST.name)
 
     return args.func(args)
 

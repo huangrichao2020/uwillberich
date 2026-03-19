@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 from market_data import fetch_index_snapshot, fetch_sector_movers, fetch_tencent_quotes
-from news_iterator import FeedItem, classify_item
+from news_iterator import FeedItem, build_event_watchlists_payload, classify_item
 from opening_window_checklist import classify_state
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +16,17 @@ ROOT = Path(__file__).resolve().parents[1]
 def assert_true(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
+
+
+def normalize_alert(alert: dict) -> dict:
+    return {
+        "category": alert["category"],
+        "score": alert["score"],
+        "watchlists": alert.get("impacted_watchlists", []),
+        "watchlist_scores": alert.get("watchlist_scores", {}),
+        "entities": alert.get("matched_entities", []),
+        "keywords": alert.get("matched_keywords", []),
+    }
 
 
 def main() -> None:
@@ -78,6 +89,18 @@ def main() -> None:
     assert_true(
         any("war_benefit_oil_coal" in alert["impacted_watchlists"] for alert in conflict_alerts),
         "expected war_benefit_oil_coal mapping",
+    )
+
+    payload = build_event_watchlists_payload(
+        [normalize_alert(alert) for alert in future_release_alerts + conflict_alerts],
+        watchlists,
+        hours=12,
+    )
+    assert_true("event_focus_core" in payload["groups"], "missing event_focus_core")
+    assert_true("event_focus_huge_conflict_benefit" in payload["groups"], "missing conflict benefit pool")
+    assert_true(
+        any(item["symbol"] == "sh600938" for item in payload["groups"]["event_focus_huge_conflict_benefit"]),
+        "expected China Offshore Oil in conflict event pool",
     )
 
     state = classify_state(
