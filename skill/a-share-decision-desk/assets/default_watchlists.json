@@ -1,0 +1,36 @@
+{
+  "core10": [
+    {"symbol": "sz300502", "name": "新易盛", "role": "CPO总龙头"},
+    {"symbol": "sz300308", "name": "中际旭创", "role": "光模块核心"},
+    {"symbol": "sz000977", "name": "浪潮信息", "role": "算力服务器"},
+    {"symbol": "sh688981", "name": "中芯国际", "role": "半导体抗跌核心"},
+    {"symbol": "sh688041", "name": "海光信息", "role": "高弹性科技"},
+    {"symbol": "sh603986", "name": "兆易创新", "role": "半导体弹性票"},
+    {"symbol": "sz300059", "name": "东方财富", "role": "风险偏好代理"},
+    {"symbol": "sh600030", "name": "中信证券", "role": "券商确认票"},
+    {"symbol": "sz000002", "name": "万科A", "role": "政策链检验票"},
+    {"symbol": "sh600938", "name": "中国海油", "role": "避险对照票"}
+  ],
+  "tech_repair": [
+    {"symbol": "sz300502", "name": "新易盛", "role": "CPO"},
+    {"symbol": "sz300308", "name": "中际旭创", "role": "光模块"},
+    {"symbol": "sz000977", "name": "浪潮信息", "role": "算力"},
+    {"symbol": "sh688981", "name": "中芯国际", "role": "半导体"},
+    {"symbol": "sh688041", "name": "海光信息", "role": "高弹性AI"},
+    {"symbol": "sh603986", "name": "兆易创新", "role": "半导体弹性"}
+  ],
+  "policy_beta": [
+    {"symbol": "sz300059", "name": "东方财富", "role": "券商弹性"},
+    {"symbol": "sh600030", "name": "中信证券", "role": "券商确认"},
+    {"symbol": "sz000002", "name": "万科A", "role": "地产链检验"},
+    {"symbol": "sz000333", "name": "美的集团", "role": "家电"},
+    {"symbol": "sh600048", "name": "保利发展", "role": "地产蓝筹"}
+  ],
+  "defensive_gauge": [
+    {"symbol": "sh600938", "name": "中国海油", "role": "油气"},
+    {"symbol": "sh601857", "name": "中国石油", "role": "油气"},
+    {"symbol": "sh601088", "name": "中国神华", "role": "煤炭"},
+    {"symbol": "sh600941", "name": "中国移动", "role": "电信"},
+    {"symbol": "sh601398", "name": "工商银行", "role": "大行"}
+  ]
+}
