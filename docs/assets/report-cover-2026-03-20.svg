@@ -34,7 +34,7 @@
 
   <g font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif">
     <rect x="90" y="88" width="246" height="42" rx="21" fill="#f5d9bc" />
-    <text x="113" y="116" font-size="20" font-weight="700" fill="#9a4a11">A-Share Decision Desk</text>
+      <text x="113" y="116" font-size="20" font-weight="700" fill="#9a4a11">超超盘前盘后笔记</text>
 
     <text x="90" y="196" font-size="74" font-weight="800" fill="#1f2937">防御先行</text>
     <text x="90" y="280" font-size="74" font-weight="800" fill="#1f2937">科技择强修复</text>
