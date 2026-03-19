@@ -116,6 +116,13 @@
         background: linear-gradient(135deg, var(--accent-2), #0ea5a4);
       }
 
+      .link-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
       ul {
         margin: 0;
         padding-left: 18px;
@@ -169,12 +176,16 @@
             <li>盘后结构拆解</li>
             <li>战争受益与科技修复分型</li>
             <li>下个交易日观察清单与执行口径</li>
+            <li>同时提供桌面完整版和移动端 H5 版</li>
           </ul>
-          <p style="margin: 20px 0 0">
+          <div class="link-row">
             <a class="link" href="./reports/2026-03-20-postclose-preopen.html"
-              >打开报告</a
+              >桌面完整版</a
             >
-          </p>
+            <a class="link secondary" href="./reports/2026-03-20-postclose-preopen-h5.html"
+              >移动端 H5</a
+            >
+          </div>
         </article>
 
         <article class="card">
