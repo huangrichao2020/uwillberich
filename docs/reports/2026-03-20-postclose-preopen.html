@@ -350,10 +350,10 @@
   <body>
     <main class="page">
       <header class="hero">
-        <span class="eyebrow">A-Share Decision Desk Report</span>
+        <span class="eyebrow">超超盘前盘后笔记</span>
         <h1>2026-03-20 盘后与 2026-03-23 盘前关注报告</h1>
         <p class="subtitle">
-          这份报告基于 <code>a-share-decision-desk</code> 的收盘结构、watchlist、
+          这份报告基于 <code>a-share-decision-desk</code> 的收盘结构、观察池、
           event overlay、MX 增强查询和开盘模板生成。当前主判断是：A 股仍处在
           <strong>防御集中</strong> 状态，周一先看防御延续，再看科技最强分支能否把修复扩散出去。
         </p>
@@ -602,21 +602,21 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Base：防御延续</td>
+                  <td>基准情景：防御延续</td>
                   <td>55%</td>
                   <td>周末冲突无明显缓和，油价维持高位</td>
                   <td>油气、煤炭、银行、电信继续偏强</td>
                   <td>继续按防御市处理</td>
                 </tr>
                 <tr>
-                  <td>Bull：科技修复扩散</td>
+                  <td>乐观情景：科技修复扩散</td>
                   <td>25%</td>
                   <td>局势边际缓和，油价回落，风险偏好改善</td>
                   <td><code>新易盛 / 华工科技</code> 继续强，算力平台跟上</td>
                   <td>只做最强科技修复</td>
                 </tr>
                 <tr>
-                  <td>Bear：冲击再升级</td>
+                  <td>风险情景：冲击再升级</td>
                   <td>20%</td>
                   <td>周末再出霍尔木兹、油气设施、航运中断类消息</td>
                   <td>防御继续抱团，成长再被压一轮</td>
@@ -737,7 +737,7 @@
           <section class="section" id="execution">
             <h2>八、执行建议</h2>
 
-            <h3>Do</h3>
+            <h3>执行</h3>
             <ul>
               <li>先看相对强度，不看跌幅榜抄底。</li>
               <li>先看 <code>中国海油</code> 和 <code>新易盛</code> 谁在主导市场叙事。</li>
@@ -745,7 +745,7 @@
               <li>把防御票当环境指示器，不只是交易标的。</li>
             </ul>
 
-            <h3>Avoid</h3>
+            <h3>回避</h3>
             <ul>
               <li>不先抄 <code>锂矿 / 小金属 / 磷化工 / 稀土 / 黄金</code>。</li>
               <li>不把油服小票脉冲误判成完整新主线。</li>
@@ -765,11 +765,11 @@
               </strong>
             </p>
             <p class="footer">
-              Built from local outputs of
+              本页由本地脚本产出：
               <code>fetch_market_snapshot.py</code>,
               <code>morning_brief.py</code>,
               <code>news_iterator.py</code>,
-              <code>opening_window_checklist.py</code> and
+              <code>opening_window_checklist.py</code>、
               <code>mx_toolkit.py</code>.
             </p>
             <p class="footer site-note">
