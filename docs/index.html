@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A-Share Decision Desk Reports</title>
+    <style>
+      :root {
+        --bg: #f4f1e8;
+        --panel: rgba(255, 255, 255, 0.82);
+        --panel-strong: #fffdf8;
+        --text: #1f2937;
+        --muted: #5b6472;
+        --line: rgba(31, 41, 55, 0.12);
+        --accent: #b45309;
+        --accent-2: #0f766e;
+        --shadow: 0 24px 60px rgba(28, 31, 35, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB",
+          "Noto Sans SC", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(180, 83, 9, 0.16), transparent 28%),
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.14), transparent 26%),
+          linear-gradient(180deg, #f8f5ee 0%, var(--bg) 100%);
+      }
+
+      .wrap {
+        width: min(1040px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 56px 0 72px;
+      }
+
+      .hero,
+      .card {
+        background: var(--panel);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 36px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(180, 83, 9, 0.1);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(34px, 5vw, 56px);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+      }
+
+      .hero p {
+        max-width: 760px;
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+
+      .meta {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, var(--accent), #d97706);
+      }
+
+      .secondary {
+        background: linear-gradient(135deg, var(--accent-2), #0ea5a4);
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 640px) {
+        .wrap {
+          width: min(100vw - 20px, 1040px);
+          padding: 20px 0 40px;
+        }
+
+        .hero,
+        .card {
+          border-radius: 20px;
+        }
+
+        .hero,
+        .card {
+          padding: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="hero">
+        <span class="eyebrow">A-Share Decision Desk</span>
+        <h1>静态报告入口</h1>
+        <p>
+          这里放的是用 <code>a-share-decision-desk</code>
+          生成并整理后的静态报告页面。当前已发布本次中东冲击背景下的 A
+          股盘后总结与下个交易日关注报告。
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>2026-03-20 盘后与 2026-03-23 盘前</h2>
+          <p class="meta">
+            主题：中东冲突升级、能源冲击、防御集中、科技择强修复
+          </p>
+          <ul>
+            <li>盘后结构拆解</li>
+            <li>战争受益与科技修复分型</li>
+            <li>下个交易日观察清单与执行口径</li>
+          </ul>
+          <p style="margin: 20px 0 0">
+            <a class="link" href="./reports/2026-03-20-postclose-preopen.html"
+              >打开报告</a
+            >
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>仓库入口</h2>
+          <p class="meta">
+            源码、脚本、watchlist、news iterator 和方法论都在仓库里维护。
+          </p>
+          <p style="margin: 20px 0 0">
+            <a
+              class="link secondary"
+              href="https://github.com/huangrichao2020/a-share-decision-kit"
+              >查看 GitHub 仓库</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <footer>Last updated: 2026-03-20 Asia/Shanghai</footer>
+    </main>
+  </body>
+</html>
