@@ -41,10 +41,9 @@ def build_plist(interval_seconds: int, state_dir: Path, python_bin: str) -> dict
         "StandardErrorPath": str(state_dir / "launchd.err.log"),
     }
     env_vars = {}
-    for key in ["EM_API_KEY", "A_SHARE_RUNTIME_ENV"]:
-        value = os.environ.get(key)
-        if value:
-            env_vars[key] = value
+    runtime_env_path = os.environ.get("A_SHARE_RUNTIME_ENV")
+    if runtime_env_path:
+        env_vars["A_SHARE_RUNTIME_ENV"] = runtime_env_path
     if env_vars:
         plist["EnvironmentVariables"] = env_vars
     return plist

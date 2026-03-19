@@ -8,9 +8,10 @@ import tempfile
 from pathlib import Path
 
 from market_data import fetch_index_snapshot, fetch_sector_movers, fetch_tencent_quotes
+from mx_toolkit import load_presets
 from news_iterator import FeedItem, build_event_watchlists_payload, classify_item
 from opening_window_checklist import classify_state
-from runtime_config import build_status, read_env_file
+from runtime_config import build_status, get_output_dir, read_env_file
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -47,6 +48,7 @@ def main() -> None:
 
     watchlists = json.loads((ROOT / "assets" / "default_watchlists.json").read_text(encoding="utf-8"))
     iterator_config = json.loads((ROOT / "assets" / "news_iterator_config.json").read_text(encoding="utf-8"))
+    mx_presets = load_presets(str(ROOT / "assets" / "mx_presets.json"))
     assert_true("cross_cycle_anchor12" in watchlists, "missing cross_cycle_anchor12")
     assert_true("cross_cycle_core" in watchlists, "missing cross_cycle_core")
     assert_true("war_shock_core12" in watchlists, "missing war_shock_core12")
@@ -55,6 +57,8 @@ def main() -> None:
     assert_true(len(watchlists["cross_cycle_anchor12"]) >= 10, "anchor watchlist too small")
     assert_true("feeds" in iterator_config and len(iterator_config["feeds"]) >= 5, "news iterator feeds missing")
     assert_true("conflict_entities" in iterator_config, "news iterator conflict entities missing")
+    assert_true("preopen_policy" in mx_presets, "missing MX preset preopen_policy")
+    assert_true("preopen_repair_chain" in mx_presets, "missing MX preset preopen_repair_chain")
 
     with tempfile.TemporaryDirectory() as temp_dir:
         env_path = Path(temp_dir) / "runtime.env"
@@ -63,6 +67,9 @@ def main() -> None:
         assert_true(env_values.get("EM_API_KEY") == "test-key", "runtime env parsing failed")
         status = build_status(str(env_path))
         assert_true(status["capabilities"]["em_enhanced_mode"], "runtime capability detection failed")
+        assert_true("EM_API_KEY" in status["configured_keys"], "runtime key status missing")
+        output_dir = get_output_dir("smoke-test-output")
+        assert_true(output_dir.exists(), "runtime output dir missing")
 
     future_release_alerts = classify_item(
         FeedItem(

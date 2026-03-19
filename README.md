@@ -7,6 +7,26 @@ Reusable materials for a discretionary A-share decision workflow:
 - `skill/a-share-decision-desk/`: installable Codex skill
 - `AGENT_QUICKSTART.md`: zero-to-run instructions for other agents
 
+## Workflow Map
+
+The repo is organized around a direct desk workflow instead of disconnected tools:
+
+1. `Step 1: Overnight and policy scan`
+   - `news_iterator.py`
+   - `mx_toolkit.py preset --name preopen_policy`
+   - `mx_toolkit.py preset --name preopen_global_risk`
+2. `Step 2: Board resonance and candidate narrowing`
+   - `fetch_market_snapshot.py`
+   - `morning_brief.py`
+   - `mx_toolkit.py preset --name board_optical_module`
+   - `mx_toolkit.py preset --name board_compute_power`
+3. `Step 3: Structured validation on key names`
+   - `fetch_quotes.py`
+   - `mx_toolkit.py preset --name validate_inspur`
+   - `mx_toolkit.py preset --name validate_luxshare`
+4. `Source health check`
+   - `benchmark_sources.py`
+
 ## GitHub Source Of Truth
 
 Use the GitHub repo as the primary distribution source:
@@ -85,6 +105,9 @@ All scripts live under `skill/a-share-decision-desk/scripts/` and use only the P
 
 - `install_skill.sh`: one-command installer for Codex/OpenClaw skill directories
 - `runtime_config.py`: local runtime credential loader and EM enhancement status helper
+- `mx_api.py`: Meixiang / Eastmoney API wrapper for news search, stock screen, and structured data queries
+- `mx_toolkit.py`: CLI wrapper for real MX calls, presets, and artifact outputs
+- `benchmark_sources.py`: public-source and MX-source latency / availability benchmark
 - `fetch_quotes.py`: fetch Tencent quote snapshots for a watchlist
 - `fetch_market_snapshot.py`: fetch Eastmoney index and sector breadth snapshots
 - `morning_brief.py`: build a simple pre-open markdown brief from default watchlists
@@ -98,6 +121,12 @@ All scripts live under `skill/a-share-decision-desk/scripts/` and use only the P
 python3 skill/a-share-decision-desk/scripts/fetch_market_snapshot.py --format markdown
 python3 skill/a-share-decision-desk/scripts/fetch_quotes.py sz300502 sz300308 sh688981
 python3 skill/a-share-decision-desk/scripts/runtime_config.py status
+python3 skill/a-share-decision-desk/scripts/mx_toolkit.py list-presets
+python3 skill/a-share-decision-desk/scripts/mx_toolkit.py preset --name preopen_repair_chain
+python3 skill/a-share-decision-desk/scripts/mx_toolkit.py news-search --query '立讯精密 最新资讯'
+python3 skill/a-share-decision-desk/scripts/mx_toolkit.py stock-screen --keyword 'A股 光模块概念股' --page-size 10 --csv-out /tmp/cpo.csv --desc-out /tmp/cpo-columns.md
+python3 skill/a-share-decision-desk/scripts/mx_toolkit.py query --tool-query '浪潮信息 最新价 市值'
+python3 skill/a-share-decision-desk/scripts/benchmark_sources.py
 python3 skill/a-share-decision-desk/scripts/morning_brief.py --groups core10 tech_repair
 python3 skill/a-share-decision-desk/scripts/news_iterator.py poll
 python3 skill/a-share-decision-desk/scripts/morning_brief.py
@@ -106,5 +135,6 @@ python3 skill/a-share-decision-desk/scripts/morning_brief.py
 ## Notes
 
 - Market endpoints can change or throttle. Use the scripts as fast data collectors, then verify high-stakes conclusions with official or primary news sources.
+- Generated benchmark and preset artifacts default to `~/.a-share-decision-desk/data/`.
 - On monthly `LPR` days, the workflow assumes the `9:00` release window.
 - On macOS, use `install_news_iterator_launchd.py`; on Linux or other environments, use `nohup` or the local scheduler of your choice.

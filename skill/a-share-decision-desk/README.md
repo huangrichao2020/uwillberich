@@ -20,6 +20,26 @@ https://github.com/huangrichao2020/a-share-decision-kit
 - "Use the cross-cycle core stock pool to narrow tomorrow's key observation list."
 - "In a war-oil shock regime, tell me which A-share groups benefit and which ones get hurt."
 - "Continuously watch public news and map major events into A-share watchlists."
+- "Run a preset `Step 1 / Step 2 / Step 3` desk workflow and save all artifacts."
+- "Benchmark which public and MX data sources are healthy before the open."
+
+## Workflow Map
+
+1. `Step 1: overnight and policy`
+   - `scripts/news_iterator.py`
+   - `scripts/mx_toolkit.py preset --name preopen_policy`
+   - `scripts/mx_toolkit.py preset --name preopen_global_risk`
+2. `Step 2: board resonance`
+   - `scripts/fetch_market_snapshot.py`
+   - `scripts/morning_brief.py`
+   - `scripts/mx_toolkit.py preset --name board_optical_module`
+   - `scripts/mx_toolkit.py preset --name board_compute_power`
+3. `Step 3: single-name validation`
+   - `scripts/fetch_quotes.py`
+   - `scripts/mx_toolkit.py preset --name validate_inspur`
+   - `scripts/mx_toolkit.py preset --name validate_luxshare`
+4. `Source benchmark`
+   - `scripts/benchmark_sources.py`
 
 ## What This Skill Contains
 
@@ -31,12 +51,16 @@ https://github.com/huangrichao2020/a-share-decision-kit
 - `references/cross-cycle-watchlist.md`: how to use the cross-cycle core stock pool
 - `references/event-regime-watchlists.md`: war-shock overlay watchlists
 - `references/message-iterator.md`: persistent message iterator for high-attention news
+- `assets/mx_presets.json`: preset `Step 1 / Step 2 / Step 3` MX workflows
 - `scripts/fetch_market_snapshot.py`: index and sector breadth snapshot
 - `scripts/fetch_quotes.py`: Tencent quote watchlist snapshot
 - `scripts/morning_brief.py`: one-command markdown morning brief
 - `scripts/opening_window_checklist.py`: first-30-minute decision sheet
 - `scripts/news_iterator.py`: RSS polling, classification, SQLite state, markdown/jsonl outputs, and automatic event stock pools
 - `scripts/runtime_config.py`: local credential helper for optional EM-enhanced mode
+- `scripts/mx_api.py`: Meixiang / Eastmoney API wrapper for live finance queries
+- `scripts/mx_toolkit.py`: CLI wrapper for real news search, stock screen, structured data queries, and desk presets
+- `scripts/benchmark_sources.py`: source latency / availability benchmark
 - `scripts/install_news_iterator_launchd.py`: macOS launchd installer for scheduled polling
 - `scripts/smoke_test.py`: local smoke test for the bundled scripts
 
@@ -94,6 +118,12 @@ printf '%s' 'your_em_api_key' | python3 scripts/runtime_config.py set-em-key --s
 ```bash
 python3 scripts/smoke_test.py
 python3 scripts/runtime_config.py status
+python3 scripts/mx_toolkit.py list-presets
+python3 scripts/mx_toolkit.py preset --name preopen_repair_chain
+python3 scripts/mx_toolkit.py news-search --query '立讯精密 最新资讯'
+python3 scripts/mx_toolkit.py stock-screen --keyword 'A股 光模块概念股' --page-size 10 --csv-out /tmp/cpo.csv --desc-out /tmp/cpo-columns.md
+python3 scripts/mx_toolkit.py query --tool-query '浪潮信息 最新价 市值'
+python3 scripts/benchmark_sources.py
 python3 scripts/fetch_market_snapshot.py --format markdown
 python3 scripts/fetch_quotes.py sz300502 sh688981 sh600938
 python3 scripts/morning_brief.py --groups core10 tech_repair
@@ -123,6 +153,8 @@ clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-
 - ClawHub publishes a skill folder with `SKILL.md` plus supporting text files.
 - This skill uses only text-based resources and Python standard library scripts.
 - Public mode needs no extra key; optional EM-enhanced mode is driven by `EM_API_KEY`.
+- When `EM_API_KEY` is present, `mx_toolkit.py` automatically maps it to the `MX_APIKEY` convention used by the public MX skills.
+- Preset and benchmark outputs default to `~/.a-share-decision-desk/data/`.
 - If `clawhub publish .` misreads the folder, use an absolute path or pass `--workdir` explicitly.
 - The opening-window script is intended for `09:00-10:00` use, especially the first 30 minutes after the A-share cash open.
 - For the larger quality pool, use `cross_cycle_anchor12` daily and reserve `cross_cycle_core` for weekly or phase-rotation review.

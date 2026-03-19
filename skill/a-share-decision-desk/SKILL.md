@@ -38,6 +38,22 @@ Best fit:
 5. Turn the view into an execution checklist.
    - Include `09:00`, `09:20-09:25`, `09:30-10:00`, and `14:00-14:30`.
 
+## Workflow Shortcuts
+
+- `Step 1: overnight and policy`
+  - `scripts/mx_toolkit.py preset --name preopen_policy`
+  - `scripts/mx_toolkit.py preset --name preopen_global_risk`
+- `Step 2: board resonance`
+  - `scripts/fetch_market_snapshot.py`
+  - `scripts/mx_toolkit.py preset --name board_optical_module`
+  - `scripts/mx_toolkit.py preset --name board_compute_power`
+- `Step 3: single-name validation`
+  - `scripts/fetch_quotes.py`
+  - `scripts/mx_toolkit.py preset --name validate_inspur`
+  - `scripts/mx_toolkit.py preset --name validate_luxshare`
+- `Source benchmark`
+  - `scripts/benchmark_sources.py`
+
 ## Decision Heuristics
 
 - Prefer sectors that resisted best in a weak tape over sectors that merely fell the most.
@@ -62,6 +78,10 @@ Use these scripts before writing the decision note:
   - Continuously polls public RSS feeds, classifies high-attention events, maps them into watchlist overlays, and writes dynamic event-driven stock pools.
 - `scripts/runtime_config.py`
   - Loads local runtime credentials and reports whether optional `EM_API_KEY`-based integrations are available.
+- `scripts/mx_toolkit.py`
+  - Calls the live Meixiang / Eastmoney APIs for news search, stock screening, structured data queries, and preset desk workflows.
+- `scripts/benchmark_sources.py`
+  - Benchmarks public and MX-enhanced sources before you decide what to trust as the primary feed.
 - `scripts/install_news_iterator_launchd.py`
   - Installs the news iterator as a `launchd` job on macOS for long-running local polling.
 - `scripts/smoke_test.py`
@@ -87,6 +107,8 @@ Read only what you need:
   - How to use war-shock and energy-spike watchlists as temporary overlays.
 - `references/message-iterator.md`
   - How to run the persistent RSS iterator, generate event-driven stock pools, and feed them into the desk workflow.
+- `assets/mx_presets.json`
+  - Preset MX workflows for policy scan, global-risk scan, board resonance, and single-name validation.
 
 ## Output Standard
 

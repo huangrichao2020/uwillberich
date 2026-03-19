@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUNTIME_HOME = Path.home() / ".a-share-decision-desk"
 DEFAULT_ENV_PATH = DEFAULT_RUNTIME_HOME / "runtime.env"
 DEFAULT_EXAMPLE_ENV = ROOT / "assets" / "runtime.env.example"
+DEFAULT_DATA_DIR = DEFAULT_RUNTIME_HOME / "data"
 OPTIONAL_KEYS = ("EM_API_KEY",)
 EM_INTEGRATIONS = ("MX_FinSearch", "MX_StockPick", "MX_MacroData", "MX_FinData")
 
@@ -73,6 +74,14 @@ def load_runtime_env(env_path: str | None = None, override: bool = False) -> dic
             if override or key not in os.environ:
                 os.environ[key] = value
                 loaded[key] = value
+    em_key = os.environ.get("EM_API_KEY", "").strip()
+    mx_key = os.environ.get("MX_APIKEY", "").strip()
+    if em_key and not mx_key:
+        os.environ["MX_APIKEY"] = em_key
+        loaded.setdefault("MX_APIKEY", em_key)
+    elif mx_key and not em_key:
+        os.environ["EM_API_KEY"] = mx_key
+        loaded.setdefault("EM_API_KEY", mx_key)
     return loaded
 
 
@@ -85,7 +94,7 @@ def redact_value(value: str) -> str:
 
 
 def build_capabilities() -> dict[str, object]:
-    em_ready = bool(os.environ.get("EM_API_KEY"))
+    em_ready = bool(os.environ.get("EM_API_KEY") or os.environ.get("MX_APIKEY"))
     return {
         "public_mode": True,
         "em_enhanced_mode": em_ready,
@@ -93,11 +102,30 @@ def build_capabilities() -> dict[str, object]:
     }
 
 
+def get_output_root() -> Path:
+    load_runtime_env()
+    custom = (os.environ.get("A_SHARE_DECISION_DATA_DIR") or "").strip()
+    path = Path(custom).expanduser() if custom else DEFAULT_DATA_DIR
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
+def get_output_dir(subdir: str | None = None) -> Path:
+    root = get_output_root()
+    if not subdir:
+        return root
+    path = root / subdir
+    path.mkdir(parents=True, exist_ok=True)
+    return path
+
+
 def build_status(env_path: str | None = None) -> dict[str, object]:
     load_runtime_env(env_path)
     env_paths = resolve_env_paths(env_path)
     existing_path = next((str(path) for path in env_paths if path.exists()), "")
     configured_keys = [key for key in OPTIONAL_KEYS if os.environ.get(key)]
+    if os.environ.get("MX_APIKEY") and "EM_API_KEY" not in configured_keys:
+        configured_keys.append("EM_API_KEY")
 
     return {
         "runtime_env_path": existing_path or str(env_paths[0]),
@@ -106,6 +134,7 @@ def build_status(env_path: str | None = None) -> dict[str, object]:
         "redacted_values": {key: redact_value(os.environ.get(key, "")) for key in configured_keys},
         "capabilities": build_capabilities(),
         "example_env_path": str(DEFAULT_EXAMPLE_ENV),
+        "output_root": str(get_output_root()),
     }
 
 
@@ -121,6 +150,7 @@ def set_em_key(path: Path, value: str) -> None:
     values["EM_API_KEY"] = value.strip()
     write_env_file(path, values)
     os.environ["EM_API_KEY"] = value.strip()
+    os.environ["MX_APIKEY"] = value.strip()
 
 
 def unset_em_key(path: Path) -> None:
@@ -128,6 +158,7 @@ def unset_em_key(path: Path) -> None:
     values.pop("EM_API_KEY", None)
     write_env_file(path, values)
     os.environ.pop("EM_API_KEY", None)
+    os.environ.pop("MX_APIKEY", None)
 
 
 def print_status(env_path: str | None, as_json: bool) -> int:
@@ -142,6 +173,7 @@ def print_status(env_path: str | None, as_json: bool) -> int:
     print(f"em_enhanced_mode: {status['capabilities']['em_enhanced_mode']}")
     integrations = status["capabilities"]["available_integrations"]
     print(f"available_integrations: {', '.join(integrations) or 'public mode only'}")
+    print(f"output_root: {status['output_root']}")
     return 0
 
 

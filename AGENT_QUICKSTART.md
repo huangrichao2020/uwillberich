@@ -48,6 +48,9 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 - poll public news continuously
 - convert high-attention news into event-driven stock pools
 - append those event pools automatically to the brief and checklist
+- call Meixiang / Eastmoney live APIs for news search, stock screening, and structured data queries when `EM_API_KEY` is configured
+- run preset desk workflows that map `Step 1 / Step 2 / Step 3` into repeatable commands
+- benchmark public and MX sources before assigning a source as primary
 
 ## Required Keys
 
@@ -86,6 +89,10 @@ printf '%s' 'your_em_api_key' | python3 ~/.codex/skills/a-share-decision-desk/sc
 ```bash
 python3 ~/.codex/skills/a-share-decision-desk/scripts/smoke_test.py
 python3 ~/.codex/skills/a-share-decision-desk/scripts/runtime_config.py status
+python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py list-presets
+python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py preset --name preopen_repair_chain
+python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py news-search --query '立讯精密 最新资讯'
+python3 ~/.codex/skills/a-share-decision-desk/scripts/benchmark_sources.py
 python3 ~/.codex/skills/a-share-decision-desk/scripts/news_iterator.py poll
 python3 ~/.codex/skills/a-share-decision-desk/scripts/morning_brief.py
 python3 ~/.codex/skills/a-share-decision-desk/scripts/opening_window_checklist.py
@@ -119,3 +126,8 @@ Important files:
 - `alerts.jsonl`
 - `event_watchlists.json`
 - `news_iterator.sqlite3`
+
+Generated artifact directories:
+
+- `~/.a-share-decision-desk/data/mx-presets/`
+- `~/.a-share-decision-desk/data/benchmarks/`
