@@ -6,6 +6,21 @@ Reusable materials for a discretionary A-share decision workflow:
 - `prompts/trading-mode-prompt.md`: daily execution-mode prompt
 - `skill/a-share-decision-desk/`: installable Codex skill
 
+## ClawHub
+
+The publishable skill folder is:
+
+```bash
+skill/a-share-decision-desk
+```
+
+From that folder, publish with:
+
+```bash
+clawhub login
+clawhub publish . --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.0 --tags latest
+```
+
 ## Install The Skill
 
 Copy `skill/a-share-decision-desk` into your local `$CODEX_HOME/skills/` directory.

@@ -1,6 +1,7 @@
 ---
 name: a-share-decision-desk
 description: Build next-session A-share decision plans, repair-sector hypotheses, opening checklists, and watchlists using current index, breadth, sector, and watchlist data plus official policy and primary news sources. Use when the user asks what A-shares may do tomorrow, which sectors may repair, how to trade the open, or wants a reusable A-share discretionary workflow.
+metadata: {"openclaw":{"emoji":"📈","homepage":"https://github.com/huangrichao2020/a-share-decision-kit","requires":{"bins":["python3"]}}}
 ---
 
 # A-Share Decision Desk
@@ -53,6 +54,10 @@ Read only what you need:
   - Trading philosophy, decision tree, and timing gates.
 - `references/data-sources.md`
   - Source map for official and market data endpoints.
+- `references/persona-prompt.md`
+  - Decision-maker persona for desk-style answers.
+- `references/trading-mode-prompt.md`
+  - Time-boxed opening workflow for the next A-share session.
 
 ## Output Standard
 
