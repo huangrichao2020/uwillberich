@@ -168,6 +168,20 @@
     {"symbol": "sh600546", "name": "山煤国际", "role": "煤炭贸易", "strong_signal": "贸易股走强，说明煤炭弹性外溢", "weak_signal": "只涨资源不涨贸易，说明市场偏保守"},
     {"symbol": "sh601918", "name": "新集能源", "role": "煤电一体", "strong_signal": "煤电一体走强，说明市场在做更宽泛的能源逻辑", "weak_signal": "走弱说明电力属性拖累估值"}
   ],
+  "war_shock_core12": [
+    {"symbol": "sh600938", "name": "中国海油", "role": "原油总龙头", "strong_signal": "继续领涨并带动能源链，说明战争溢价仍在抬升", "weak_signal": "冲高回落且能源扩散不足，说明油价冲击开始钝化"},
+    {"symbol": "sh601857", "name": "中国石油", "role": "综合油气中军", "strong_signal": "与中国海油共振走强，说明油气受益更全面", "weak_signal": "显著弱于海油，说明资金只抱最纯上游"},
+    {"symbol": "sh601088", "name": "中国神华", "role": "煤炭防御龙头", "strong_signal": "稳步走强，说明避险扩散到煤炭和红利", "weak_signal": "强度不足，说明煤炭只是跟随而非核心"},
+    {"symbol": "sh601225", "name": "陕西煤业", "role": "动力煤弹性核心", "strong_signal": "强于神华，说明煤炭开始从防御转向进攻", "weak_signal": "弱于神华，说明资金只偏好稳健红利煤"},
+    {"symbol": "sh600256", "name": "广汇能源", "role": "泛能源弹性票", "strong_signal": "跟随油煤同步放大，说明市场在交易更宽泛能源短缺", "weak_signal": "掉队说明资金只做央企大票"},
+    {"symbol": "sz000977", "name": "浪潮信息", "role": "算力风向标", "strong_signal": "若逆势翻红，说明科技开始消化战争冲击", "weak_signal": "持续水下说明战争环境仍压制算力风格"},
+    {"symbol": "sh688041", "name": "海光信息", "role": "高弹性国产算力", "strong_signal": "快速止跌翻红，说明高弹性风险偏好修复", "weak_signal": "继续走弱说明成长定价仍被压缩"},
+    {"symbol": "sh603019", "name": "中科曙光", "role": "服务器平台", "strong_signal": "跟随浪潮和海光企稳，说明平台链承接变好", "weak_signal": "平台持续弱势说明算力产业链仍受压"},
+    {"symbol": "sz300502", "name": "新易盛", "role": "CPO龙头", "strong_signal": "逆势转强意味着战争扰动正在被科技主线吸收", "weak_signal": "龙头失守说明最强科技也扛不住宏观冲击"},
+    {"symbol": "sh603881", "name": "数据港", "role": "IDC运营", "strong_signal": "企稳说明市场未继续惩罚高电耗IDC", "weak_signal": "持续下跌说明电力成本与风险偏好双重压制仍在"},
+    {"symbol": "sh600011", "name": "华能国际", "role": "火电成本代表", "strong_signal": "若火电能稳住，说明成本冲击预期可控", "weak_signal": "走弱说明燃料涨价正在压制火电估值"},
+    {"symbol": "sh600023", "name": "浙能电力", "role": "区域火电对照", "strong_signal": "区域火电跟稳，说明电力防御属性仍有效", "weak_signal": "同步转弱说明传统火电整体受成本约束"}
+  ],
   "war_headwind_compute_power": [
     {"symbol": "sz000977", "name": "浪潮信息", "role": "AI服务器", "strong_signal": "若逆势翻红，说明算力链正在消化战争冲击", "weak_signal": "弱于油煤且始终水下，说明战争环境压制算力风险偏好"},
     {"symbol": "sh603019", "name": "中科曙光", "role": "服务器平台", "strong_signal": "跟随浪潮信息企稳，说明平台链抗压", "weak_signal": "走弱说明平台层最先承压"},

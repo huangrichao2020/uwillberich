@@ -38,6 +38,7 @@ python3 scripts/fetch_quotes.py sz300502 sh688981 sh600938
 python3 scripts/morning_brief.py --groups core10 tech_repair
 python3 scripts/morning_brief.py --groups cross_cycle_anchor12
 python3 scripts/morning_brief.py --groups cross_cycle_ai_hardware cross_cycle_semis cross_cycle_software_platforms cross_cycle_defense_industrial
+python3 scripts/morning_brief.py --groups war_shock_core12
 python3 scripts/morning_brief.py --groups war_benefit_oil_coal war_headwind_compute_power
 python3 scripts/opening_window_checklist.py --groups tech_repair defensive_gauge policy_beta
 ```
@@ -48,7 +49,7 @@ From this folder:
 
 ```bash
 clawhub login
-clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.3 --tags latest,finance,a-share,china,markets
+clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.5 --tags latest,finance,a-share,china,markets
 ```
 
 ## Notes
@@ -59,3 +60,4 @@ clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-
 - The opening-window script is intended for `09:00-10:00` use, especially the first 30 minutes after the A-share cash open.
 - For the larger quality pool, use `cross_cycle_anchor12` daily and reserve `cross_cycle_core` for weekly or phase-rotation review.
 - For geopolitical shocks, treat `war_benefit_oil_coal` and `war_headwind_compute_power` as temporary regime overlays, not permanent core watchlists.
+- If you only want one wartime overlay, start with `war_shock_core12`.

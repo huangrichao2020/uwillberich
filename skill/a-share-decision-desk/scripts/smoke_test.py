@@ -34,6 +34,7 @@ def main() -> None:
     watchlists = json.loads((ROOT / "assets" / "default_watchlists.json").read_text(encoding="utf-8"))
     assert_true("cross_cycle_anchor12" in watchlists, "missing cross_cycle_anchor12")
     assert_true("cross_cycle_core" in watchlists, "missing cross_cycle_core")
+    assert_true("war_shock_core12" in watchlists, "missing war_shock_core12")
     assert_true("war_benefit_oil_coal" in watchlists, "missing war_benefit_oil_coal")
     assert_true("war_headwind_compute_power" in watchlists, "missing war_headwind_compute_power")
     assert_true(len(watchlists["cross_cycle_anchor12"]) >= 10, "anchor watchlist too small")
