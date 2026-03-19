@@ -1,8 +1,8 @@
 interface:
   display_name: "A-Share Decision Desk"
-  short_description: "A-share pre-open decision workflow"
+  short_description: "A-share next-session decision workflow"
   brand_color: "#C1272D"
-  default_prompt: "Use $a-share-decision-desk to build tomorrow's A-share game plan from overnight events, policy timing, and opening watchlists."
+  default_prompt: "Use $a-share-decision-desk to build tomorrow's A-share game plan, likely repair sectors, and an opening checklist from overnight events and watchlists."
 
 policy:
   allow_implicit_invocation: true

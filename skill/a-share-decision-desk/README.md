@@ -1,6 +1,16 @@
 # A-Share Decision Desk
 
-ClawHub/OpenClaw-ready skill folder for next-session A-share discretionary planning.
+A ClawHub/OpenClaw-ready skill for next-session A-share discretionary planning.
+
+It is designed for one job: turn today’s tape and overnight developments into a concrete game plan for tomorrow’s open.
+
+## Good Use Cases
+
+- "What is the most likely A-share path tomorrow?"
+- "Which sectors are most likely to repair first after today’s selloff?"
+- "Give me a `09:00 / 09:25 / 09:30-10:00` opening checklist."
+- "Build a watchlist-driven pre-open note for A-shares."
+- "Tell me whether this is real repair or just defensive concentration."
 
 ## What This Skill Contains
 
@@ -12,10 +22,12 @@ ClawHub/OpenClaw-ready skill folder for next-session A-share discretionary plann
 - `scripts/fetch_market_snapshot.py`: index and sector breadth snapshot
 - `scripts/fetch_quotes.py`: Tencent quote watchlist snapshot
 - `scripts/morning_brief.py`: one-command markdown morning brief
+- `scripts/smoke_test.py`: local smoke test for the bundled scripts
 
 ## Local Smoke Test
 
 ```bash
+python3 scripts/smoke_test.py
 python3 scripts/fetch_market_snapshot.py --format markdown
 python3 scripts/fetch_quotes.py sz300502 sh688981 sh600938
 python3 scripts/morning_brief.py --groups core10 tech_repair
@@ -27,10 +39,11 @@ From this folder:
 
 ```bash
 clawhub login
-clawhub publish . --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.0 --tags latest
+clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.1 --tags latest,finance,a-share,china,markets
 ```
 
 ## Notes
 
 - ClawHub publishes a skill folder with `SKILL.md` plus supporting text files.
 - This skill uses only text-based resources and Python standard library scripts.
+- If `clawhub publish .` misreads the folder, use an absolute path or pass `--workdir` explicitly.

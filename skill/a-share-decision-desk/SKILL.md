@@ -1,6 +1,6 @@
 ---
 name: a-share-decision-desk
-description: Build next-session A-share decision plans, repair-sector hypotheses, opening checklists, and watchlists using current index, breadth, sector, and watchlist data plus official policy and primary news sources. Use when the user asks what A-shares may do tomorrow, which sectors may repair, how to trade the open, or wants a reusable A-share discretionary workflow.
+description: Build next-session A-share game plans from market structure, overnight macro shocks, policy timing, and watchlist leadership. Use when the user asks what A-shares may do tomorrow, which sectors may repair first, how to read the open, or wants a reusable pre-open discretionary decision workflow.
 metadata: {"openclaw":{"emoji":"📈","homepage":"https://github.com/huangrichao2020/a-share-decision-kit","requires":{"bins":["python3"]}}}
 ---
 
@@ -9,6 +9,14 @@ metadata: {"openclaw":{"emoji":"📈","homepage":"https://github.com/huangrichao
 ## Overview
 
 Use this skill for decision-oriented A-share analysis. The goal is not to explain the market mechanically, but to convert today’s tape and overnight developments into a concrete next-session plan.
+
+Best fit:
+
+- next-session A-share outlook
+- likely repair sectors after a selloff
+- opening checklist for `09:00`, `09:25`, and `09:30-10:00`
+- watchlist-based decision notes
+- distinguishing defensive leadership from true market repair
 
 ## Core Workflow
 
@@ -45,6 +53,8 @@ Use these scripts before writing the decision note:
   - Pulls Tencent quote snapshots for user-specified names.
 - `scripts/morning_brief.py`
   - Builds a markdown brief from the default watchlists in `assets/default_watchlists.json`.
+- `scripts/smoke_test.py`
+  - Verifies that the bundled scripts and public endpoints are working.
 
 ## References
 
