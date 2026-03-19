@@ -51,7 +51,7 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 
 ## Required Keys
 
-Project-specific runtime keys: `none`
+Project-specific runtime keys for public mode: `none`
 
 The repo uses only:
 
@@ -59,6 +59,18 @@ The repo uses only:
 - public RSS feeds
 - public Tencent quote endpoints
 - public Eastmoney endpoints
+
+Optional enhancement key:
+
+- `EM_API_KEY`
+  - Enables compatibility with the `MX_FinSearch`, `MX_StockPick`, `MX_MacroData`, and `MX_FinData` tool family.
+  - Recommended local storage path:
+    `~/.a-share-decision-desk/runtime.env`
+  - Setup command:
+
+```bash
+printf '%s' 'your_em_api_key' | python3 ~/.codex/skills/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin
+```
 
 ## Optional Credentials
 
@@ -73,6 +85,7 @@ The repo uses only:
 
 ```bash
 python3 ~/.codex/skills/a-share-decision-desk/scripts/smoke_test.py
+python3 ~/.codex/skills/a-share-decision-desk/scripts/runtime_config.py status
 python3 ~/.codex/skills/a-share-decision-desk/scripts/news_iterator.py poll
 python3 ~/.codex/skills/a-share-decision-desk/scripts/morning_brief.py
 python3 ~/.codex/skills/a-share-decision-desk/scripts/opening_window_checklist.py

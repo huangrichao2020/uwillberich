@@ -7,8 +7,13 @@ import urllib.parse
 import urllib.request
 from typing import Iterable
 
+from runtime_config import load_runtime_env
+
 
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
+
+
+load_runtime_env()
 
 
 def _get_text(url: str, encoding: str = "utf-8") -> str:

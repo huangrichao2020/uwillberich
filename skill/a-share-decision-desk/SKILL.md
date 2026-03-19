@@ -60,6 +60,8 @@ Use these scripts before writing the decision note:
   - Builds a first-30-minute observation sheet with time gates, group scoreboards, and watchlist signal tables.
 - `scripts/news_iterator.py`
   - Continuously polls public RSS feeds, classifies high-attention events, maps them into watchlist overlays, and writes dynamic event-driven stock pools.
+- `scripts/runtime_config.py`
+  - Loads local runtime credentials and reports whether optional `EM_API_KEY`-based integrations are available.
 - `scripts/install_news_iterator_launchd.py`
   - Installs the news iterator as a `launchd` job on macOS for long-running local polling.
 - `scripts/smoke_test.py`

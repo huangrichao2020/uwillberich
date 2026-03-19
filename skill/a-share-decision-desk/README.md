@@ -36,6 +36,7 @@ https://github.com/huangrichao2020/a-share-decision-kit
 - `scripts/morning_brief.py`: one-command markdown morning brief
 - `scripts/opening_window_checklist.py`: first-30-minute decision sheet
 - `scripts/news_iterator.py`: RSS polling, classification, SQLite state, markdown/jsonl outputs, and automatic event stock pools
+- `scripts/runtime_config.py`: local credential helper for optional EM-enhanced mode
 - `scripts/install_news_iterator_launchd.py`: macOS launchd installer for scheduled polling
 - `scripts/smoke_test.py`: local smoke test for the bundled scripts
 
@@ -68,11 +69,21 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 
 ## Keys And Credentials
 
-Project-specific runtime keys required: `none`
+Project-specific runtime keys required for public mode: `none`
 
 This skill uses only public data sources and Python standard library modules.
 
 Optional credentials:
+
+- `EM_API_KEY`
+  - Enables compatibility with the `MX_FinSearch`, `MX_StockPick`, `MX_MacroData`, and `MX_FinData` ecosystem.
+  - Store it locally in `~/.a-share-decision-desk/runtime.env`.
+  - Check or set it with:
+
+```bash
+python3 scripts/runtime_config.py status
+printf '%s' 'your_em_api_key' | python3 scripts/runtime_config.py set-em-key --stdin
+```
 
 - GitHub read access: only if the repo is private and an agent must clone it
 - GitHub write access: only if an agent should push changes back
@@ -82,6 +93,7 @@ Optional credentials:
 
 ```bash
 python3 scripts/smoke_test.py
+python3 scripts/runtime_config.py status
 python3 scripts/fetch_market_snapshot.py --format markdown
 python3 scripts/fetch_quotes.py sz300502 sh688981 sh600938
 python3 scripts/morning_brief.py --groups core10 tech_repair
@@ -110,6 +122,7 @@ clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-
 
 - ClawHub publishes a skill folder with `SKILL.md` plus supporting text files.
 - This skill uses only text-based resources and Python standard library scripts.
+- Public mode needs no extra key; optional EM-enhanced mode is driven by `EM_API_KEY`.
 - If `clawhub publish .` misreads the folder, use an absolute path or pass `--workdir` explicitly.
 - The opening-window script is intended for `09:00-10:00` use, especially the first 30 minutes after the A-share cash open.
 - For the larger quality pool, use `cross_cycle_anchor12` daily and reserve `cross_cycle_core` for weekly or phase-rotation review.

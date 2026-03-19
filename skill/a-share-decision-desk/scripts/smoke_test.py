@@ -4,11 +4,13 @@ from __future__ import annotations
 
 import json
 import sys
+import tempfile
 from pathlib import Path
 
 from market_data import fetch_index_snapshot, fetch_sector_movers, fetch_tencent_quotes
 from news_iterator import FeedItem, build_event_watchlists_payload, classify_item
 from opening_window_checklist import classify_state
+from runtime_config import build_status, read_env_file
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -53,6 +55,14 @@ def main() -> None:
     assert_true(len(watchlists["cross_cycle_anchor12"]) >= 10, "anchor watchlist too small")
     assert_true("feeds" in iterator_config and len(iterator_config["feeds"]) >= 5, "news iterator feeds missing")
     assert_true("conflict_entities" in iterator_config, "news iterator conflict entities missing")
+
+    with tempfile.TemporaryDirectory() as temp_dir:
+        env_path = Path(temp_dir) / "runtime.env"
+        env_path.write_text("EM_API_KEY=test-key\n", encoding="utf-8")
+        env_values = read_env_file(env_path)
+        assert_true(env_values.get("EM_API_KEY") == "test-key", "runtime env parsing failed")
+        status = build_status(str(env_path))
+        assert_true(status["capabilities"]["em_enhanced_mode"], "runtime capability detection failed")
 
     future_release_alerts = classify_item(
         FeedItem(

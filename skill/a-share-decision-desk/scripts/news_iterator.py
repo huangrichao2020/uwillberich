@@ -18,6 +18,8 @@ from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
+from runtime_config import load_runtime_env
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG = ROOT / "assets" / "news_iterator_config.json"
@@ -28,6 +30,9 @@ DEFAULT_MARKDOWN = DEFAULT_STATE_DIR / "latest_alerts.md"
 DEFAULT_JSONL = DEFAULT_STATE_DIR / "alerts.jsonl"
 DEFAULT_EVENT_WATCHLIST = DEFAULT_STATE_DIR / "event_watchlists.json"
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
+
+
+load_runtime_env()
 
 
 @dataclass

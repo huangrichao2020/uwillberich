@@ -46,14 +46,26 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 
 ## Runtime Keys
 
-Project-specific runtime keys required: `none`
+Project-specific runtime keys required for public mode: `none`
 
-This repo uses:
+This repo runs out of the box with:
 
 - public RSS feeds
 - public Eastmoney endpoints
 - public Tencent quote endpoints
 - Python standard library only
+
+Optional enhancement mode:
+
+- `EM_API_KEY`
+  - Enables compatibility with the `MX_FinSearch`, `MX_StockPick`, `MX_MacroData`, and `MX_FinData` ecosystem.
+  - Store it locally in `~/.a-share-decision-desk/runtime.env`, not in Git.
+  - Use the bundled helper:
+
+```bash
+python3 skill/a-share-decision-desk/scripts/runtime_config.py status
+printf '%s' 'your_em_api_key' | python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin
+```
 
 ## Optional Credentials
 
@@ -72,6 +84,7 @@ This repo uses:
 All scripts live under `skill/a-share-decision-desk/scripts/` and use only the Python standard library.
 
 - `install_skill.sh`: one-command installer for Codex/OpenClaw skill directories
+- `runtime_config.py`: local runtime credential loader and EM enhancement status helper
 - `fetch_quotes.py`: fetch Tencent quote snapshots for a watchlist
 - `fetch_market_snapshot.py`: fetch Eastmoney index and sector breadth snapshots
 - `morning_brief.py`: build a simple pre-open markdown brief from default watchlists
@@ -84,6 +97,7 @@ All scripts live under `skill/a-share-decision-desk/scripts/` and use only the P
 ```bash
 python3 skill/a-share-decision-desk/scripts/fetch_market_snapshot.py --format markdown
 python3 skill/a-share-decision-desk/scripts/fetch_quotes.py sz300502 sz300308 sh688981
+python3 skill/a-share-decision-desk/scripts/runtime_config.py status
 python3 skill/a-share-decision-desk/scripts/morning_brief.py --groups core10 tech_repair
 python3 skill/a-share-decision-desk/scripts/news_iterator.py poll
 python3 skill/a-share-decision-desk/scripts/morning_brief.py

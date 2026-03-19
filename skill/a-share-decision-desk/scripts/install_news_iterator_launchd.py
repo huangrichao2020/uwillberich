@@ -9,6 +9,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+from runtime_config import load_runtime_env
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_STATE_DIR = Path.home() / ".a-share-decision-desk" / "news-iterator"
@@ -22,7 +24,8 @@ def run_command(args: list[str], check: bool) -> subprocess.CompletedProcess[str
 
 def build_plist(interval_seconds: int, state_dir: Path, python_bin: str) -> dict:
     state_dir.mkdir(parents=True, exist_ok=True)
-    return {
+    load_runtime_env()
+    plist = {
         "Label": DEFAULT_LABEL,
         "ProgramArguments": [
             python_bin,
@@ -37,6 +40,14 @@ def build_plist(interval_seconds: int, state_dir: Path, python_bin: str) -> dict
         "StandardOutPath": str(state_dir / "launchd.out.log"),
         "StandardErrorPath": str(state_dir / "launchd.err.log"),
     }
+    env_vars = {}
+    for key in ["EM_API_KEY", "A_SHARE_RUNTIME_ENV"]:
+        value = os.environ.get(key)
+        if value:
+            env_vars[key] = value
+    if env_vars:
+        plist["EnvironmentVariables"] = env_vars
+    return plist
 
 
 def unload_if_present(plist_path: Path) -> None:
