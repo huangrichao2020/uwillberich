@@ -32,6 +32,18 @@ cp -R skill/a-share-decision-desk ~/.codex/skills/a-share-decision-desk
 
 OpenClaw users can do the same with `~/.openclaw/skills/`.
 
+One-line install from GitHub:
+
+```bash
+git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-share-decision-kit && ./install_skill.sh
+```
+
+For OpenClaw:
+
+```bash
+git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-share-decision-kit && ./install_skill.sh openclaw
+```
+
 ## Runtime Keys
 
 Project-specific runtime keys required: `none`
@@ -59,6 +71,7 @@ This repo uses:
 
 All scripts live under `skill/a-share-decision-desk/scripts/` and use only the Python standard library.
 
+- `install_skill.sh`: one-command installer for Codex/OpenClaw skill directories
 - `fetch_quotes.py`: fetch Tencent quote snapshots for a watchlist
 - `fetch_market_snapshot.py`: fetch Eastmoney index and sector breadth snapshots
 - `morning_brief.py`: build a simple pre-open markdown brief from default watchlists

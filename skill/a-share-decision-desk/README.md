@@ -54,6 +54,18 @@ mkdir -p ~/.codex/skills
 cp -R a-share-decision-kit/skill/a-share-decision-desk ~/.codex/skills/a-share-decision-desk
 ```
 
+One-line install for Codex:
+
+```bash
+git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-share-decision-kit && ./install_skill.sh
+```
+
+One-line install for OpenClaw:
+
+```bash
+git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-share-decision-kit && ./install_skill.sh openclaw
+```
+
 ## Keys And Credentials
 
 Project-specific runtime keys required: `none`
