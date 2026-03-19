@@ -12,6 +12,7 @@ It is designed for one job: turn today’s tape and overnight developments into 
 - "Build a watchlist-driven pre-open note for A-shares."
 - "Tell me whether this is real repair or just defensive concentration."
 - "Use the cross-cycle core stock pool to narrow tomorrow's key observation list."
+- "In a war-oil shock regime, tell me which A-share groups benefit and which ones get hurt."
 
 ## What This Skill Contains
 
@@ -21,6 +22,7 @@ It is designed for one job: turn today’s tape and overnight developments into 
 - `references/persona-prompt.md`: decision-maker persona prompt
 - `references/trading-mode-prompt.md`: time-based pre-open trading mode prompt
 - `references/cross-cycle-watchlist.md`: how to use the cross-cycle core stock pool
+- `references/event-regime-watchlists.md`: war-shock overlay watchlists
 - `scripts/fetch_market_snapshot.py`: index and sector breadth snapshot
 - `scripts/fetch_quotes.py`: Tencent quote watchlist snapshot
 - `scripts/morning_brief.py`: one-command markdown morning brief
@@ -36,6 +38,7 @@ python3 scripts/fetch_quotes.py sz300502 sh688981 sh600938
 python3 scripts/morning_brief.py --groups core10 tech_repair
 python3 scripts/morning_brief.py --groups cross_cycle_anchor12
 python3 scripts/morning_brief.py --groups cross_cycle_ai_hardware cross_cycle_semis cross_cycle_software_platforms cross_cycle_defense_industrial
+python3 scripts/morning_brief.py --groups war_benefit_oil_coal war_headwind_compute_power
 python3 scripts/opening_window_checklist.py --groups tech_repair defensive_gauge policy_beta
 ```
 
@@ -55,3 +58,4 @@ clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-
 - If `clawhub publish .` misreads the folder, use an absolute path or pass `--workdir` explicitly.
 - The opening-window script is intended for `09:00-10:00` use, especially the first 30 minutes after the A-share cash open.
 - For the larger quality pool, use `cross_cycle_anchor12` daily and reserve `cross_cycle_core` for weekly or phase-rotation review.
+- For geopolitical shocks, treat `war_benefit_oil_coal` and `war_headwind_compute_power` as temporary regime overlays, not permanent core watchlists.

@@ -154,5 +154,34 @@
     {"symbol": "sz300502", "name": "新易盛", "role": "CPO/光模块"},
     {"symbol": "sz300620", "name": "光库科技", "role": "光芯片器件"},
     {"symbol": "sz300814", "name": "中富电路", "role": "PCB"}
+  ],
+  "war_benefit_oil_coal": [
+    {"symbol": "sh600938", "name": "中国海油", "role": "上游原油", "strong_signal": "继续领涨并扩散到煤炭，说明能源稀缺逻辑仍在强化", "weak_signal": "冲高回落且煤炭跟不上，说明战争溢价开始回吐"},
+    {"symbol": "sh601857", "name": "中国石油", "role": "综合油气", "strong_signal": "与中国海油共振走强，说明油气链受益扩散", "weak_signal": "弱于中国海油，说明资金只抱最纯上游"},
+    {"symbol": "sh600028", "name": "中国石化", "role": "综合炼化", "strong_signal": "同步转强，说明资金开始接受综合油化央企", "weak_signal": "明显弱于上游，说明市场只认涨价弹性"},
+    {"symbol": "sh601088", "name": "中国神华", "role": "煤炭龙头", "strong_signal": "站上昨收并带动煤炭板块，说明避险扩散到煤链", "weak_signal": "强度不及油气，说明煤炭只是在跟随"},
+    {"symbol": "sh601225", "name": "陕西煤业", "role": "动力煤核心", "strong_signal": "稳中走强，说明高分红煤炭被资金偏好", "weak_signal": "高股息优势失效，说明市场不再追煤炭防御"},
+    {"symbol": "sh600188", "name": "兖矿能源", "role": "煤炭弹性", "strong_signal": "弹性强于神华，说明资金开始追煤炭进攻属性", "weak_signal": "弹性票不跟，说明煤炭只是红利避险"},
+    {"symbol": "sh601898", "name": "中煤能源", "role": "煤炭央企", "strong_signal": "跟随神华走强，说明煤炭扩散性良好", "weak_signal": "弱于龙头，说明煤炭内部扩散不足"},
+    {"symbol": "sh601699", "name": "潞安环能", "role": "区域煤企", "strong_signal": "区域煤企跟涨，说明煤炭板块活跃度上升", "weak_signal": "只剩龙头涨，说明板块修复不完整"},
+    {"symbol": "sh600256", "name": "广汇能源", "role": "油气煤联动", "strong_signal": "同步走强，说明资金在交易泛能源链", "weak_signal": "弱于原油股，说明市场聚焦更纯粹受益方向"},
+    {"symbol": "sh600546", "name": "山煤国际", "role": "煤炭贸易", "strong_signal": "贸易股走强，说明煤炭弹性外溢", "weak_signal": "只涨资源不涨贸易，说明市场偏保守"},
+    {"symbol": "sh601918", "name": "新集能源", "role": "煤电一体", "strong_signal": "煤电一体走强，说明市场在做更宽泛的能源逻辑", "weak_signal": "走弱说明电力属性拖累估值"}
+  ],
+  "war_headwind_compute_power": [
+    {"symbol": "sz000977", "name": "浪潮信息", "role": "AI服务器", "strong_signal": "若逆势翻红，说明算力链正在消化战争冲击", "weak_signal": "弱于油煤且始终水下，说明战争环境压制算力风险偏好"},
+    {"symbol": "sh603019", "name": "中科曙光", "role": "服务器平台", "strong_signal": "跟随浪潮信息企稳，说明平台链抗压", "weak_signal": "走弱说明平台层最先承压"},
+    {"symbol": "sh601138", "name": "工业富联", "role": "AI服务器制造", "strong_signal": "大票制造抗跌，说明机构并未全面撤离算力链", "weak_signal": "放量走弱，说明机构在降配高耗能硬件链"},
+    {"symbol": "sh688041", "name": "海光信息", "role": "国产算力芯片", "strong_signal": "高弹性核心止跌翻红，说明风险偏好有回流", "weak_signal": "高弹性继续走弱，说明成长定价被压缩"},
+    {"symbol": "sz300308", "name": "中际旭创", "role": "光模块", "strong_signal": "若光模块重新领涨，说明市场重回科技主线", "weak_signal": "明显弱于油煤，说明风险偏好未恢复"},
+    {"symbol": "sz300502", "name": "新易盛", "role": "CPO龙头", "strong_signal": "逆势转强可视作战争扰动减弱", "weak_signal": "龙头失守说明高景气科技也扛不住宏观冲击"},
+    {"symbol": "sz002837", "name": "英维克", "role": "温控散热", "strong_signal": "抗跌说明算力配套链仍有配置需求", "weak_signal": "弱于主链说明配套端先被抛售"},
+    {"symbol": "sh600845", "name": "宝信软件", "role": "IDC平台", "strong_signal": "稳于IDC同行，说明数据中心平台更抗压", "weak_signal": "走弱说明高电耗预期压制IDC估值"},
+    {"symbol": "sh603881", "name": "数据港", "role": "IDC运营", "strong_signal": "企稳说明市场未继续惩罚高电耗模型", "weak_signal": "下跌说明战争引发的电价与风险偏好双杀仍在"},
+    {"symbol": "sz300738", "name": "奥飞数据", "role": "IDC弹性", "strong_signal": "弹性股翻红说明情绪开始回暖", "weak_signal": "弹性持续最弱说明资金仍回避IDC"},
+    {"symbol": "sh600011", "name": "华能国际", "role": "火电", "strong_signal": "若火电抗跌，说明市场认为成本冲击可控", "weak_signal": "走弱说明燃料成本上升压制火电盈利"},
+    {"symbol": "sh600027", "name": "华电国际", "role": "火电", "strong_signal": "跟随稳住，说明火电链并未被系统性抛售", "weak_signal": "明显走弱说明成本端担忧升温"},
+    {"symbol": "sh600795", "name": "国电电力", "role": "综合电力", "strong_signal": "企稳说明市场更看重央企防守属性", "weak_signal": "回落说明电力板块也受成本预期拖累"},
+    {"symbol": "sh600023", "name": "浙能电力", "role": "区域火电", "strong_signal": "稳住说明区域火电防御性尚可", "weak_signal": "走弱说明资金回避传统火电"}
   ]
 }

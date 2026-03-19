@@ -75,6 +75,8 @@ Read only what you need:
   - A reusable first-30-minute decision template.
 - `references/cross-cycle-watchlist.md`
   - How to use the cross-cycle core stock pool without turning it into an unfocused mega-list.
+- `references/event-regime-watchlists.md`
+  - How to use war-shock and energy-spike watchlists as temporary overlays.
 
 ## Output Standard
 
