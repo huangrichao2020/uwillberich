@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#c76719" />
+    <title>2026-03-19 A股盘后与 2026-03-20 盘前关注报告｜移动版</title>
+    <meta
+      name="description"
+      content="移动端版：2026-03-19 A股盘后总结与 2026-03-20 盘前关注报告。"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="2026-03-19 A股盘后与 2026-03-20 盘前关注报告｜移动版" />
+    <meta property="og:description" content="抱团行情延续。今天先看 09:00 LPR，再看新易盛、华工科技能否带动科技修复扩散。" />
+    <meta property="og:url" content="https://huangrichao2020.github.io/a-share-decision-reports/reports/2026-03-19-postclose-2026-03-20-mobile.html" />
+    <meta property="og:image" content="https://huangrichao2020.github.io/a-share-decision-reports/assets/report-cover-2026-03-19.svg" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="2026-03-19 A股盘后与 2026-03-20 盘前关注报告｜移动版" />
+    <meta name="twitter:description" content="抱团行情延续。今天先看 09:00 LPR，再看新易盛、华工科技能否带动科技修复扩散。" />
+    <meta name="twitter:image" content="https://huangrichao2020.github.io/a-share-decision-reports/assets/report-cover-2026-03-19.svg" />
+    <style>
+      :root {
+        --bg: #f7f2e8;
+        --panel: rgba(255, 253, 248, 0.92);
+        --panel-strong: #fffdf8;
+        --text: #1f2937;
+        --muted: #5f6875;
+        --line: rgba(31, 41, 55, 0.11);
+        --accent: #c76719;
+        --accent-deep: #8f4308;
+        --teal: #0f766e;
+        --green: #0a7c52;
+        --red: #b42318;
+        --shadow: 0 18px 44px rgba(23, 28, 33, 0.11);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB",
+          "Noto Sans SC", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(199, 103, 25, 0.18), transparent 34%),
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.12), transparent 30%),
+          linear-gradient(180deg, #fbf7f0 0%, var(--bg) 100%);
+      }
+
+      .app {
+        width: min(100vw, 520px);
+        margin: 0 auto;
+        padding: 16px 14px 96px;
+      }
+
+      .hero,
+      .card,
+      .section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 22px 20px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(199, 103, 25, 0.1);
+        color: var(--accent-deep);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: 32px;
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+      }
+
+      .subtitle {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .chip {
+        display: inline-flex;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .chip-accent {
+        background: rgba(199, 103, 25, 0.12);
+        color: var(--accent-deep);
+      }
+
+      .chip-teal {
+        background: rgba(15, 118, 110, 0.12);
+        color: var(--teal);
+      }
+
+      .chip-green {
+        background: rgba(10, 124, 82, 0.12);
+        color: var(--green);
+      }
+
+      .chip-red {
+        background: rgba(180, 35, 24, 0.12);
+        color: var(--red);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .poster {
+        margin-top: 16px;
+        padding: 18px 16px;
+        border-radius: 24px;
+        color: white;
+        background:
+          radial-gradient(circle at top right, rgba(255, 212, 170, 0.24), transparent 28%),
+          linear-gradient(145deg, #1f2937 0%, #273444 54%, #184b47 100%);
+      }
+
+      .poster-label {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .poster h2 {
+        margin: 14px 0 8px;
+        font-size: 28px;
+        line-height: 1.04;
+        letter-spacing: -0.05em;
+      }
+
+      .poster p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .poster-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .poster-pill {
+        display: inline-flex;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .metric {
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+      }
+
+      .metric .label {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .metric .value {
+        margin-top: 8px;
+        font-size: 17px;
+        font-weight: 800;
+      }
+
+      .stack {
+        display: grid;
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .section {
+        padding: 18px 16px;
+      }
+
+      .section h2 {
+        margin: 0 0 10px;
+        font-size: 22px;
+        letter-spacing: -0.04em;
+      }
+
+      .section h3 {
+        margin: 18px 0 10px;
+        font-size: 16px;
+      }
+
+      p,
+      li {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      p + p,
+      p + ul,
+      ul + p,
+      ul + ul,
+      .card + .card {
+        margin-top: 10px;
+      }
+
+      ul {
+        padding-left: 18px;
+      }
+
+      .cards {
+        display: grid;
+        gap: 10px;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      .card-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin-bottom: 8px;
+      }
+
+      .card-title strong {
+        font-size: 15px;
+      }
+
+      .note {
+        color: var(--muted);
+      }
+
+      .scenario {
+        border-left: 4px solid var(--accent);
+      }
+
+      .scenario.bull {
+        border-left-color: var(--green);
+      }
+
+      .scenario.bear {
+        border-left-color: var(--red);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 10px;
+      }
+
+      .time-card {
+        padding: 14px;
+        border-radius: 18px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+      }
+
+      .time {
+        font-size: 12px;
+        font-weight: 800;
+        color: var(--accent-deep);
+        letter-spacing: 0.08em;
+      }
+
+      .quote-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .quote {
+        padding: 14px;
+        border-radius: 18px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+      }
+
+      .quote-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+
+      .quote-meta {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .up {
+        color: var(--green);
+        font-weight: 800;
+      }
+
+      .down {
+        color: var(--red);
+        font-weight: 800;
+      }
+
+      .actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        padding: 12px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .btn-primary {
+        color: white;
+        background: linear-gradient(135deg, var(--accent), #de7e1b);
+      }
+
+      .btn-secondary {
+        color: var(--teal);
+        background: rgba(15, 118, 110, 0.1);
+      }
+
+      .bottom-bar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 20;
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+        background: linear-gradient(180deg, rgba(247, 242, 232, 0), rgba(247, 242, 232, 0.92) 26%, rgba(247, 242, 232, 0.98) 100%);
+      }
+
+      .bottom-inner {
+        width: min(100vw - 24px, 492px);
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 20px;
+        background: rgba(255, 253, 248, 0.9);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .page-note {
+        margin-top: 8px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.7;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <span class="eyebrow">移动端报告</span>
+        <h1>先看 LPR<br />再看科技修复</h1>
+        <p class="subtitle">
+          这是适合手机浏览的压缩执行版。结论很明确：今天
+          <code>2026-03-20</code> 开盘前，先看 <code>09:00 LPR</code>，
+          再看 <strong>新易盛 / 华工科技</strong> 能不能把科技修复扩散到算力平台链。
+        </p>
+        <div class="chips">
+          <span class="chip chip-accent">盘后日 2026-03-19</span>
+          <span class="chip chip-teal">今日盘前 2026-03-20</span>
+          <span class="chip chip-red">状态 抱团行情</span>
+        </div>
+        <div class="grid-2">
+          <div class="metric">
+            <div class="label">上证指数</div>
+            <div class="value">4006.55</div>
+            <div class="note">-1.39%</div>
+          </div>
+          <div class="metric">
+            <div class="label">深证成指</div>
+            <div class="value">13901.57</div>
+            <div class="note">-2.02%</div>
+          </div>
+          <div class="metric">
+            <div class="label">科创50</div>
+            <div class="value">1339.03</div>
+            <div class="note">-2.44%</div>
+          </div>
+          <div class="metric">
+            <div class="label">市场广度</div>
+            <div class="value">普跌</div>
+            <div class="note">沪市 257 / 2075</div>
+          </div>
+        </div>
+        <section class="poster" aria-label="share poster">
+          <span class="poster-label">分享封面</span>
+          <h2>今天先看 09:00 LPR<br />再看新易盛能否带修复扩散</h2>
+          <p>
+            真正的分界线不是指数红不红，而是市场先交易政策分支、继续交易抱团，还是开始接受科技最强分支扩散。
+          </p>
+          <div class="poster-pills">
+            <span class="poster-pill">09:00 LPR</span>
+            <span class="poster-pill">中国海油 / 中国石油</span>
+            <span class="poster-pill">新易盛 / 华工科技</span>
+            <span class="poster-pill">浪潮 / 海光 / 曙光</span>
+          </div>
+        </section>
+      </section>
+
+      <section class="stack">
+        <section class="section">
+          <h2>盘后一句话</h2>
+          <p>
+            今天不是指数崩，而是 <strong>战争冲击下的抱团行情</strong>。油气、煤炭、银行、电信强，个股普跌；科技里只有
+            <strong>CPO / 光模块</strong> 在硬扛，算力平台和高弹性成长还没真正修复。
+          </p>
+        </section>
+
+        <section class="section">
+          <h2>三条主线判断</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="card-title">
+                <strong>战争受益线</strong>
+                <span class="chip chip-green">最强</span>
+              </div>
+              <p>中国海油、中国石油、中国神华、陕西煤业继续证明资金在交易能源稀缺和避险。</p>
+            </article>
+            <article class="card">
+              <div class="card-title">
+                <strong>科技活口</strong>
+                <span class="chip chip-accent">局部</span>
+              </div>
+              <p>新易盛、华工科技是当前最强科技锚，但还没带动浪潮信息、海光信息、中科曙光同步修复。</p>
+            </article>
+            <article class="card">
+              <div class="card-title">
+                <strong>高波动资源</strong>
+                <span class="chip chip-red">回避</span>
+              </div>
+              <p>锂矿、小金属、磷化工、黄金更像高位兑现，不先按新主线看。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>今天三种路径</h2>
+          <div class="cards">
+            <article class="card scenario">
+              <div class="card-title">
+                <strong>基准情景 50%</strong>
+                <span class="chip chip-accent">抱团延续</span>
+              </div>
+              <p>过夜冲突未缓和，油价维持高位，LPR 不变，油气煤炭银行电信继续偏强。</p>
+            </article>
+            <article class="card scenario bull">
+              <div class="card-title">
+                <strong>修复情景 30%</strong>
+                <span class="chip chip-green">科技修复扩散</span>
+              </div>
+              <p>油价不再上冲，先强的是新易盛、华工科技，再看浪潮、海光、曙光是否跟上。</p>
+            </article>
+            <article class="card scenario bear">
+              <div class="card-title">
+                <strong>风险情景 20%</strong>
+                <span class="chip chip-red">冲击升级</span>
+              </div>
+              <p>霍尔木兹、油气设施或航运中断消息再发酵，成长再被压一轮，抱团更强。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>今天先盯这 6 只</h2>
+          <div class="quote-grid">
+            <article class="quote">
+              <div class="quote-head">
+                <strong>中国海油</strong>
+                <span class="up">+5.86%</span>
+              </div>
+              <div class="quote-meta">环境总风向</div>
+              <p>继续强，说明战争溢价仍主导。冲高回落且科技转强，才说明风格在切。</p>
+            </article>
+            <article class="quote">
+              <div class="quote-head">
+                <strong>中国石油</strong>
+                <span class="up">+5.23%</span>
+              </div>
+              <div class="quote-meta">油气中军</div>
+              <p>和中国海油是否共振，决定战争受益是不是扩散而不是单票抱团。</p>
+            </article>
+            <article class="quote">
+              <div class="quote-head">
+                <strong>中国神华</strong>
+                <span class="up">+4.19%</span>
+              </div>
+              <div class="quote-meta">防御确认</div>
+              <p>如果煤炭继续稳，说明高股息防御还是盘面底色。</p>
+            </article>
+            <article class="quote">
+              <div class="quote-head">
+                <strong>新易盛</strong>
+                <span class="up">+2.20%</span>
+              </div>
+              <div class="quote-meta">科技最强锚</div>
+              <p>它强，科技修复才有真伪可谈；它弱，CPO 这条最强活口也会掉级。</p>
+            </article>
+            <article class="quote">
+              <div class="quote-head">
+                <strong>华工科技</strong>
+                <span class="up">+4.54%</span>
+              </div>
+              <div class="quote-meta">中军扩散票</div>
+              <p>和新易盛共振才叫光模块扩散，只靠龙头一只不算板块修复。</p>
+            </article>
+            <article class="quote">
+              <div class="quote-head">
+                <strong>浪潮信息 / 海光信息 / 中科曙光</strong>
+                <span class="down">仍偏弱</span>
+              </div>
+              <div class="quote-meta">修复确认层</div>
+              <p>这组至少两只翻回昨收，科技修复才能从“活口”升级到“可跟随”。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>开盘 30 分钟口令</h2>
+          <div class="timeline">
+            <article class="time-card">
+              <div class="time">09:00</div>
+              <p>看 5 年期 LPR 有没有下调。下调就提高地产链、券商、家电优先级；不变就回到抱团与科技修复主线。</p>
+            </article>
+            <article class="time-card">
+              <div class="time">09:20-09:25</div>
+              <p>集合竞价如果还是油气、煤炭、银行、电信最强，先按抱团市处理。</p>
+            </article>
+            <article class="time-card">
+              <div class="time">09:30-10:00</div>
+              <p>重点看新易盛、华工科技是否继续强，以及浪潮、海光、曙光里是否有两只翻回昨收。</p>
+            </article>
+            <article class="time-card">
+              <div class="time">10:00-10:30</div>
+              <p>只要修复扩散不出来，就还是局部行情；大票停、小票冲，要防派发。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>执行 / 回避</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="card-title">
+                <strong>执行</strong>
+                <span class="chip chip-green">执行</span>
+              </div>
+              <ul>
+                <li>先看相对强度，不看跌幅榜抄底。</li>
+                <li>先盯中国海油和新易盛，判断市场叙事主导权。</li>
+                <li>科技只做最强分支，不做全面铺开。</li>
+              </ul>
+            </article>
+            <article class="card">
+              <div class="card-title">
+                <strong>回避</strong>
+                <span class="chip chip-red">回避</span>
+              </div>
+              <ul>
+                <li>不先抄锂矿、小金属、磷化工、稀土、黄金。</li>
+                <li>不把油服小票脉冲当完整新主线。</li>
+                <li>不因为指数翻红就判断市场转暖。</li>
+              </ul>
+            </article>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="./2026-03-19-postclose-2026-03-20-preopen.html">看桌面版</a>
+            <a class="btn btn-secondary" href="../index.html">返回报告入口</a>
+          </div>
+          <p class="page-note">
+            © 2026 超超盘前盘后笔记. 保留所有权利. 本网站仅供学习交流使用.
+          </p>
+        </section>
+      </section>
+    </main>
+
+    <div class="bottom-bar">
+      <div class="bottom-inner">
+        <a class="btn btn-primary" href="./2026-03-19-postclose-2026-03-20-preopen.html">完整版</a>
+        <a class="btn btn-secondary" href="../index.html">更多报告</a>
+      </div>
+    </div>
+  </body>
+</html>
