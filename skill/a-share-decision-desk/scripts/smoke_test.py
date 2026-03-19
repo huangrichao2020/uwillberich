@@ -2,10 +2,14 @@
 
 from __future__ import annotations
 
+import json
 import sys
+from pathlib import Path
 
 from market_data import fetch_index_snapshot, fetch_sector_movers, fetch_tencent_quotes
 from opening_window_checklist import classify_state
+
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def assert_true(condition: bool, message: str) -> None:
@@ -26,6 +30,11 @@ def main() -> None:
     quotes = fetch_tencent_quotes(["sz300502", "sh688981", "sh600938"])
     assert_true(len(quotes) == 3, "expected 3 quotes")
     assert_true(all(quote.get("price") is not None for quote in quotes), "quote price missing")
+
+    watchlists = json.loads((ROOT / "assets" / "default_watchlists.json").read_text(encoding="utf-8"))
+    assert_true("cross_cycle_anchor12" in watchlists, "missing cross_cycle_anchor12")
+    assert_true("cross_cycle_core" in watchlists, "missing cross_cycle_core")
+    assert_true(len(watchlists["cross_cycle_anchor12"]) >= 10, "anchor watchlist too small")
 
     state = classify_state(
         [

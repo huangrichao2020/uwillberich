@@ -73,6 +73,8 @@ Read only what you need:
   - Time-boxed opening workflow for the next A-share session.
 - `references/opening-window-template.md`
   - A reusable first-30-minute decision template.
+- `references/cross-cycle-watchlist.md`
+  - How to use the cross-cycle core stock pool without turning it into an unfocused mega-list.
 
 ## Output Standard
 
