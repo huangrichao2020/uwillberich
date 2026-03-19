@@ -13,6 +13,7 @@ It is designed for one job: turn today’s tape and overnight developments into 
 - "Tell me whether this is real repair or just defensive concentration."
 - "Use the cross-cycle core stock pool to narrow tomorrow's key observation list."
 - "In a war-oil shock regime, tell me which A-share groups benefit and which ones get hurt."
+- "Continuously watch public news and map major events into A-share watchlists."
 
 ## What This Skill Contains
 
@@ -23,10 +24,13 @@ It is designed for one job: turn today’s tape and overnight developments into 
 - `references/trading-mode-prompt.md`: time-based pre-open trading mode prompt
 - `references/cross-cycle-watchlist.md`: how to use the cross-cycle core stock pool
 - `references/event-regime-watchlists.md`: war-shock overlay watchlists
+- `references/message-iterator.md`: persistent message iterator for high-attention news
 - `scripts/fetch_market_snapshot.py`: index and sector breadth snapshot
 - `scripts/fetch_quotes.py`: Tencent quote watchlist snapshot
 - `scripts/morning_brief.py`: one-command markdown morning brief
 - `scripts/opening_window_checklist.py`: first-30-minute decision sheet
+- `scripts/news_iterator.py`: RSS polling, classification, SQLite state, markdown/jsonl outputs
+- `scripts/install_news_iterator_launchd.py`: macOS launchd installer for scheduled polling
 - `scripts/smoke_test.py`: local smoke test for the bundled scripts
 
 ## Local Smoke Test
@@ -41,6 +45,9 @@ python3 scripts/morning_brief.py --groups cross_cycle_ai_hardware cross_cycle_se
 python3 scripts/morning_brief.py --groups war_shock_core12
 python3 scripts/morning_brief.py --groups war_benefit_oil_coal war_headwind_compute_power
 python3 scripts/opening_window_checklist.py --groups tech_repair defensive_gauge policy_beta
+python3 scripts/news_iterator.py poll
+python3 scripts/news_iterator.py report --hours 12
+python3 scripts/install_news_iterator_launchd.py install --interval-seconds 300
 ```
 
 ## ClawHub Publish
@@ -49,7 +56,7 @@ From this folder:
 
 ```bash
 clawhub login
-clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.5 --tags latest,finance,a-share,china,markets
+clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.6 --tags latest,finance,a-share,china,markets
 ```
 
 ## Notes
@@ -61,3 +68,4 @@ clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-
 - For the larger quality pool, use `cross_cycle_anchor12` daily and reserve `cross_cycle_core` for weekly or phase-rotation review.
 - For geopolitical shocks, treat `war_benefit_oil_coal` and `war_headwind_compute_power` as temporary regime overlays, not permanent core watchlists.
 - If you only want one wartime overlay, start with `war_shock_core12`.
+- For continuous event intake, run `news_iterator.py` as a local service and treat the alert stream as an overlay, not a replacement for tape and breadth.

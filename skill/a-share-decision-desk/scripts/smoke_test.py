@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 from market_data import fetch_index_snapshot, fetch_sector_movers, fetch_tencent_quotes
+from news_iterator import FeedItem, classify_item
 from opening_window_checklist import classify_state
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -32,12 +33,52 @@ def main() -> None:
     assert_true(all(quote.get("price") is not None for quote in quotes), "quote price missing")
 
     watchlists = json.loads((ROOT / "assets" / "default_watchlists.json").read_text(encoding="utf-8"))
+    iterator_config = json.loads((ROOT / "assets" / "news_iterator_config.json").read_text(encoding="utf-8"))
     assert_true("cross_cycle_anchor12" in watchlists, "missing cross_cycle_anchor12")
     assert_true("cross_cycle_core" in watchlists, "missing cross_cycle_core")
     assert_true("war_shock_core12" in watchlists, "missing war_shock_core12")
     assert_true("war_benefit_oil_coal" in watchlists, "missing war_benefit_oil_coal")
     assert_true("war_headwind_compute_power" in watchlists, "missing war_headwind_compute_power")
     assert_true(len(watchlists["cross_cycle_anchor12"]) >= 10, "anchor watchlist too small")
+    assert_true("feeds" in iterator_config and len(iterator_config["feeds"]) >= 5, "news iterator feeds missing")
+    assert_true("conflict_entities" in iterator_config, "news iterator conflict entities missing")
+
+    future_release_alerts = classify_item(
+        FeedItem(
+            item_key="future",
+            feed_key="test",
+            feed_label="Test",
+            source="Test",
+            title="OpenAI unveiled a new model for datacenter reasoning agents",
+            link="https://example.com/future",
+            summary="The launch centers on AI server demand and semiconductor inference.",
+            published_at="2026-03-19T00:00:00+00:00",
+        ),
+        iterator_config,
+    )
+    categories = {alert["category"] for alert in future_release_alerts}
+    assert_true("huge_future" in categories, "expected huge_future classification")
+    assert_true("huge_name_release" in categories, "expected huge_name_release classification")
+
+    conflict_alerts = classify_item(
+        FeedItem(
+            item_key="conflict",
+            feed_key="test",
+            feed_label="Test",
+            source="Test",
+            title="Iran attack raises oil shipping disruption risk in Hormuz",
+            link="https://example.com/conflict",
+            summary="Energy traders watch crude, refinery routes and power costs for data center operators.",
+            published_at="2026-03-19T00:00:00+00:00",
+        ),
+        iterator_config,
+    )
+    conflict_categories = {alert["category"] for alert in conflict_alerts}
+    assert_true("huge_conflict" in conflict_categories, "expected huge_conflict classification")
+    assert_true(
+        any("war_benefit_oil_coal" in alert["impacted_watchlists"] for alert in conflict_alerts),
+        "expected war_benefit_oil_coal mapping",
+    )
 
     state = classify_state(
         [

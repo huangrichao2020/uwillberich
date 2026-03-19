@@ -18,6 +18,7 @@ Best fit:
 - first-30-minute observation template for distinguishing true repair from defensive concentration
 - watchlist-based decision notes
 - distinguishing defensive leadership from true market repair
+- persistent message iteration that maps high-attention news into watchlist overlays
 
 ## Core Workflow
 
@@ -56,6 +57,10 @@ Use these scripts before writing the decision note:
   - Builds a markdown brief from the default watchlists in `assets/default_watchlists.json`.
 - `scripts/opening_window_checklist.py`
   - Builds a first-30-minute observation sheet with time gates, group scoreboards, and watchlist signal tables.
+- `scripts/news_iterator.py`
+  - Continuously polls public RSS feeds, classifies high-attention events, and maps them into watchlist overlays.
+- `scripts/install_news_iterator_launchd.py`
+  - Installs the news iterator as a `launchd` job on macOS for long-running local polling.
 - `scripts/smoke_test.py`
   - Verifies that the bundled scripts and public endpoints are working.
 
@@ -77,6 +82,8 @@ Read only what you need:
   - How to use the cross-cycle core stock pool without turning it into an unfocused mega-list.
 - `references/event-regime-watchlists.md`
   - How to use war-shock and energy-spike watchlists as temporary overlays.
+- `references/message-iterator.md`
+  - How to run the persistent RSS iterator and use its event categories inside the desk workflow.
 
 ## Output Standard
 
