@@ -4,6 +4,12 @@ A ClawHub/OpenClaw-ready skill for next-session A-share discretionary planning.
 
 It is designed for one job: turn today’s tape and overnight developments into a concrete game plan for tomorrow’s open.
 
+GitHub is the main source of truth for installation and updates:
+
+```text
+https://github.com/huangrichao2020/a-share-decision-kit
+```
+
 ## Good Use Cases
 
 - "What is the most likely A-share path tomorrow?"
@@ -33,6 +39,33 @@ It is designed for one job: turn today’s tape and overnight developments into 
 - `scripts/install_news_iterator_launchd.py`: macOS launchd installer for scheduled polling
 - `scripts/smoke_test.py`: local smoke test for the bundled scripts
 
+## Agent Install
+
+Install this folder into:
+
+- `~/.codex/skills/a-share-decision-desk`
+- `~/.openclaw/skills/a-share-decision-desk`
+
+Example:
+
+```bash
+git clone https://github.com/huangrichao2020/a-share-decision-kit.git
+mkdir -p ~/.codex/skills
+cp -R a-share-decision-kit/skill/a-share-decision-desk ~/.codex/skills/a-share-decision-desk
+```
+
+## Keys And Credentials
+
+Project-specific runtime keys required: `none`
+
+This skill uses only public data sources and Python standard library modules.
+
+Optional credentials:
+
+- GitHub read access: only if the repo is private and an agent must clone it
+- GitHub write access: only if an agent should push changes back
+- Model-provider API keys: may be required by the host agent environment, but not by this skill itself
+
 ## Local Smoke Test
 
 ```bash
@@ -52,7 +85,7 @@ python3 scripts/morning_brief.py
 python3 scripts/opening_window_checklist.py
 ```
 
-## ClawHub Publish
+## Optional ClawHub Publish
 
 From this folder:
 
