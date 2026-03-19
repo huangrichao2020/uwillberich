@@ -1,15 +1,15 @@
 {
   "core10": [
-    {"symbol": "sz300502", "name": "新易盛", "role": "CPO总龙头"},
-    {"symbol": "sz300308", "name": "中际旭创", "role": "光模块核心"},
-    {"symbol": "sz000977", "name": "浪潮信息", "role": "算力服务器"},
-    {"symbol": "sh688981", "name": "中芯国际", "role": "半导体抗跌核心"},
-    {"symbol": "sh688041", "name": "海光信息", "role": "高弹性科技"},
-    {"symbol": "sh603986", "name": "兆易创新", "role": "半导体弹性票"},
-    {"symbol": "sz300059", "name": "东方财富", "role": "风险偏好代理"},
-    {"symbol": "sh600030", "name": "中信证券", "role": "券商确认票"},
-    {"symbol": "sz000002", "name": "万科A", "role": "政策链检验票"},
-    {"symbol": "sh600938", "name": "中国海油", "role": "避险对照票"}
+    {"symbol": "sz300502", "name": "新易盛", "role": "CPO总龙头", "strong_signal": "9:45前稳在昨收上方并接近昨高，说明科技修复最真", "weak_signal": "跌回昨收下方并逼近昨低，说明CPO主线承接不足"},
+    {"symbol": "sz300308", "name": "中际旭创", "role": "光模块核心", "strong_signal": "跟随新易盛站上昨收且不破昨低", "weak_signal": "始终压在昨收下方，说明修复扩散不足"},
+    {"symbol": "sz000977", "name": "浪潮信息", "role": "算力服务器", "strong_signal": "站回昨收且量能跟随，说明算力链扩散", "weak_signal": "低开后无法翻红，说明修复只停留在CPO单点"},
+    {"symbol": "sh688981", "name": "中芯国际", "role": "半导体抗跌核心", "strong_signal": "稳在昨收上方并向昨高推进，说明半导体修复有质量", "weak_signal": "跌破昨低，说明成长风格仍弱"},
+    {"symbol": "sh688041", "name": "海光信息", "role": "高弹性科技", "strong_signal": "快速翻红并守住昨收，说明风险偏好回暖", "weak_signal": "继续走弱并失守昨低，说明高弹性仍被压制"},
+    {"symbol": "sh603986", "name": "兆易创新", "role": "半导体弹性票", "strong_signal": "站回昨收且不回踩昨低，说明半导体跟随性不错", "weak_signal": "冲高回落量大价弱，说明弹性票承接不足"},
+    {"symbol": "sz300059", "name": "东方财富", "role": "风险偏好代理", "strong_signal": "站上昨收并持续放量，说明情绪修复成立", "weak_signal": "红不了或冲高回落，说明风险偏好没有回来"},
+    {"symbol": "sh600030", "name": "中信证券", "role": "券商确认票", "strong_signal": "与东方财富同步转强，说明修复扩散到金融", "weak_signal": "始终弱于东方财富，说明机构态度仍偏谨慎"},
+    {"symbol": "sz000002", "name": "万科A", "role": "政策链检验票", "strong_signal": "LPR偏暖后站回昨收并冲击昨高，说明政策链被认可", "weak_signal": "政策后仍弱，说明资金不信地产链修复"},
+    {"symbol": "sh600938", "name": "中国海油", "role": "避险对照票", "strong_signal": "继续领涨，说明避险仍主导", "weak_signal": "回落而科技组转强，说明风格切回成长"}
   ],
   "tech_repair": [
     {"symbol": "sz300502", "name": "新易盛", "role": "CPO"},
@@ -23,14 +23,14 @@
     {"symbol": "sz300059", "name": "东方财富", "role": "券商弹性"},
     {"symbol": "sh600030", "name": "中信证券", "role": "券商确认"},
     {"symbol": "sz000002", "name": "万科A", "role": "地产链检验"},
-    {"symbol": "sz000333", "name": "美的集团", "role": "家电"},
-    {"symbol": "sh600048", "name": "保利发展", "role": "地产蓝筹"}
+    {"symbol": "sz000333", "name": "美的集团", "role": "家电", "strong_signal": "LPR或稳增长偏暖后率先翻红，说明消费地产链被接受", "weak_signal": "政策偏暖仍起不来，说明家电链跟随不足"},
+    {"symbol": "sh600048", "name": "保利发展", "role": "地产蓝筹", "strong_signal": "政策后快速站上昨收，说明地产链修复更可信", "weak_signal": "政策后仍弱，说明地产预期没有修复"}
   ],
   "defensive_gauge": [
     {"symbol": "sh600938", "name": "中国海油", "role": "油气"},
-    {"symbol": "sh601857", "name": "中国石油", "role": "油气"},
-    {"symbol": "sh601088", "name": "中国神华", "role": "煤炭"},
-    {"symbol": "sh600941", "name": "中国移动", "role": "电信"},
-    {"symbol": "sh601398", "name": "工商银行", "role": "大行"}
+    {"symbol": "sh601857", "name": "中国石油", "role": "油气", "strong_signal": "继续领涨，说明避险和能源逻辑仍在", "weak_signal": "回落且成长转强，说明市场从防御切回进攻"},
+    {"symbol": "sh601088", "name": "中国神华", "role": "煤炭", "strong_signal": "继续走强，说明高股息防御仍占上风", "weak_signal": "走弱且科技修复，说明防御抱团松动"},
+    {"symbol": "sh600941", "name": "中国移动", "role": "电信", "strong_signal": "稳中偏强，说明低波红利仍被偏好", "weak_signal": "转弱而科技走强，说明风险偏好回升"},
+    {"symbol": "sh601398", "name": "工商银行", "role": "大行", "strong_signal": "大行继续强，说明避险和高股息主导", "weak_signal": "大行回落而券商回暖，说明风格切换"}
   ]
 }

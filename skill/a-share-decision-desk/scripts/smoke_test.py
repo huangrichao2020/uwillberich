@@ -5,6 +5,7 @@ from __future__ import annotations
 import sys
 
 from market_data import fetch_index_snapshot, fetch_sector_movers, fetch_tencent_quotes
+from opening_window_checklist import classify_state
 
 
 def assert_true(condition: bool, message: str) -> None:
@@ -25,6 +26,15 @@ def main() -> None:
     quotes = fetch_tencent_quotes(["sz300502", "sh688981", "sh600938"])
     assert_true(len(quotes) == 3, "expected 3 quotes")
     assert_true(all(quote.get("price") is not None for quote in quotes), "quote price missing")
+
+    state = classify_state(
+        [
+            {"group": "tech_repair", "above_prev_close": 3},
+            {"group": "policy_beta", "above_prev_close": 1},
+            {"group": "defensive_gauge", "above_prev_close": 1},
+        ]
+    )
+    assert_true("true repair" in state.lower(), "opening-window classifier mismatch")
 
     print("smoke test passed")
     print(f"indices: {len(indices)}")

@@ -22,6 +22,7 @@ It is designed for one job: turn today’s tape and overnight developments into 
 - `scripts/fetch_market_snapshot.py`: index and sector breadth snapshot
 - `scripts/fetch_quotes.py`: Tencent quote watchlist snapshot
 - `scripts/morning_brief.py`: one-command markdown morning brief
+- `scripts/opening_window_checklist.py`: first-30-minute decision sheet
 - `scripts/smoke_test.py`: local smoke test for the bundled scripts
 
 ## Local Smoke Test
@@ -31,6 +32,7 @@ python3 scripts/smoke_test.py
 python3 scripts/fetch_market_snapshot.py --format markdown
 python3 scripts/fetch_quotes.py sz300502 sh688981 sh600938
 python3 scripts/morning_brief.py --groups core10 tech_repair
+python3 scripts/opening_window_checklist.py --groups tech_repair defensive_gauge policy_beta
 ```
 
 ## ClawHub Publish
@@ -39,7 +41,7 @@ From this folder:
 
 ```bash
 clawhub login
-clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.1 --tags latest,finance,a-share,china,markets
+clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.2 --tags latest,finance,a-share,china,markets
 ```
 
 ## Notes
@@ -47,3 +49,4 @@ clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-
 - ClawHub publishes a skill folder with `SKILL.md` plus supporting text files.
 - This skill uses only text-based resources and Python standard library scripts.
 - If `clawhub publish .` misreads the folder, use an absolute path or pass `--workdir` explicitly.
+- The opening-window script is intended for `09:00-10:00` use, especially the first 30 minutes after the A-share cash open.

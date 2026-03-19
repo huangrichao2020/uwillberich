@@ -15,6 +15,7 @@ Best fit:
 - next-session A-share outlook
 - likely repair sectors after a selloff
 - opening checklist for `09:00`, `09:25`, and `09:30-10:00`
+- first-30-minute observation template for distinguishing true repair from defensive concentration
 - watchlist-based decision notes
 - distinguishing defensive leadership from true market repair
 
@@ -53,6 +54,8 @@ Use these scripts before writing the decision note:
   - Pulls Tencent quote snapshots for user-specified names.
 - `scripts/morning_brief.py`
   - Builds a markdown brief from the default watchlists in `assets/default_watchlists.json`.
+- `scripts/opening_window_checklist.py`
+  - Builds a first-30-minute observation sheet with time gates, group scoreboards, and watchlist signal tables.
 - `scripts/smoke_test.py`
   - Verifies that the bundled scripts and public endpoints are working.
 
@@ -68,6 +71,8 @@ Read only what you need:
   - Decision-maker persona for desk-style answers.
 - `references/trading-mode-prompt.md`
   - Time-boxed opening workflow for the next A-share session.
+- `references/opening-window-template.md`
+  - A reusable first-30-minute decision template.
 
 ## Output Standard
 
