@@ -8,7 +8,7 @@ import os
 import urllib.request
 from pathlib import Path
 
-from runtime_config import load_runtime_env
+from runtime_config import load_runtime_env, require_em_api_key
 
 
 MX_BASE_URL = "https://mkapi2.dfcfs.com/finskillshub/api/claw"
@@ -19,10 +19,7 @@ load_runtime_env()
 
 
 def get_mx_api_key() -> str:
-    key = (os.environ.get("MX_APIKEY") or os.environ.get("EM_API_KEY") or "").strip()
-    if not key:
-        raise RuntimeError("MX API key not configured. Set EM_API_KEY in ~/.a-share-decision-desk/runtime.env")
-    return key
+    return require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
 
 
 def post_json(path: str, payload: dict, timeout: int = 30) -> dict:

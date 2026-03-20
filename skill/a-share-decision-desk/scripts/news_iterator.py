@@ -18,7 +18,7 @@ from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
-from runtime_config import load_runtime_env
+from runtime_config import load_runtime_env, require_em_api_key
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -33,6 +33,7 @@ DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 
 load_runtime_env()
+require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
 
 
 @dataclass

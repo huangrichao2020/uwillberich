@@ -66,8 +66,10 @@ def main() -> None:
         env_values = read_env_file(env_path)
         assert_true(env_values.get("EM_API_KEY") == "test-key", "runtime env parsing failed")
         status = build_status(str(env_path))
+        assert_true(status["capabilities"]["em_required_mode"], "EM key should be mandatory")
         assert_true(status["capabilities"]["em_enhanced_mode"], "runtime capability detection failed")
         assert_true("EM_API_KEY" in status["configured_keys"], "runtime key status missing")
+        assert_true(status["eastmoney_apply_url"].startswith("https://ai.eastmoney.com/"), "missing Eastmoney apply url")
         output_dir = get_output_dir("smoke-test-output")
         assert_true(output_dir.exists(), "runtime output dir missing")
 

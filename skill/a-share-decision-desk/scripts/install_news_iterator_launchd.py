@@ -9,13 +9,17 @@ import subprocess
 import sys
 from pathlib import Path
 
-from runtime_config import load_runtime_env
+from runtime_config import load_runtime_env, require_em_api_key
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_STATE_DIR = Path.home() / ".a-share-decision-desk" / "news-iterator"
 DEFAULT_LABEL = "com.tingchi.a-share-news-iterator"
 DEFAULT_PLIST = Path.home() / "Library" / "LaunchAgents" / f"{DEFAULT_LABEL}.plist"
+
+
+load_runtime_env()
+require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
 
 
 def run_command(args: list[str], check: bool) -> subprocess.CompletedProcess[str]:

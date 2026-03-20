@@ -24,6 +24,7 @@ Best fit:
 ## Core Workflow
 
 1. Gather market structure first.
+   - Confirm `EM_API_KEY` is configured before running any script.
    - Run `scripts/fetch_market_snapshot.py` for indices, breadth, and sector leaders/laggards.
    - Run `scripts/fetch_quotes.py` or `scripts/morning_brief.py` for the watchlist.
 2. Confirm the overnight and policy layer.
@@ -77,7 +78,7 @@ Use these scripts before writing the decision note:
 - `scripts/news_iterator.py`
   - Continuously polls public RSS feeds, classifies high-attention events, maps them into watchlist overlays, and writes dynamic event-driven stock pools.
 - `scripts/runtime_config.py`
-  - Loads local runtime credentials and reports whether optional `EM_API_KEY`-based integrations are available.
+  - Loads local runtime credentials, enforces the required `EM_API_KEY`, and prints the Eastmoney application URL when it is missing.
 - `scripts/mx_toolkit.py`
   - Calls the live Meixiang / Eastmoney APIs for news search, stock screening, structured data queries, and preset desk workflows.
 - `scripts/benchmark_sources.py`
@@ -120,3 +121,10 @@ Default to a compact desk-style answer:
 - defensive-only sectors
 - opening checklist
 - `do / avoid`
+
+## Required Credential
+
+- `EM_API_KEY` is mandatory for this skill.
+- Apply here: `https://ai.eastmoney.com/p/signup/index.html`
+- Official site: `https://ai.eastmoney.com/nlink/`
+- Store it in `~/.a-share-decision-desk/runtime.env`

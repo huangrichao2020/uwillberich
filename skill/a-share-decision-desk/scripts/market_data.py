@@ -7,13 +7,14 @@ import urllib.parse
 import urllib.request
 from typing import Iterable
 
-from runtime_config import load_runtime_env
+from runtime_config import load_runtime_env, require_em_api_key
 
 
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 
 load_runtime_env()
+require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
 
 
 def _get_text(url: str, encoding: str = "utf-8") -> str:

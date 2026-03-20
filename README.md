@@ -66,26 +66,21 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 
 ## Runtime Keys
 
-Project-specific runtime keys required for public mode: `none`
+This repo hard-requires `EM_API_KEY`.
 
-This repo runs out of the box with:
-
-- public RSS feeds
-- public Eastmoney endpoints
-- public Tencent quote endpoints
-- Python standard library only
-
-Optional enhancement mode:
-
-- `EM_API_KEY`
-  - Enables compatibility with the `MX_FinSearch`, `MX_StockPick`, `MX_MacroData`, and `MX_FinData` ecosystem.
-  - Store it locally in `~/.a-share-decision-desk/runtime.env`, not in Git.
-  - Use the bundled helper:
+- Apply here:
+  `https://ai.eastmoney.com/p/signup/index.html`
+- Official site:
+  `https://ai.eastmoney.com/nlink/`
+- Store it locally in `~/.a-share-decision-desk/runtime.env`, not in Git.
+- Use the bundled helper:
 
 ```bash
 python3 skill/a-share-decision-desk/scripts/runtime_config.py status
 printf '%s' 'your_em_api_key' | python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin
 ```
+
+Without `EM_API_KEY`, the desk scripts will stop and print the application URL plus setup command.
 
 ## Optional Credentials
 
@@ -104,7 +99,7 @@ printf '%s' 'your_em_api_key' | python3 skill/a-share-decision-desk/scripts/runt
 All scripts live under `skill/a-share-decision-desk/scripts/` and use only the Python standard library.
 
 - `install_skill.sh`: one-command installer for Codex/OpenClaw skill directories
-- `runtime_config.py`: local runtime credential loader and EM enhancement status helper
+- `runtime_config.py`: local runtime credential loader and required `EM_API_KEY` helper
 - `mx_api.py`: Meixiang / Eastmoney API wrapper for news search, stock screen, and structured data queries
 - `mx_toolkit.py`: CLI wrapper for real MX calls, presets, and artifact outputs
 - `benchmark_sources.py`: public-source and MX-source latency / availability benchmark

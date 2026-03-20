@@ -10,7 +10,7 @@ from pathlib import Path
 from market_data import fetch_index_snapshot, fetch_sector_movers, fetch_tencent_quotes
 from mx_api import data_query, get_mx_api_key, news_search, stock_screen
 from news_iterator import DEFAULT_CONFIG, load_config, parse_feed
-from runtime_config import get_output_dir
+from runtime_config import get_output_dir, require_em_api_key
 
 
 def timed_call(label: str, category: str, func) -> dict:
@@ -76,6 +76,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
+    require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
     parser = build_parser()
     args = parser.parse_args()
 

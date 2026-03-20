@@ -48,32 +48,27 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 - poll public news continuously
 - convert high-attention news into event-driven stock pools
 - append those event pools automatically to the brief and checklist
-- call Meixiang / Eastmoney live APIs for news search, stock screening, and structured data queries when `EM_API_KEY` is configured
+- call Meixiang / Eastmoney live APIs for news search, stock screening, and structured data queries
 - run preset desk workflows that map `Step 1 / Step 2 / Step 3` into repeatable commands
 - benchmark public and MX sources before assigning a source as primary
 
 ## Required Keys
 
-Project-specific runtime keys for public mode: `none`
+`EM_API_KEY` is required.
 
-The repo uses only:
-
-- Python standard library
-- public RSS feeds
-- public Tencent quote endpoints
-- public Eastmoney endpoints
-
-Optional enhancement key:
-
-- `EM_API_KEY`
-  - Enables compatibility with the `MX_FinSearch`, `MX_StockPick`, `MX_MacroData`, and `MX_FinData` tool family.
-  - Recommended local storage path:
-    `~/.a-share-decision-desk/runtime.env`
-  - Setup command:
+- Apply here:
+  `https://ai.eastmoney.com/p/signup/index.html`
+- Official site:
+  `https://ai.eastmoney.com/nlink/`
+- Recommended local storage path:
+  `~/.a-share-decision-desk/runtime.env`
+- Setup command:
 
 ```bash
 printf '%s' 'your_em_api_key' | python3 ~/.codex/skills/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin
 ```
+
+Without `EM_API_KEY`, the skill exits with setup instructions and does not run.
 
 ## Optional Credentials
 

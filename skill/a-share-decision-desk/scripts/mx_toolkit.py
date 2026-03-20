@@ -18,7 +18,7 @@ from mx_api import (
     write_stock_screen_csv,
     write_stock_screen_description,
 )
-from runtime_config import get_output_dir
+from runtime_config import get_output_dir, require_em_api_key
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -292,6 +292,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
+    require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
     parser = build_parser()
     args = parser.parse_args()
     return args.func(args)

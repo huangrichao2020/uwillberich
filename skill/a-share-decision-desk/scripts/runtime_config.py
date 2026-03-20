@@ -17,6 +17,8 @@ DEFAULT_EXAMPLE_ENV = ROOT / "assets" / "runtime.env.example"
 DEFAULT_DATA_DIR = DEFAULT_RUNTIME_HOME / "data"
 OPTIONAL_KEYS = ("EM_API_KEY",)
 EM_INTEGRATIONS = ("MX_FinSearch", "MX_StockPick", "MX_MacroData", "MX_FinData")
+EASTMONEY_APPLY_URL = "https://ai.eastmoney.com/p/signup/index.html"
+EASTMONEY_HOME_URL = "https://ai.eastmoney.com/nlink/"
 
 
 def parse_env_text(text: str) -> dict[str, str]:
@@ -96,10 +98,31 @@ def redact_value(value: str) -> str:
 def build_capabilities() -> dict[str, object]:
     em_ready = bool(os.environ.get("EM_API_KEY") or os.environ.get("MX_APIKEY"))
     return {
-        "public_mode": True,
+        "public_mode": False,
+        "em_required_mode": True,
+        "em_key_configured": em_ready,
         "em_enhanced_mode": em_ready,
         "available_integrations": list(EM_INTEGRATIONS) if em_ready else [],
     }
+
+
+def em_key_setup_instructions(script_hint: str | None = None) -> str:
+    hint = script_hint or "python3 scripts/runtime_config.py set-em-key --stdin"
+    return (
+        "EM_API_KEY is required for A-Share Decision Desk.\n"
+        f"Apply here: {EASTMONEY_APPLY_URL}\n"
+        f"Official site: {EASTMONEY_HOME_URL}\n"
+        "Store the key in ~/.a-share-decision-desk/runtime.env, or run:\n"
+        f"printf '%s' 'your_em_api_key' | {hint}"
+    )
+
+
+def require_em_api_key(env_path: str | None = None, script_hint: str | None = None) -> str:
+    load_runtime_env(env_path)
+    key = (os.environ.get("EM_API_KEY") or os.environ.get("MX_APIKEY") or "").strip()
+    if key:
+        return key
+    raise RuntimeError(em_key_setup_instructions(script_hint))
 
 
 def get_output_root() -> Path:
@@ -135,6 +158,7 @@ def build_status(env_path: str | None = None) -> dict[str, object]:
         "capabilities": build_capabilities(),
         "example_env_path": str(DEFAULT_EXAMPLE_ENV),
         "output_root": str(get_output_root()),
+        "eastmoney_apply_url": EASTMONEY_APPLY_URL,
     }
 
 
@@ -170,9 +194,11 @@ def print_status(env_path: str | None, as_json: bool) -> int:
     print(f"runtime_env_path: {status['runtime_env_path']}")
     print(f"env_file_exists: {status['env_file_exists']}")
     print(f"configured_keys: {', '.join(status['configured_keys']) or 'none'}")
-    print(f"em_enhanced_mode: {status['capabilities']['em_enhanced_mode']}")
+    print(f"em_required_mode: {status['capabilities']['em_required_mode']}")
+    print(f"em_key_configured: {status['capabilities']['em_key_configured']}")
     integrations = status["capabilities"]["available_integrations"]
-    print(f"available_integrations: {', '.join(integrations) or 'public mode only'}")
+    print(f"available_integrations: {', '.join(integrations) or 'none until EM_API_KEY is configured'}")
+    print(f"eastmoney_apply_url: {status['eastmoney_apply_url']}")
     print(f"output_root: {status['output_root']}")
     return 0
 
