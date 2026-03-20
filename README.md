@@ -10,6 +10,24 @@ Contact: `grdomai43881@gmail.com`
 - `skill/uwillberich/`: installable Codex skill
 - `AGENT_QUICKSTART.md`: zero-to-run instructions for other agents
 
+## Repo Boundary
+
+Use these boundaries to avoid mixing responsibilities:
+
+- `uwillberich` GitHub repo
+  - owns the full pipeline: daily report generation, HTML generation, and deployment handoff
+  - source areas are `skill/uwillberich/` for report logic and `docs/` for static HTML artifacts
+- `skill/uwillberich`
+  - owns daily report generation only
+  - outputs markdown briefs, opening checklists, event overlays, and supporting artifacts
+  - does not own HTML page rendering or GitHub Pages deployment
+- `uwillberich-reports` GitHub repo
+  - owns deployed static pages only
+  - receives rendered HTML assets and serves them via GitHub Pages
+
+If another agent only needs the A-share report engine, install `skill/uwillberich` and stop there.
+If another agent needs HTML pages or Pages publishing, work at the repo level and include `docs/` plus `uwillberich-reports`.
+
 ## Workflow Map
 
 The repo is organized around a direct desk workflow instead of disconnected tools:
@@ -39,6 +57,10 @@ The repo is organized around a direct desk workflow instead of disconnected tool
    - `install_memory_handoff_launchd.py`
 6. `Source health check`
    - `benchmark_sources.py`
+7. `HTML and deployment`
+   - `docs/`
+   - GitHub Pages publish flow
+   - `uwillberich-reports`
 
 ## GitHub Source Of Truth
 
@@ -52,6 +74,13 @@ Agents only need the skill folder:
 
 ```bash
 skill/uwillberich
+```
+
+Agents that need HTML rendering or deployment should also use:
+
+```bash
+docs/
+https://github.com/huangrichao2020/uwillberich-reports
 ```
 
 ## Quick Install For Agents
@@ -128,6 +157,7 @@ All scripts live under `skill/uwillberich/scripts/` and use only the Python stan
 - `install_news_iterator_launchd.py`: install the message iterator as a local macOS job
 - `memory_layer.py`: persistent SQLite memory plus handoff document builder
 - `install_memory_handoff_launchd.py`: install the hourly handoff updater on macOS
+- `docs/`: rendered HTML reports and static-page source artifacts for publishing
 
 ## Example Usage
 
@@ -160,5 +190,6 @@ python3 skill/uwillberich/scripts/install_memory_handoff_launchd.py install
 - Generated benchmark and preset artifacts default to `~/.uwillberich/data/`.
 - Persistent memory lives under `~/.uwillberich/memory/`.
 - The handoff updater refreshes `~/.uwillberich/memory/handoff/latest.md` once per hour, but only when dialogue activity exists within the last 60 minutes.
+- `skill/uwillberich` is the report-generation engine only; HTML rendering and GitHub Pages deployment belong to the repo-level `docs/` layer and the `uwillberich-reports` repo.
 - On monthly `LPR` days, the workflow assumes the `9:00` release window.
 - On macOS, use `install_news_iterator_launchd.py` and `install_memory_handoff_launchd.py`; on Linux or other environments, use `nohup` or the local scheduler of your choice.

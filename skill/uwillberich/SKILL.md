@@ -13,6 +13,13 @@ Contact: `grdomai43881@gmail.com`
 
 Use this skill for decision-oriented A-share analysis. The goal is not to explain the market mechanically, but to convert today’s tape and overnight developments into a concrete next-session plan.
 
+Boundary:
+
+- this skill owns daily report generation
+- this skill outputs report content, watchlists, checklists, event overlays, and supporting state
+- this skill does not own HTML rendering
+- this skill does not own GitHub Pages deployment
+
 Best fit:
 
 - next-session A-share outlook
@@ -155,6 +162,8 @@ Default to a compact desk-style answer:
 - defensive-only sectors
 - opening checklist
 - `do / avoid`
+
+The expected output is report content. If a workflow needs HTML pages or static deployment, hand that off to the repo-level `docs/` layer or the `uwillberich-reports` repo rather than extending this skill's responsibility.
 
 ## Required Credential
 

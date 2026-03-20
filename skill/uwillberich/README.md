@@ -4,6 +4,13 @@ A ClawHub/OpenClaw-ready skill for next-session A-share discretionary planning.
 
 It is designed for one job: turn today’s tape and overnight developments into a concrete game plan for tomorrow’s open.
 
+Boundary:
+
+- this skill owns daily report generation
+- this skill does not own HTML page generation
+- this skill does not own GitHub Pages deployment
+- HTML rendering and publishing belong to the repo-level `docs/` layer and the `uwillberich-reports` repo
+
 Author: 超超
 Contact: `grdomai43881@gmail.com`
 
@@ -26,6 +33,7 @@ https://github.com/huangrichao2020/uwillberich
 - "Persist session memory locally and generate a rolling handoff note for the next agent session."
 - "Run a preset `Step 1 / Step 2 / Step 3` desk workflow and save all artifacts."
 - "Benchmark which public and MX data sources are healthy before the open."
+- "Generate the markdown daily report that another layer will later render into HTML."
 
 ## Workflow Map
 
@@ -180,6 +188,7 @@ clawhub publish /absolute/path/to/uwillberich --slug uwillberich --name "uwillbe
 
 - ClawHub publishes a skill folder with `SKILL.md` plus supporting text files.
 - This skill uses only text-based resources and Python standard library scripts.
+- This skill is the report engine only. Static HTML generation and deployment are intentionally outside the skill boundary.
 - `EM_API_KEY` is mandatory for this skill.
 - The runtime helper automatically maps `EM_API_KEY` to the `MX_APIKEY` convention used by the public MX skills.
 - Preset and benchmark outputs default to `~/.uwillberich/data/`.

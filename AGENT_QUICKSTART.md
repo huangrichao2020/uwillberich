@@ -10,6 +10,18 @@ https://github.com/huangrichao2020/uwillberich
 
 ## What To Install
 
+Boundary first:
+
+- `skill/uwillberich`
+  - daily report generation only
+  - use this if you only need markdown reports, opening checklists, watchlists, and event overlays
+- `uwillberich` repo root
+  - full workflow
+  - use this if you need report generation plus HTML rendering inputs under `docs/`
+- `uwillberich-reports`
+  - deployment target only
+  - use this if you need to publish or host generated HTML on GitHub Pages
+
 The only folder an agent needs is:
 
 ```text
@@ -56,6 +68,17 @@ git clone https://github.com/huangrichao2020/uwillberich.git && cd uwillberich &
 - call Meixiang / Eastmoney live APIs for news search, stock screening, and structured data queries
 - run preset desk workflows that map `Step 1 / Step 2 / Step 3` into repeatable commands
 - benchmark public and MX sources before assigning a source as primary
+
+## What The Skill Does Not Do
+
+- it does not own HTML page rendering
+- it does not own GitHub Pages deployment
+- it does not own the static hosting repo
+
+Those responsibilities belong to:
+
+- `uwillberich/docs/`
+- `https://github.com/huangrichao2020/uwillberich-reports`
 
 ## Required Keys
 
