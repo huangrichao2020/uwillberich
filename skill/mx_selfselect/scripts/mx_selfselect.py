@@ -135,9 +135,14 @@ def load_json_file(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def get_payload_data(payload: dict) -> dict:
+    data = payload.get("data")
+    return data if isinstance(data, dict) else {}
+
+
 def extract_list_rows(payload: dict) -> tuple[list[str], list[dict]]:
     result = (
-        payload.get("data", {})
+        get_payload_data(payload)
         .get("allResults", {})
         .get("result", {})
     )
@@ -323,7 +328,7 @@ def to_markdown_table(rows: list[dict], keys: list[str], max_rows: int = 20) -> 
 def render_list_markdown(payload: dict) -> str:
     status = payload.get("status")
     message = payload.get("message")
-    title = payload.get("data", {}).get("title") or "我的自选"
+    title = get_payload_data(payload).get("title") or "我的自选"
     keys, rows = extract_list_rows(payload)
     lines = [
         f"# {title}",
@@ -336,6 +341,8 @@ def render_list_markdown(payload: dict) -> str:
     ]
     if not rows:
         lines.extend(["", "- 当前接口返回空列表，请到东方财富 App 查询。"])
+    if str(status) == "112":
+        lines.extend(["", "- 接口当前提示请求频率过高，请稍后再试。"])
     return "\n".join(lines).rstrip() + "\n"
 
 
