@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2026-03-20 A股盘后与 2026-03-23 盘前关注报告</title>
+    <meta
+      name="description"
+      content="2026-03-20 A股盘后总结与 2026-03-23 盘前关注报告。重点看弱势抱团是否延续，以及光模块强度能否扩散到更广的算力链。"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="2026-03-20 A股盘后与 2026-03-23 盘前关注报告" />
+    <meta
+      property="og:description"
+      content="弱势抱团行情延续。周一先看电池链与光模块抱团能否扩散，再看算力平台和券商能否止跌。"
+    />
+    <meta
+      property="og:url"
+      content="https://huangrichao2020.github.io/a-share-decision-reports/reports/2026-03-20-postclose-2026-03-23-preopen.html"
+    />
+    <meta
+      property="og:image"
+      content="https://huangrichao2020.github.io/a-share-decision-reports/assets/report-cover-2026-03-20-close.svg"
+    />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="2026-03-20 A股盘后与 2026-03-23 盘前关注报告" />
+    <meta
+      name="twitter:description"
+      content="弱势抱团行情延续。周一重点看新易盛、中际旭创能否把强度扩散到更广的算力链。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://huangrichao2020.github.io/a-share-decision-reports/assets/report-cover-2026-03-20-close.svg"
+    />
+    <style>
+      :root {
+        --bg: #f6f2e8;
+        --paper: #fffdf8;
+        --panel: rgba(255, 255, 255, 0.88);
+        --text: #1f2937;
+        --muted: #5b6472;
+        --line: rgba(31, 41, 55, 0.11);
+        --accent: #b45309;
+        --accent-2: #0f766e;
+        --danger: #b42318;
+        --good: #0a7c52;
+        --shadow: 0 24px 60px rgba(23, 28, 33, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--text);
+        font-family: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB",
+          "Noto Sans SC", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(180, 83, 9, 0.16), transparent 24%),
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.14), transparent 28%),
+          linear-gradient(180deg, #fbf8f1 0%, var(--bg) 100%);
+      }
+
+      .page {
+        width: min(1180px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 32px 0 72px;
+      }
+
+      .hero,
+      .toc,
+      .section {
+        background: var(--panel);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 34px 36px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(180, 83, 9, 0.1);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(34px, 6vw, 64px);
+        line-height: 0.94;
+        letter-spacing: -0.05em;
+      }
+
+      .subtitle {
+        max-width: 860px;
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .meta-grid,
+      .summary,
+      .path-grid,
+      .focus-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .meta-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        margin-top: 24px;
+      }
+
+      .summary,
+      .focus-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+
+      .path-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .metric,
+      .summary-card,
+      .path-card,
+      .focus-card {
+        padding: 18px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .label {
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .value {
+        margin-top: 8px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .cover-strip {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .cover-card {
+        padding: 20px;
+        border-radius: 22px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .cover-card.dark {
+        color: white;
+        background:
+          radial-gradient(circle at top right, rgba(255, 214, 170, 0.18), transparent 28%),
+          linear-gradient(145deg, #1f2937 0%, #263342 54%, #164e49 100%);
+      }
+
+      .cover-card h3,
+      .summary-card strong,
+      .path-card strong,
+      .focus-card strong {
+        margin: 0 0 8px;
+        display: block;
+        font-size: 16px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 22px;
+        margin-top: 22px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 18px;
+        align-self: start;
+        padding: 24px;
+      }
+
+      .toc h2 {
+        margin: 0 0 14px;
+        font-size: 18px;
+      }
+
+      .toc a {
+        display: block;
+        padding: 8px 0;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .toc a:hover {
+        color: var(--accent);
+      }
+
+      .content {
+        display: grid;
+        gap: 22px;
+      }
+
+      .section {
+        padding: 28px 30px;
+      }
+
+      .section h2 {
+        margin: 0 0 14px;
+        font-size: 28px;
+        letter-spacing: -0.03em;
+      }
+
+      .section h3 {
+        margin: 24px 0 12px;
+        font-size: 18px;
+      }
+
+      p,
+      li {
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      p {
+        margin: 0 0 14px;
+      }
+
+      ul {
+        margin: 0 0 14px;
+        padding-left: 18px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      th,
+      td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+        font-size: 14px;
+      }
+
+      th {
+        background: rgba(180, 83, 9, 0.08);
+        font-weight: 700;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .tag {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .tag-accent {
+        color: var(--accent);
+        background: rgba(180, 83, 9, 0.1);
+      }
+
+      .tag-green {
+        color: var(--good);
+        background: rgba(10, 124, 82, 0.12);
+      }
+
+      .tag-red {
+        color: var(--danger);
+        background: rgba(180, 35, 24, 0.12);
+      }
+
+      .footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      @media (max-width: 980px) {
+        .layout,
+        .cover-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .toc {
+          position: static;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          width: min(100vw - 20px, 1180px);
+          padding: 16px 0 40px;
+        }
+
+        .hero,
+        .section,
+        .toc {
+          border-radius: 22px;
+        }
+
+        .hero,
+        .section,
+        .toc {
+          padding: 22px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <span class="eyebrow">超超盘前盘后笔记</span>
+        <h1>3月20日盘后<br />3月23日盘前</h1>
+        <p class="subtitle">
+          周五收盘后的盘面本质不是全面修复，而是弱市里少数方向继续抱团。下个交易日先看电池链与光模块能否延续，再看这种强度能不能扩散到更广的算力链和风险偏好资产。
+        </p>
+
+        <div class="meta-grid">
+          <div class="metric">
+            <div class="label">市场状态</div>
+            <div class="value">弱势抱团行情</div>
+          </div>
+          <div class="metric">
+            <div class="label">主力净流入</div>
+            <div class="value">-742.7 亿</div>
+          </div>
+          <div class="metric">
+            <div class="label">市场广度</div>
+            <div class="value">上涨 631 / 下跌 4590</div>
+          </div>
+          <div class="metric">
+            <div class="label">下个交易日</div>
+            <div class="value">2026-03-23 周一</div>
+          </div>
+        </div>
+
+        <div class="cover-strip">
+          <div class="cover-card dark">
+            <h3>一句话结论</h3>
+            <p>
+              今天市场真正抱团的是 <strong>电池链 + 光通信模块</strong>，而不是传统油煤红利。周一的关键不是指数红不红，而是
+              <strong>新易盛 / 中际旭创</strong> 能不能把强度传导到更广的算力链。
+            </p>
+          </div>
+          <div class="cover-card">
+            <h3>开盘先看</h3>
+            <ul>
+              <li>光模块是否继续站在市场前排</li>
+              <li>浪潮信息、海光信息、中科曙光是否跟强</li>
+              <li>东方财富能否止跌，风险偏好是否修复</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout">
+        <aside class="toc">
+          <h2>目录</h2>
+          <a href="#summary">结论先看</a>
+          <a href="#close">3月20日盘后总结</a>
+          <a href="#event">事件驱动层</a>
+          <a href="#preopen">3月23日盘前关注</a>
+          <a href="#checklist">开盘观察清单</a>
+          <a href="#focus">重点股票</a>
+          <a href="#notes">数据备注</a>
+        </aside>
+
+        <div class="content">
+          <section class="section" id="summary">
+            <h2>结论先看</h2>
+            <div class="summary">
+              <div class="summary-card">
+                <strong>今天不是全面修复</strong>
+                指数看起来不算最差，但个股层面很弱，市场广度和主力资金都不支持“普遍回暖”这个判断。
+              </div>
+              <div class="summary-card">
+                <strong>真正抱团的方向</strong>
+                `BC电池`、`HJT电池`、`TOPCon`、`麒麟电池` 以及少数 `光通信模块` 核心股，是今天最能打的结构。
+              </div>
+              <div class="summary-card">
+                <strong>弱势最集中的地方</strong>
+                `东数西算`、`华为昇腾`、`国资云`、`数据安全`、`MLOps`、`互联网服务` 承压明显。
+              </div>
+              <div class="summary-card">
+                <strong>周一最重要的问题</strong>
+                不是猜指数，而是判断 `新易盛 / 中际旭创` 的强度，能不能扩散到 `浪潮信息 / 海光信息 / 中科曙光`。
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="close">
+            <h2>2026-03-20 盘后总结</h2>
+            <h3>指数与市场情绪</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>指数</th>
+                  <th>点位</th>
+                  <th>涨跌幅</th>
+                  <th>上涨家数</th>
+                  <th>下跌家数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>上证指数</td><td>3957.05</td><td>-1.24%</td><td>313</td><td>2011</td></tr>
+                <tr><td>深证成指</td><td>13866.20</td><td>-0.25%</td><td>318</td><td>2579</td></tr>
+                <tr><td>创业板指</td><td>3352.10</td><td>+1.30%</td><td>135</td><td>1251</td></tr>
+                <tr><td>沪深300</td><td>4567.02</td><td>-0.35%</td><td>67</td><td>231</td></tr>
+                <tr><td>科创50</td><td>1318.31</td><td>-1.55%</td><td>11</td><td>39</td></tr>
+                <tr><td>北证50</td><td>1316.14</td><td>-1.01%</td><td>42</td><td>255</td></tr>
+              </tbody>
+            </table>
+            <p>
+              这组数据已经足够说明问题：虽然创业板收红，但全市场还是显著偏弱。当前市场标签是
+              <span class="tag tag-red">分化偏弱</span>，核心原因是
+              <span class="tag tag-red">广度弱</span> +
+              <span class="tag tag-red">主力强流出</span>。
+            </p>
+
+            <h3>最强与最弱板块</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>最强方向</th>
+                  <th>涨跌幅</th>
+                  <th>最弱方向</th>
+                  <th>涨跌幅</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>昨日打二板以上表现</td><td>+4.87%</td><td>MLOps概念</td><td>-5.00%</td></tr>
+                <tr><td>昨日连板_含一字</td><td>+4.15%</td><td>华为欧拉</td><td>-4.94%</td></tr>
+                <tr><td>BC电池</td><td>+1.15%</td><td>昨日高换手</td><td>-4.93%</td></tr>
+                <tr><td>麒麟电池</td><td>+0.86%</td><td>东数西算</td><td>-4.80%</td></tr>
+                <tr><td>HJT电池</td><td>+0.67%</td><td>华为昇腾</td><td>-4.71%</td></tr>
+                <tr><td>TOPCon电池</td><td>+0.59%</td><td>国资云概念</td><td>-4.65%</td></tr>
+                <tr><td>光通信模块</td><td>+0.54%</td><td>数据安全</td><td>-4.58%</td></tr>
+              </tbody>
+            </table>
+            <p>
+              今天不是传统防御红利领涨，而是高景气制造和少数科技核心在抱团。这种结构意味着市场内部还在找进攻性，但资金只愿意认最硬的细分龙头。
+            </p>
+
+            <h3>重点观察股</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>分组</th>
+                  <th>股票</th>
+                  <th>收盘涨跌</th>
+                  <th>盘面含义</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>科技抱团</td><td>新易盛</td><td>+8.32%</td><td>光模块总龙头，强度最明确</td></tr>
+                <tr><td>科技抱团</td><td>中际旭创</td><td>+6.40%</td><td>中军确认，说明光模块不是单票行情</td></tr>
+                <tr><td>算力平台</td><td>浪潮信息</td><td>-3.09%</td><td>没有跟上，说明修复还没扩散</td></tr>
+                <tr><td>高弹性AI</td><td>海光信息</td><td>-2.79%</td><td>高弹性仍被压缩</td></tr>
+                <tr><td>防御对照</td><td>中国神华</td><td>+0.16%</td><td>只有局部稳，不是整条防御线抱团</td></tr>
+                <tr><td>风险偏好</td><td>东方财富</td><td>-5.25%</td><td>情绪资产继续弱，说明市场还没普遍回暖</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="section" id="event">
+            <h2>事件驱动层总结</h2>
+            <p>
+              过去 24 小时里，外部消息仍然以中东冲突为主导。消息层最强的不是科技发布会，而是战争、原油和能源设施相关冲击。
+            </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>消息类别</th>
+                  <th>条数</th>
+                  <th>总分</th>
+                  <th>高频关键词</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>巨大冲突</td><td>216</td><td>2016</td><td>战争、原油、能源</td></tr>
+                <tr><td>巨大前景</td><td>70</td><td>320</td><td>芯片、算力、机器人</td></tr>
+                <tr><td>巨头/名人发布</td><td>39</td><td>213</td><td>发布、亮相、推出</td></tr>
+              </tbody>
+            </table>
+            <p>
+              但今天 A 股把这层外部冲击翻译成盘面的方式，不是继续单押油煤，而是先走内部结构再平衡：战争背景还在，但资金实际选择的是
+              <strong>电池链和光模块</strong> 这两个更有弹性的抱团方向。
+            </p>
+          </section>
+
+          <section class="section" id="preopen">
+            <h2>2026-03-23 盘前关注</h2>
+            <div class="path-grid">
+              <div class="path-card">
+                <strong>Base 50%</strong>
+                继续按弱势抱团看待。电池链和光模块里还有强者，但大多数股票依旧难做，券商和算力平台难有系统性修复。
+              </div>
+              <div class="path-card">
+                <strong>Bull 30%</strong>
+                新易盛、中际旭创继续强，同时浪潮信息、海光信息、中科曙光至少有两只明显转强，市场才算从“单点抱团”升级为“科技修复”。
+              </div>
+              <div class="path-card">
+                <strong>Bear 20%</strong>
+                周末外部消息再升级，且电池链、光模块高位抱团松动，周一就会重新回到普跌结构，低波对照略强但没有像样进攻线。
+              </div>
+            </div>
+
+            <h3>周一先盯什么</h3>
+            <ul>
+              <li>电池链是否继续站在板块前排，而不是高开低走</li>
+              <li>新易盛、中际旭创能否继续走强并带动算力平台修复</li>
+              <li>东方财富能否止跌，风险偏好是否从局部抱团转向扩散</li>
+              <li>中国神华、中国海油是否重新回到防御主导位置</li>
+            </ul>
+          </section>
+
+          <section class="section" id="checklist">
+            <h2>开盘观察清单</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>时间</th>
+                  <th>看什么</th>
+                  <th>偏强解读</th>
+                  <th>偏弱解读</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>09:20-09:25</td>
+                  <td>集合竞价谁最强</td>
+                  <td>光模块和电池链继续领涨</td>
+                  <td>强者直接熄火，说明抱团松动</td>
+                </tr>
+                <tr>
+                  <td>09:30-10:00</td>
+                  <td>算力平台能不能跟强</td>
+                  <td>浪潮信息、海光信息、中科曙光至少两只翻强</td>
+                  <td>只有新易盛、中际旭创强，还是单点抱团</td>
+                </tr>
+                <tr>
+                  <td>09:30-10:00</td>
+                  <td>东方财富是否止跌</td>
+                  <td>券商止跌说明风险偏好修复</td>
+                  <td>券商继续弱，说明市场只认抱团不认扩散</td>
+                </tr>
+                <tr>
+                  <td>10:00-10:30</td>
+                  <td>板块扩散还是收缩</td>
+                  <td>强度从龙头扩到中军与补涨股</td>
+                  <td>只剩 1-2 只龙头独强，说明接近脉冲尾段</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h3>执行建议</h3>
+            <ul>
+              <li><span class="tag tag-green">do</span> 先做强者，先看扩散，不抄跌深票</li>
+              <li><span class="tag tag-green">do</span> 把东方财富当风险偏好温度计</li>
+              <li><span class="tag tag-red">avoid</span> 不把创业板收红误判成全面转强</li>
+              <li><span class="tag tag-red">avoid</span> 不因为两只光模块强，就默认整个科技已经修复</li>
+            </ul>
+          </section>
+
+          <section class="section" id="focus">
+            <h2>重点股票</h2>
+            <div class="focus-grid">
+              <div class="focus-card">
+                <strong>新易盛</strong>
+                现在是最硬的科技方向标。周一继续强，说明市场仍愿意为高景气光模块定价。
+              </div>
+              <div class="focus-card">
+                <strong>中际旭创</strong>
+                龙头之外的中军确认票。它强，说明不是单票脉冲。
+              </div>
+              <div class="focus-card">
+                <strong>浪潮信息</strong>
+                算力平台是否补涨，最适合看它。
+              </div>
+              <div class="focus-card">
+                <strong>海光信息</strong>
+                高弹性 AI 风险偏好温度计。它起不来，高弹性修复就不成立。
+              </div>
+              <div class="focus-card">
+                <strong>东方财富</strong>
+                只要它继续弱，市场就更接近“抱团市”而不是“修复市”。
+              </div>
+              <div class="focus-card">
+                <strong>中国神华</strong>
+                防御对照组代表。如果它重新带头走强，说明风格又回到避险一边。
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="notes">
+            <h2>数据备注</h2>
+            <p>
+              这份页面基于本地项目实际重跑结果整理，主链包括：
+              `runtime_config.py`、`smoke_test.py`、`fetch_market_snapshot.py`、`news_iterator.py report --hours 24`、`morning_brief.py`、`opening_window_checklist.py`、`market_sentiment.py`。
+            </p>
+            <p>
+              本轮 `MX` 个股主力前 20 榜单返回空表，因此页面里的资金判断以
+              <strong>全市场主力净流入、市场广度、板块强弱和观察池相对强弱</strong>
+              为主。
+            </p>
+          </section>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>最后更新：2026-03-20 北京时间</div>
+        <div>© 2026 超超盘前盘后笔记. 保留所有权利. 本网站仅供学习交流使用.</div>
+      </footer>
+    </main>
+  </body>
+</html>

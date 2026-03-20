@@ -1,0 +1,41 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="180" y1="90" x2="1410" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F2937"/>
+      <stop offset="0.58" stop-color="#253547"/>
+      <stop offset="1" stop-color="#134E4A"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1260 150) rotate(130) scale(560 480)">
+      <stop stop-color="#FBBF24" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#FBBF24" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(260 80) rotate(50) scale(520 420)">
+      <stop stop-color="#F59E0B" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" rx="48" fill="url(#bg)"/>
+  <rect width="1600" height="900" rx="48" fill="url(#glowA)"/>
+  <rect width="1600" height="900" rx="48" fill="url(#glowB)"/>
+  <rect x="84" y="72" width="270" height="46" rx="23" fill="#FFFFFF" fill-opacity="0.12"/>
+  <text x="114" y="102" fill="#FDE68A" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="22" font-weight="700">超超盘前盘后笔记</text>
+  <text x="86" y="236" fill="white" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="92" font-weight="800">3月20日盘后</text>
+  <text x="86" y="344" fill="white" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="92" font-weight="800">3月23日盘前</text>
+  <text x="90" y="428" fill="#C9D4E2" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="34" font-weight="500">弱势抱团行情延续</text>
+  <text x="90" y="478" fill="#C9D4E2" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="34" font-weight="500">重点看光模块强度能否扩散到更广算力链</text>
+  <rect x="86" y="564" width="440" height="140" rx="28" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <text x="120" y="620" fill="#F8FAFC" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="28" font-weight="700">主力净流入</text>
+  <text x="120" y="680" fill="#FBBF24" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="56" font-weight="800">-742.7 亿</text>
+  <rect x="560" y="564" width="440" height="140" rx="28" fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <text x="594" y="620" fill="#F8FAFC" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="28" font-weight="700">市场广度</text>
+  <text x="594" y="680" fill="#34D399" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="48" font-weight="800">上涨 631 / 下跌 4590</text>
+  <rect x="1042" y="144" width="454" height="506" rx="34" fill="#FFFFFF" fill-opacity="0.09" stroke="#FFFFFF" stroke-opacity="0.12"/>
+  <text x="1084" y="212" fill="#F8FAFC" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="30" font-weight="700">周一先看</text>
+  <text x="1084" y="284" fill="#E5E7EB" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="500">1. 新易盛 / 中际旭创是否继续领涨</text>
+  <text x="1084" y="350" fill="#E5E7EB" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="500">2. 浪潮信息 / 海光信息 / 中科曙光</text>
+  <text x="1120" y="386" fill="#E5E7EB" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="500">是否至少两只跟强</text>
+  <text x="1084" y="452" fill="#E5E7EB" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="500">3. 东方财富能否止跌</text>
+  <text x="1084" y="518" fill="#E5E7EB" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="500">4. 抱团是扩散还是只剩龙头独强</text>
+  <text x="1084" y="608" fill="#FDE68A" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="24" font-weight="700">关键判断：</text>
+  <text x="1084" y="652" fill="#FFFFFF" font-family="PingFang SC, Noto Sans SC, sans-serif" font-size="28" font-weight="700">先看扩散，不猜指数</text>
+</svg>
