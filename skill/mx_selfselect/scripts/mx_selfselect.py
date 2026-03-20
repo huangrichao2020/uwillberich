@@ -16,7 +16,6 @@ REPO_ROOT = ROOT.parents[1]
 DEFAULT_HEADERS = {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}
 LIST_URL = "https://mkapi2.dfcfs.com/finskillshub/api/claw/self-select/get"
 MANAGE_URL = "https://mkapi2.dfcfs.com/finskillshub/api/claw/self-select/manage"
-DEFAULT_UWILLBERICH_WATCHLIST = REPO_ROOT / "skill" / "uwillberich" / "assets" / "default_watchlists.json"
 DEFAULT_EVENT_WATCHLIST = Path.home() / ".uwillberich" / "news-iterator" / "event_watchlists.json"
 RUNTIME_ENV_CANDIDATES = (
     Path.home() / ".uwillberich" / "runtime.env",
@@ -24,6 +23,32 @@ RUNTIME_ENV_CANDIDATES = (
     ROOT / ".env.local",
     ROOT / ".env",
 )
+
+
+def candidate_watchlist_paths() -> list[Path]:
+    candidates = [
+        REPO_ROOT / "skill" / "uwillberich" / "assets" / "default_watchlists.json",
+        ROOT.parent / "uwillberich" / "assets" / "default_watchlists.json",
+    ]
+    deduped: list[Path] = []
+    seen: set[str] = set()
+    for path in candidates:
+        resolved = str(path.expanduser())
+        if resolved in seen:
+            continue
+        seen.add(resolved)
+        deduped.append(Path(resolved))
+    return deduped
+
+
+def resolve_default_watchlist_path() -> Path:
+    for path in candidate_watchlist_paths():
+        if path.exists():
+            return path
+    return candidate_watchlist_paths()[0]
+
+
+DEFAULT_UWILLBERICH_WATCHLIST = resolve_default_watchlist_path()
 
 
 def parse_env_text(text: str) -> dict[str, str]:
