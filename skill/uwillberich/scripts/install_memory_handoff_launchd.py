@@ -15,10 +15,36 @@ from memory_layer import DEFAULT_ACTIVE_WINDOW_MINUTES, resolve_memory_home
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_LABEL = "com.tingchi.uwillberich-handoff-updater"
 DEFAULT_PLIST = Path.home() / "Library" / "LaunchAgents" / f"{DEFAULT_LABEL}.plist"
+SENSITIVE_ENV_MARKERS = ("KEY", "TOKEN", "SECRET", "PASSWORD")
 
 
 def run_command(args: list[str], check: bool) -> subprocess.CompletedProcess[str]:
     return subprocess.run(args, text=True, capture_output=True, check=check)
+
+
+def sanitize_launchctl_output(raw: str) -> str:
+    lines: list[str] = []
+    inside_inherited_environment = False
+    for line in raw.splitlines():
+        stripped = line.strip()
+        if stripped == "inherited environment = {":
+            inside_inherited_environment = True
+            lines.append("\tinherited environment = {")
+            lines.append("\t\t<redacted>")
+            continue
+        if inside_inherited_environment:
+            if stripped == "}":
+                inside_inherited_environment = False
+                lines.append("\t}")
+            continue
+        if " => " in line:
+            env_name = line.split("=>", 1)[0].strip().strip("{").strip()
+            if any(marker in env_name.upper() for marker in SENSITIVE_ENV_MARKERS):
+                prefix = line.split("=>", 1)[0]
+                lines.append(f"{prefix}=> <redacted>")
+                continue
+        lines.append(line)
+    return "\n".join(lines)
 
 
 def build_plist(
@@ -101,9 +127,9 @@ def status(args: argparse.Namespace) -> int:
         return 0
     result = run_command(["launchctl", "print", f"gui/{os.getuid()}/{DEFAULT_LABEL}"], check=False)
     if result.returncode == 0:
-        print(result.stdout.strip())
+        print(sanitize_launchctl_output(result.stdout.strip()))
     else:
-        print(result.stderr.strip() or result.stdout.strip())
+        print(sanitize_launchctl_output(result.stderr.strip() or result.stdout.strip()))
     return 0
 
 
