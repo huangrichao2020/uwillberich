@@ -12,9 +12,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = ROOT.parents[1]
 DEFAULT_HEADERS = {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0"}
 LIST_URL = "https://mkapi2.dfcfs.com/finskillshub/api/claw/self-select/get"
 MANAGE_URL = "https://mkapi2.dfcfs.com/finskillshub/api/claw/self-select/manage"
+DEFAULT_UWILLBERICH_WATCHLIST = REPO_ROOT / "skill" / "uwillberich" / "assets" / "default_watchlists.json"
+DEFAULT_EVENT_WATCHLIST = Path.home() / ".uwillberich" / "news-iterator" / "event_watchlists.json"
 RUNTIME_ENV_CANDIDATES = (
     Path.home() / ".uwillberich" / "runtime.env",
     Path.home() / ".a-share-decision-desk" / "runtime.env",
@@ -101,6 +104,12 @@ def manage_watchlist(query: str) -> dict:
     return post_json(MANAGE_URL, payload={"query": query})
 
 
+def load_json_file(path: Path) -> dict:
+    if not path.exists():
+        return {}
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def extract_list_rows(payload: dict) -> tuple[list[str], list[dict]]:
     result = (
         payload.get("data", {})
@@ -127,6 +136,140 @@ def extract_list_rows(payload: dict) -> tuple[list[str], list[dict]]:
         if key and key not in keys:
             keys.append(key)
     return keys, rows
+
+
+def build_current_lookup(rows: list[dict]) -> tuple[set[str], set[str]]:
+    current_names = {str(row.get("SECURITY_SHORT_NAME") or "").strip() for row in rows if row.get("SECURITY_SHORT_NAME")}
+    current_codes = {str(row.get("SECURITY_CODE") or "").strip() for row in rows if row.get("SECURITY_CODE")}
+    return current_names, current_codes
+
+
+def collect_group_items(
+    groups: list[str],
+    watchlist_path: Path,
+    event_watchlist_path: Path,
+) -> tuple[list[dict], list[str]]:
+    watchlists = load_json_file(watchlist_path)
+    event_payload = load_json_file(event_watchlist_path)
+    event_groups = event_payload.get("groups", {}) if isinstance(event_payload, dict) else {}
+    selected: list[dict] = []
+    missing: list[str] = []
+
+    for group in groups:
+        if group in watchlists:
+            selected.extend(watchlists[group])
+            continue
+        if group in event_groups:
+            selected.extend(event_groups[group])
+            continue
+        missing.append(group)
+
+    deduped: list[dict] = []
+    seen_codes: set[str] = set()
+    seen_names: set[str] = set()
+    for item in selected:
+        code = str(item.get("symbol", ""))[2:] if item.get("symbol") else ""
+        name = str(item.get("name") or "").strip()
+        if not name:
+            continue
+        if code and code in seen_codes:
+            continue
+        if not code and name in seen_names:
+            continue
+        if code:
+            seen_codes.add(code)
+        seen_names.add(name)
+        deduped.append(item)
+    return deduped, missing
+
+
+def plan_sync(
+    groups: list[str],
+    watchlist_path: Path,
+    event_watchlist_path: Path,
+    limit: int | None = None,
+) -> dict:
+    target_items, missing_groups = collect_group_items(groups, watchlist_path, event_watchlist_path)
+    if limit is not None and limit > 0:
+        target_items = target_items[:limit]
+    current_payload = list_watchlist()
+    _, current_rows = extract_list_rows(current_payload)
+    current_names, current_codes = build_current_lookup(current_rows)
+
+    to_add: list[dict] = []
+    already_present: list[dict] = []
+    for item in target_items:
+        code = str(item.get("symbol", ""))[2:] if item.get("symbol") else ""
+        name = str(item.get("name") or "").strip()
+        if code and code in current_codes:
+            already_present.append(item)
+        elif name and name in current_names:
+            already_present.append(item)
+        else:
+            to_add.append(item)
+
+    return {
+        "groups": groups,
+        "missing_groups": missing_groups,
+        "target_items": target_items,
+        "current_payload": current_payload,
+        "to_add": to_add,
+        "already_present": already_present,
+    }
+
+
+def run_sync(plan: dict) -> list[dict]:
+    results: list[dict] = []
+    for item in plan["to_add"]:
+        name = str(item.get("name") or "").strip()
+        query = f"把{name}加入自选"
+        payload = manage_watchlist(query)
+        results.append(
+            {
+                "name": name,
+                "symbol": item.get("symbol", ""),
+                "query": query,
+                "status": payload.get("status"),
+                "code": payload.get("code"),
+                "message": payload.get("message"),
+            }
+        )
+    return results
+
+
+def render_sync_markdown(plan: dict, sync_results: list[dict] | None = None, dry_run: bool = False) -> str:
+    lines = [
+        "# 自选股同步结果",
+        "",
+        f"- groups: `{', '.join(plan['groups'])}`",
+        f"- target_count: `{len(plan['target_items'])}`",
+        f"- already_present: `{len(plan['already_present'])}`",
+        f"- to_add: `{len(plan['to_add'])}`",
+        f"- mode: `{'dry-run' if dry_run else 'apply'}`",
+    ]
+    if plan["missing_groups"]:
+        lines.append(f"- missing_groups: `{', '.join(plan['missing_groups'])}`")
+
+    if plan["to_add"]:
+        lines.extend(["", "## 待加入列表", ""])
+        for index, item in enumerate(plan["to_add"], start=1):
+            lines.append(f"{index}. `{item.get('name')}` `{item.get('symbol', '')}`")
+
+    if plan["already_present"]:
+        lines.extend(["", "## 已存在", ""])
+        for index, item in enumerate(plan["already_present"][:20], start=1):
+            lines.append(f"{index}. `{item.get('name')}` `{item.get('symbol', '')}`")
+        if len(plan["already_present"]) > 20:
+            lines.append(f"- 其余 `{len(plan['already_present']) - 20}` 只已省略")
+
+    if sync_results is not None:
+        lines.extend(["", "## 实际执行结果", ""])
+        for result in sync_results:
+            lines.append(
+                f"- `{result['name']}`: status=`{result['status']}` code=`{result['code']}` message=`{result['message']}`"
+            )
+
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def to_markdown_table(rows: list[dict], keys: list[str], max_rows: int = 20) -> str:
@@ -215,6 +358,34 @@ def command_manage(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_sync_groups(args: argparse.Namespace) -> int:
+    plan = plan_sync(
+        groups=args.groups,
+        watchlist_path=Path(args.watchlist).expanduser(),
+        event_watchlist_path=Path(args.event_watchlist).expanduser(),
+        limit=args.limit,
+    )
+    sync_results: list[dict] | None = None
+    if not args.dry_run:
+        sync_results = run_sync(plan)
+    payload = {
+        "groups": plan["groups"],
+        "missing_groups": plan["missing_groups"],
+        "target_count": len(plan["target_items"]),
+        "already_present_count": len(plan["already_present"]),
+        "to_add_count": len(plan["to_add"]),
+        "to_add": plan["to_add"],
+        "already_present": plan["already_present"],
+        "sync_results": sync_results or [],
+        "mode": "dry-run" if args.dry_run else "apply",
+    }
+    if args.format == "json":
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+    else:
+        print(render_sync_markdown(plan, sync_results=sync_results, dry_run=args.dry_run))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Eastmoney self-select list management.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -231,6 +402,22 @@ def build_parser() -> argparse.ArgumentParser:
     manage_parser.add_argument("--query", required=True, help="Natural-language query, for example 把东方财富加入自选")
     manage_parser.add_argument("--format", choices=["markdown", "json"], default="markdown")
     manage_parser.set_defaults(func=command_manage)
+
+    sync_parser = subparsers.add_parser(
+        "sync-groups",
+        help="Sync selected uwillberich watchlist groups into Eastmoney self-select. Defaults to add-only behavior.",
+    )
+    sync_parser.add_argument("--groups", nargs="+", required=True, help="uwillberich watchlist or event-pool groups.")
+    sync_parser.add_argument("--watchlist", default=str(DEFAULT_UWILLBERICH_WATCHLIST), help="Path to uwillberich default watchlists.")
+    sync_parser.add_argument(
+        "--event-watchlist",
+        default=str(DEFAULT_EVENT_WATCHLIST),
+        help="Path to uwillberich dynamic event watchlists.",
+    )
+    sync_parser.add_argument("--limit", type=int, help="Only sync the first N deduped names.")
+    sync_parser.add_argument("--dry-run", action="store_true", help="Preview adds without mutating Eastmoney self-select.")
+    sync_parser.add_argument("--format", choices=["markdown", "json"], default="markdown")
+    sync_parser.set_defaults(func=command_sync_groups)
 
     return parser
 

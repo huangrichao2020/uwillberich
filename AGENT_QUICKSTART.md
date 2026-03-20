@@ -93,6 +93,12 @@ Those responsibilities belong to:
 
 If the workflow should sync chosen names into Eastmoney self-select, also install `skill/mx_selfselect`.
 
+Example closed loop:
+
+```bash
+python3 ~/.codex/skills/mx_selfselect/scripts/mx_selfselect.py sync-groups --groups tech_repair defensive_gauge --dry-run
+```
+
 ## Required Keys
 
 `EM_API_KEY` is required.

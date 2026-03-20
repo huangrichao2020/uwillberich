@@ -201,5 +201,7 @@ python3 skill/uwillberich/scripts/install_memory_handoff_launchd.py install
 - The handoff updater refreshes `~/.uwillberich/memory/handoff/latest.md` once per hour, but only when dialogue activity exists within the last 60 minutes.
 - `skill/uwillberich` is the report-generation engine only; HTML rendering and GitHub Pages deployment belong to the repo-level `docs/` layer and the `uwillberich-reports` repo.
 - `skill/mx_selfselect` is the execution-side companion for syncing chosen names into Eastmoney self-select after the report is already written.
+- Closed loop example:
+  `python3 skill/mx_selfselect/scripts/mx_selfselect.py sync-groups --groups tech_repair defensive_gauge --dry-run`
 - On monthly `LPR` days, the workflow assumes the `9:00` release window.
 - On macOS, use `install_news_iterator_launchd.py` and `install_memory_handoff_launchd.py`; on Linux or other environments, use `nohup` or the local scheduler of your choice.

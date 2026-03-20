@@ -36,9 +36,18 @@ Boundary:
   - `status`: show whether the API key is available
   - `list`: query the current self-select list
   - `manage --query ...`: send a natural-language add/remove/manage request
+  - `sync-groups --groups ...`: sync selected `uwillberich` watchlist groups or dynamic event pools into Eastmoney self-select with add-only behavior by default
 
 ## Output Standard
 
 - Default to concise markdown for humans.
 - Use `--format json` when another tool or agent needs the raw response.
 - If the returned list is empty, tell the user to verify it in the Eastmoney app.
+
+## Recommended Closed Loop
+
+1. Use `uwillberich` to generate the daily report.
+2. Decide which fixed groups or event groups should become execution focus.
+3. Run:
+   - `python3 scripts/mx_selfselect.py sync-groups --groups tech_repair defensive_gauge --dry-run`
+4. If the preview looks right, rerun without `--dry-run`.
