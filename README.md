@@ -8,6 +8,7 @@ Contact: `grdomai43881@gmail.com`
 - `prompts/persona-prompt.md`: decision-maker persona prompt
 - `prompts/trading-mode-prompt.md`: daily execution-mode prompt
 - `skill/uwillberich/`: installable Codex skill
+- `skill/mx_selfselect/`: optional Eastmoney self-select execution skill
 - `AGENT_QUICKSTART.md`: zero-to-run instructions for other agents
 
 ## Repo Boundary
@@ -27,6 +28,7 @@ Use these boundaries to avoid mixing responsibilities:
 
 If another agent only needs the A-share report engine, install `skill/uwillberich` and stop there.
 If another agent needs HTML pages or Pages publishing, work at the repo level and include `docs/` plus `uwillberich-reports`.
+If another agent needs to push report conclusions into Eastmoney self-select, install `skill/mx_selfselect` as a companion execution skill.
 
 ## Workflow Map
 
@@ -74,6 +76,12 @@ Agents only need the skill folder:
 
 ```bash
 skill/uwillberich
+```
+
+Optional companion skill for Eastmoney self-select execution:
+
+```bash
+skill/mx_selfselect
 ```
 
 Agents that need HTML rendering or deployment should also use:
@@ -158,6 +166,7 @@ All scripts live under `skill/uwillberich/scripts/` and use only the Python stan
 - `memory_layer.py`: persistent SQLite memory plus handoff document builder
 - `install_memory_handoff_launchd.py`: install the hourly handoff updater on macOS
 - `docs/`: rendered HTML reports and static-page source artifacts for publishing
+- `skill/mx_selfselect/scripts/mx_selfselect.py`: query, add, and remove Eastmoney self-select names with natural-language requests
 
 ## Example Usage
 
@@ -191,5 +200,6 @@ python3 skill/uwillberich/scripts/install_memory_handoff_launchd.py install
 - Persistent memory lives under `~/.uwillberich/memory/`.
 - The handoff updater refreshes `~/.uwillberich/memory/handoff/latest.md` once per hour, but only when dialogue activity exists within the last 60 minutes.
 - `skill/uwillberich` is the report-generation engine only; HTML rendering and GitHub Pages deployment belong to the repo-level `docs/` layer and the `uwillberich-reports` repo.
+- `skill/mx_selfselect` is the execution-side companion for syncing chosen names into Eastmoney self-select after the report is already written.
 - On monthly `LPR` days, the workflow assumes the `9:00` release window.
 - On macOS, use `install_news_iterator_launchd.py` and `install_memory_handoff_launchd.py`; on Linux or other environments, use `nohup` or the local scheduler of your choice.

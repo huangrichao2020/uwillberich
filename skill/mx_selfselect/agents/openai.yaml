@@ -1,0 +1,11 @@
+# Author: 超超
+# Contact: grdomai43881@gmail.com
+
+interface:
+  display_name: "mx_selfselect"
+  short_description: "Eastmoney self-select watchlist operations"
+  brand_color: "#D94841"
+  default_prompt: "Use $mx_selfselect to query my Eastmoney self-select list or add/remove stocks from it with natural-language requests."
+
+policy:
+  allow_implicit_invocation: true

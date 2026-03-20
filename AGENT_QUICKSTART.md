@@ -15,6 +15,9 @@ Boundary first:
 - `skill/uwillberich`
   - daily report generation only
   - use this if you only need markdown reports, opening checklists, watchlists, and event overlays
+- `skill/mx_selfselect`
+  - Eastmoney self-select execution companion
+  - use this if you want to query or mutate the Eastmoney watchlist after the report has already picked the names
 - `uwillberich` repo root
   - full workflow
   - use this if you need report generation plus HTML rendering inputs under `docs/`
@@ -26,6 +29,12 @@ The only folder an agent needs is:
 
 ```text
 skill/uwillberich
+```
+
+Optional companion skill:
+
+```text
+skill/mx_selfselect
 ```
 
 Install it into one of these locations:
@@ -79,6 +88,10 @@ Those responsibilities belong to:
 
 - `uwillberich/docs/`
 - `https://github.com/huangrichao2020/uwillberich-reports`
+
+## Optional Execution Companion
+
+If the workflow should sync chosen names into Eastmoney self-select, also install `skill/mx_selfselect`.
 
 ## Required Keys
 
