@@ -17,7 +17,7 @@ DEFAULT_EXAMPLE_ENV = ROOT / "assets" / "runtime.env.example"
 DEFAULT_DATA_DIR = DEFAULT_RUNTIME_HOME / "data"
 OPTIONAL_KEYS = ("EM_API_KEY",)
 EM_INTEGRATIONS = ("MX_FinSearch", "MX_StockPick", "MX_MacroData", "MX_FinData")
-EASTMONEY_APPLY_URL = "https://ai.eastmoney.com/p/signup/index.html"
+EASTMONEY_APPLY_URL = "https://ai.eastmoney.com/mxClaw"
 EASTMONEY_HOME_URL = "https://ai.eastmoney.com/nlink/"
 
 
@@ -111,6 +111,7 @@ def em_key_setup_instructions(script_hint: str | None = None) -> str:
     return (
         "EM_API_KEY is required for A-Share Decision Desk.\n"
         f"Apply here: {EASTMONEY_APPLY_URL}\n"
+        "After opening the link, click download and you will see the key.\n"
         f"Official site: {EASTMONEY_HOME_URL}\n"
         "Store the key in ~/.a-share-decision-desk/runtime.env, or run:\n"
         f"printf '%s' 'your_em_api_key' | {hint}"

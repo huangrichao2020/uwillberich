@@ -141,6 +141,7 @@ Default to a compact desk-style answer:
 ## Required Credential
 
 - `EM_API_KEY` is mandatory for this skill.
-- Apply here: `https://ai.eastmoney.com/p/signup/index.html`
+- Apply here: `https://ai.eastmoney.com/mxClaw`
+- After opening the link, click download and you will see the key.
 - Official site: `https://ai.eastmoney.com/nlink/`
 - Store it in `~/.a-share-decision-desk/runtime.env`

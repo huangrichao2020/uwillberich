@@ -75,7 +75,8 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 This repo hard-requires `EM_API_KEY`.
 
 - Apply here:
-  `https://ai.eastmoney.com/p/signup/index.html`
+  `https://ai.eastmoney.com/mxClaw`
+- After opening the link, click download and you will see the key.
 - Official site:
   `https://ai.eastmoney.com/nlink/`
 - Store it locally in `~/.a-share-decision-desk/runtime.env`, not in Git.
