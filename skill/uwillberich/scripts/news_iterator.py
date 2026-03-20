@@ -25,7 +25,7 @@ from runtime_config import load_runtime_env, require_em_api_key
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG = ROOT / "assets" / "news_iterator_config.json"
 DEFAULT_WATCHLIST = ROOT / "assets" / "default_watchlists.json"
-DEFAULT_STATE_DIR = Path.home() / ".a-share-decision-desk" / "news-iterator"
+DEFAULT_STATE_DIR = Path.home() / ".uwillberich" / "news-iterator"
 DEFAULT_DB = DEFAULT_STATE_DIR / "news_iterator.sqlite3"
 DEFAULT_MARKDOWN = DEFAULT_STATE_DIR / "latest_alerts.md"
 DEFAULT_JSONL = DEFAULT_STATE_DIR / "alerts.jsonl"
@@ -57,7 +57,7 @@ KEYWORD_LABELS = {
 
 
 load_runtime_env()
-require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
+require_em_api_key(script_hint="python3 skill/uwillberich/scripts/runtime_config.py set-em-key --stdin")
 
 
 @dataclass

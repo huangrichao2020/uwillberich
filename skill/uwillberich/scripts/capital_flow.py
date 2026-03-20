@@ -263,7 +263,7 @@ def render_flow_snapshot(snapshot: dict) -> list[dict]:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Capital-flow monitor for A-share Decision Desk.")
+    parser = argparse.ArgumentParser(description="Capital-flow monitor for uwillberich.")
     parser.add_argument(
         "--watchlist",
         default=str(DEFAULT_WATCHLIST),
@@ -281,7 +281,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
+    require_em_api_key(script_hint="python3 skill/uwillberich/scripts/runtime_config.py set-em-key --stdin")
     args = build_parser().parse_args()
     watchlists = load_watchlist(args.watchlist)
     snapshot = fetch_market_flow_snapshot()

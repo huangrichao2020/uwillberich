@@ -13,20 +13,20 @@ https://github.com/huangrichao2020/a-share-decision-kit
 The only folder an agent needs is:
 
 ```text
-skill/a-share-decision-desk
+skill/uwillberich
 ```
 
 Install it into one of these locations:
 
-- `~/.codex/skills/a-share-decision-desk`
-- `~/.openclaw/skills/a-share-decision-desk`
+- `~/.codex/skills/uwillberich`
+- `~/.openclaw/skills/uwillberich`
 
 Example:
 
 ```bash
 git clone https://github.com/huangrichao2020/a-share-decision-kit.git
 mkdir -p ~/.codex/skills
-cp -R a-share-decision-kit/skill/a-share-decision-desk ~/.codex/skills/a-share-decision-desk
+cp -R a-share-decision-kit/skill/uwillberich ~/.codex/skills/uwillberich
 ```
 
 One-line install for Codex:
@@ -65,11 +65,11 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 - Official site:
   `https://ai.eastmoney.com/nlink/`
 - Recommended local storage path:
-  `~/.a-share-decision-desk/runtime.env`
+  `~/.uwillberich/runtime.env`
 - Setup command:
 
 ```bash
-printf '%s' 'your_em_api_key' | python3 ~/.codex/skills/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin
+printf '%s' 'your_em_api_key' | python3 ~/.codex/skills/uwillberich/scripts/runtime_config.py set-em-key --stdin
 ```
 
 Without `EM_API_KEY`, the skill exits with setup instructions and does not run.
@@ -86,19 +86,19 @@ Without `EM_API_KEY`, the skill exits with setup instructions and does not run.
 ## First Run
 
 ```bash
-python3 ~/.codex/skills/a-share-decision-desk/scripts/smoke_test.py
-python3 ~/.codex/skills/a-share-decision-desk/scripts/runtime_config.py status
-python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py list-presets
-python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py preset --name preopen_repair_chain
-python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py preset --name flow_main_force
-python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py news-search --query '立讯精密 最新资讯'
-python3 ~/.codex/skills/a-share-decision-desk/scripts/capital_flow.py --groups tech_repair defensive_gauge
-python3 ~/.codex/skills/a-share-decision-desk/scripts/market_sentiment.py
-python3 ~/.codex/skills/a-share-decision-desk/scripts/industry_chain.py --groups tech_repair defensive_gauge
-python3 ~/.codex/skills/a-share-decision-desk/scripts/benchmark_sources.py
-python3 ~/.codex/skills/a-share-decision-desk/scripts/news_iterator.py poll
-python3 ~/.codex/skills/a-share-decision-desk/scripts/morning_brief.py
-python3 ~/.codex/skills/a-share-decision-desk/scripts/opening_window_checklist.py
+python3 ~/.codex/skills/uwillberich/scripts/smoke_test.py
+python3 ~/.codex/skills/uwillberich/scripts/runtime_config.py status
+python3 ~/.codex/skills/uwillberich/scripts/mx_toolkit.py list-presets
+python3 ~/.codex/skills/uwillberich/scripts/mx_toolkit.py preset --name preopen_repair_chain
+python3 ~/.codex/skills/uwillberich/scripts/mx_toolkit.py preset --name flow_main_force
+python3 ~/.codex/skills/uwillberich/scripts/mx_toolkit.py news-search --query '立讯精密 最新资讯'
+python3 ~/.codex/skills/uwillberich/scripts/capital_flow.py --groups tech_repair defensive_gauge
+python3 ~/.codex/skills/uwillberich/scripts/market_sentiment.py
+python3 ~/.codex/skills/uwillberich/scripts/industry_chain.py --groups tech_repair defensive_gauge
+python3 ~/.codex/skills/uwillberich/scripts/benchmark_sources.py
+python3 ~/.codex/skills/uwillberich/scripts/news_iterator.py poll
+python3 ~/.codex/skills/uwillberich/scripts/morning_brief.py
+python3 ~/.codex/skills/uwillberich/scripts/opening_window_checklist.py
 ```
 
 ## Long-Running News Iterator
@@ -106,13 +106,13 @@ python3 ~/.codex/skills/a-share-decision-desk/scripts/opening_window_checklist.p
 On macOS:
 
 ```bash
-python3 ~/.codex/skills/a-share-decision-desk/scripts/install_news_iterator_launchd.py install --interval-seconds 300
+python3 ~/.codex/skills/uwillberich/scripts/install_news_iterator_launchd.py install --interval-seconds 300
 ```
 
 On Linux or other environments:
 
 ```bash
-nohup python3 ~/.codex/skills/a-share-decision-desk/scripts/news_iterator.py loop --interval-seconds 300 > ~/a-share-news-iterator.log 2>&1 &
+nohup python3 ~/.codex/skills/uwillberich/scripts/news_iterator.py loop --interval-seconds 300 > ~/uwillberich-news-iterator.log 2>&1 &
 ```
 
 ## Output State
@@ -120,7 +120,7 @@ nohup python3 ~/.codex/skills/a-share-decision-desk/scripts/news_iterator.py loo
 By default the iterator writes to:
 
 ```text
-~/.a-share-decision-desk/news-iterator/
+~/.uwillberich/news-iterator/
 ```
 
 Important files:
@@ -132,5 +132,5 @@ Important files:
 
 Generated artifact directories:
 
-- `~/.a-share-decision-desk/data/mx-presets/`
-- `~/.a-share-decision-desk/data/benchmarks/`
+- `~/.uwillberich/data/mx-presets/`
+- `~/.uwillberich/data/benchmarks/`

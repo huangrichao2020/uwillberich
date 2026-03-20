@@ -21,7 +21,7 @@ from market_sentiment import build_sentiment_snapshot
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_WATCHLIST = ROOT / "assets" / "default_watchlists.json"
-DEFAULT_EVENT_WATCHLIST = Path.home() / ".a-share-decision-desk" / "news-iterator" / "event_watchlists.json"
+DEFAULT_EVENT_WATCHLIST = Path.home() / ".uwillberich" / "news-iterator" / "event_watchlists.json"
 EVENT_CATEGORY_ORDER = ["huge_conflict", "huge_future", "huge_name_release"]
 CATEGORY_LABELS = {
     "huge_conflict": "巨大冲突",

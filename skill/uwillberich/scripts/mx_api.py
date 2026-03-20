@@ -19,7 +19,7 @@ load_runtime_env()
 
 
 def get_mx_api_key() -> str:
-    return require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
+    return require_em_api_key(script_hint="python3 skill/uwillberich/scripts/runtime_config.py set-em-key --stdin")
 
 
 def post_json(path: str, payload: dict, timeout: int = 30) -> dict:

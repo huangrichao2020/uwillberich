@@ -3,7 +3,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
-SKILL_NAME="a-share-decision-desk"
+SKILL_NAME="uwillberich"
 SKILL_SRC="$REPO_ROOT/skill/$SKILL_NAME"
 MODE="${1:-auto}"
 TARGET_BASE="${2:-}"

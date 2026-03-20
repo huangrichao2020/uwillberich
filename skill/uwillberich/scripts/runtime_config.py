@@ -11,10 +11,14 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_RUNTIME_HOME = Path.home() / ".a-share-decision-desk"
+DEFAULT_RUNTIME_HOME = Path.home() / ".uwillberich"
+LEGACY_RUNTIME_HOME = Path.home() / ".a-share-decision-desk"
 DEFAULT_ENV_PATH = DEFAULT_RUNTIME_HOME / "runtime.env"
+LEGACY_ENV_PATH = LEGACY_RUNTIME_HOME / "runtime.env"
 DEFAULT_EXAMPLE_ENV = ROOT / "assets" / "runtime.env.example"
 DEFAULT_DATA_DIR = DEFAULT_RUNTIME_HOME / "data"
+RUNTIME_ENV_VARS = ("UWILLBERICH_RUNTIME_ENV", "A_SHARE_RUNTIME_ENV")
+DATA_DIR_ENV_VARS = ("UWILLBERICH_DATA_DIR", "A_SHARE_DECISION_DATA_DIR")
 OPTIONAL_KEYS = ("EM_API_KEY",)
 EM_INTEGRATIONS = ("MX_FinSearch", "MX_StockPick", "MX_MacroData", "MX_FinData")
 EASTMONEY_APPLY_URL = "https://ai.eastmoney.com/mxClaw"
@@ -52,10 +56,11 @@ def resolve_env_paths(env_path: str | None = None) -> list[Path]:
     paths: list[Path] = []
     if env_path:
         paths.append(Path(env_path).expanduser())
-    custom = os.environ.get("A_SHARE_RUNTIME_ENV")
-    if custom:
-        paths.append(Path(custom).expanduser())
-    paths.extend([DEFAULT_ENV_PATH, ROOT / ".env.local", ROOT / ".env"])
+    for env_var in RUNTIME_ENV_VARS:
+        custom = os.environ.get(env_var)
+        if custom:
+            paths.append(Path(custom).expanduser())
+    paths.extend([DEFAULT_ENV_PATH, LEGACY_ENV_PATH, ROOT / ".env.local", ROOT / ".env"])
 
     deduped: list[Path] = []
     seen: set[str] = set()
@@ -109,11 +114,11 @@ def build_capabilities() -> dict[str, object]:
 def em_key_setup_instructions(script_hint: str | None = None) -> str:
     hint = script_hint or "python3 scripts/runtime_config.py set-em-key --stdin"
     return (
-        "EM_API_KEY is required for A-Share Decision Desk.\n"
+        "EM_API_KEY is required for uwillberich.\n"
         f"Apply here: {EASTMONEY_APPLY_URL}\n"
         "After opening the link, click download and you will see the key.\n"
         f"Official site: {EASTMONEY_HOME_URL}\n"
-        "Store the key in ~/.a-share-decision-desk/runtime.env, or run:\n"
+        "Store the key in ~/.uwillberich/runtime.env, or run:\n"
         f"printf '%s' 'your_em_api_key' | {hint}"
     )
 
@@ -128,7 +133,12 @@ def require_em_api_key(env_path: str | None = None, script_hint: str | None = No
 
 def get_output_root() -> Path:
     load_runtime_env()
-    custom = (os.environ.get("A_SHARE_DECISION_DATA_DIR") or "").strip()
+    custom = ""
+    for env_var in DATA_DIR_ENV_VARS:
+        value = (os.environ.get(env_var) or "").strip()
+        if value:
+            custom = value
+            break
     path = Path(custom).expanduser() if custom else DEFAULT_DATA_DIR
     path.mkdir(parents=True, exist_ok=True)
     return path
@@ -226,11 +236,11 @@ def run_unset_em_key(args: argparse.Namespace) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Manage local runtime credentials for A-share Decision Desk.")
+    parser = argparse.ArgumentParser(description="Manage local runtime credentials for uwillberich.")
     parser.add_argument(
         "--env-path",
         default=str(DEFAULT_ENV_PATH),
-        help="Runtime env file path. Defaults to ~/.a-share-decision-desk/runtime.env",
+        help="Runtime env file path. Defaults to ~/.uwillberich/runtime.env",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 

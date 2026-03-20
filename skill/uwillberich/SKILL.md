@@ -1,10 +1,10 @@
 ---
-name: a-share-decision-desk
+name: uwillberich
 description: Build next-session A-share game plans from market structure, overnight macro shocks, policy timing, and watchlist leadership. Use when the user asks what A-shares may do tomorrow, which sectors may repair first, how to read the open, or wants a reusable pre-open discretionary decision workflow.
 metadata: {"openclaw":{"emoji":"📈","homepage":"https://github.com/huangrichao2020/a-share-decision-kit","requires":{"bins":["python3"]}}}
 ---
 
-# A-Share Decision Desk
+# uwillberich
 
 Author: 超超
 Contact: `grdomai43881@gmail.com`
@@ -147,4 +147,4 @@ Default to a compact desk-style answer:
 - Apply here: `https://ai.eastmoney.com/mxClaw`
 - After opening the link, click download and you will see the key.
 - Official site: `https://ai.eastmoney.com/nlink/`
-- Store it in `~/.a-share-decision-desk/runtime.env`
+- Store it in `~/.uwillberich/runtime.env`

@@ -81,7 +81,7 @@ python3 scripts/news_iterator.py report --hours 12
 The simplest portable deployment is:
 
 ```bash
-nohup python3 scripts/news_iterator.py loop --interval-seconds 300 > ~/a-share-news-iterator.log 2>&1 &
+nohup python3 scripts/news_iterator.py loop --interval-seconds 300 > ~/uwillberich-news-iterator.log 2>&1 &
 ```
 
 On macOS, the better deployment is `launchd`. This runs one poll on a fixed interval instead of keeping a Python process alive forever:
@@ -93,7 +93,7 @@ python3 scripts/install_news_iterator_launchd.py status
 
 The script stores state under:
 
-- `~/.a-share-decision-desk/news-iterator/`
+- `~/.uwillberich/news-iterator/`
 
 By default it writes:
 

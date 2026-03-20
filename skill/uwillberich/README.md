@@ -1,4 +1,4 @@
-# A-Share Decision Desk
+# uwillberich
 
 A ClawHub/OpenClaw-ready skill for next-session A-share discretionary planning.
 
@@ -80,15 +80,15 @@ https://github.com/huangrichao2020/a-share-decision-kit
 
 Install this folder into:
 
-- `~/.codex/skills/a-share-decision-desk`
-- `~/.openclaw/skills/a-share-decision-desk`
+- `~/.codex/skills/uwillberich`
+- `~/.openclaw/skills/uwillberich`
 
 Example:
 
 ```bash
 git clone https://github.com/huangrichao2020/a-share-decision-kit.git
 mkdir -p ~/.codex/skills
-cp -R a-share-decision-kit/skill/a-share-decision-desk ~/.codex/skills/a-share-decision-desk
+cp -R a-share-decision-kit/skill/uwillberich ~/.codex/skills/uwillberich
 ```
 
 One-line install for Codex:
@@ -112,7 +112,7 @@ This skill hard-requires `EM_API_KEY`.
 - After opening the link, click download and you will see the key.
 - Official site:
   `https://ai.eastmoney.com/nlink/`
-- Store it locally in `~/.a-share-decision-desk/runtime.env`.
+- Store it locally in `~/.uwillberich/runtime.env`.
 - Check or set it with:
 
 ```bash
@@ -162,7 +162,7 @@ From this folder:
 
 ```bash
 clawhub login
-clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-desk --name "A-Share Decision Desk" --version 0.1.7 --tags latest,finance,a-share,china,markets
+clawhub publish /absolute/path/to/uwillberich --slug uwillberich --name "uwillberich" --version 0.1.7 --tags latest,finance,a-share,china,markets
 ```
 
 ## Notes
@@ -171,7 +171,7 @@ clawhub publish /absolute/path/to/a-share-decision-desk --slug a-share-decision-
 - This skill uses only text-based resources and Python standard library scripts.
 - `EM_API_KEY` is mandatory for this skill.
 - The runtime helper automatically maps `EM_API_KEY` to the `MX_APIKEY` convention used by the public MX skills.
-- Preset and benchmark outputs default to `~/.a-share-decision-desk/data/`.
+- Preset and benchmark outputs default to `~/.uwillberich/data/`.
 - If `clawhub publish .` misreads the folder, use an absolute path or pass `--workdir` explicitly.
 - The opening-window script is intended for `09:00-10:00` use, especially the first 30 minutes after the A-share cash open.
 - For the larger quality pool, use `cross_cycle_anchor12` daily and reserve `cross_cycle_core` for weekly or phase-rotation review.

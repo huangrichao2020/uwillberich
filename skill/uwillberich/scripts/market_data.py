@@ -14,7 +14,7 @@ DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 
 load_runtime_env()
-require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
+require_em_api_key(script_hint="python3 skill/uwillberich/scripts/runtime_config.py set-em-key --stdin")
 
 
 def _get_text(url: str, encoding: str = "utf-8") -> str:

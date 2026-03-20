@@ -13,7 +13,7 @@ from runtime_config import require_em_api_key
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_WATCHLIST = ROOT / "assets" / "default_watchlists.json"
 DEFAULT_CHAIN_CONFIG = ROOT / "assets" / "industry_chains.json"
-DEFAULT_EVENT_WATCHLIST = Path.home() / ".a-share-decision-desk" / "news-iterator" / "event_watchlists.json"
+DEFAULT_EVENT_WATCHLIST = Path.home() / ".uwillberich" / "news-iterator" / "event_watchlists.json"
 
 
 def load_json(path: str) -> dict:
@@ -233,7 +233,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
+    require_em_api_key(script_hint="python3 skill/uwillberich/scripts/runtime_config.py set-em-key --stdin")
     args = build_parser().parse_args()
     base_watchlists = load_json(args.watchlist)
     event_payload = load_json(args.event_watchlist)

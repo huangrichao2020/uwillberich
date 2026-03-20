@@ -13,13 +13,13 @@ from runtime_config import load_runtime_env, require_em_api_key
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_STATE_DIR = Path.home() / ".a-share-decision-desk" / "news-iterator"
-DEFAULT_LABEL = "com.tingchi.a-share-news-iterator"
+DEFAULT_STATE_DIR = Path.home() / ".uwillberich" / "news-iterator"
+DEFAULT_LABEL = "com.tingchi.uwillberich-news-iterator"
 DEFAULT_PLIST = Path.home() / "Library" / "LaunchAgents" / f"{DEFAULT_LABEL}.plist"
 
 
 load_runtime_env()
-require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
+require_em_api_key(script_hint="python3 skill/uwillberich/scripts/runtime_config.py set-em-key --stdin")
 
 
 def run_command(args: list[str], check: bool) -> subprocess.CompletedProcess[str]:
@@ -45,9 +45,9 @@ def build_plist(interval_seconds: int, state_dir: Path, python_bin: str) -> dict
         "StandardErrorPath": str(state_dir / "launchd.err.log"),
     }
     env_vars = {}
-    runtime_env_path = os.environ.get("A_SHARE_RUNTIME_ENV")
+    runtime_env_path = os.environ.get("UWILLBERICH_RUNTIME_ENV") or os.environ.get("A_SHARE_RUNTIME_ENV")
     if runtime_env_path:
-        env_vars["A_SHARE_RUNTIME_ENV"] = runtime_env_path
+        env_vars["UWILLBERICH_RUNTIME_ENV"] = runtime_env_path
     if env_vars:
         plist["EnvironmentVariables"] = env_vars
     return plist

@@ -292,7 +292,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main() -> int:
-    require_em_api_key(script_hint="python3 skill/a-share-decision-desk/scripts/runtime_config.py set-em-key --stdin")
+    require_em_api_key(script_hint="python3 skill/uwillberich/scripts/runtime_config.py set-em-key --stdin")
     parser = build_parser()
     args = parser.parse_args()
     return args.func(args)
