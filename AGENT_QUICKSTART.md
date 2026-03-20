@@ -47,6 +47,9 @@ git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-sh
 - build opening-window checklists
 - poll public news continuously
 - convert high-attention news into event-driven stock pools
+- expand those pools into industry-chain watchlists
+- score the tape with breadth + capital-flow sentiment
+- cross-check watchlists against main-force inflow and outflow lists
 - append those event pools automatically to the brief and checklist
 - call Meixiang / Eastmoney live APIs for news search, stock screening, and structured data queries
 - run preset desk workflows that map `Step 1 / Step 2 / Step 3` into repeatable commands
@@ -86,7 +89,11 @@ python3 ~/.codex/skills/a-share-decision-desk/scripts/smoke_test.py
 python3 ~/.codex/skills/a-share-decision-desk/scripts/runtime_config.py status
 python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py list-presets
 python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py preset --name preopen_repair_chain
+python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py preset --name flow_main_force
 python3 ~/.codex/skills/a-share-decision-desk/scripts/mx_toolkit.py news-search --query '立讯精密 最新资讯'
+python3 ~/.codex/skills/a-share-decision-desk/scripts/capital_flow.py --groups tech_repair defensive_gauge
+python3 ~/.codex/skills/a-share-decision-desk/scripts/market_sentiment.py
+python3 ~/.codex/skills/a-share-decision-desk/scripts/industry_chain.py --groups tech_repair defensive_gauge
 python3 ~/.codex/skills/a-share-decision-desk/scripts/benchmark_sources.py
 python3 ~/.codex/skills/a-share-decision-desk/scripts/news_iterator.py poll
 python3 ~/.codex/skills/a-share-decision-desk/scripts/morning_brief.py

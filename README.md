@@ -18,13 +18,19 @@ The repo is organized around a direct desk workflow instead of disconnected tool
 2. `Step 2: Board resonance and candidate narrowing`
    - `fetch_market_snapshot.py`
    - `morning_brief.py`
+   - `capital_flow.py`
+   - `market_sentiment.py`
    - `mx_toolkit.py preset --name board_optical_module`
    - `mx_toolkit.py preset --name board_compute_power`
 3. `Step 3: Structured validation on key names`
    - `fetch_quotes.py`
    - `mx_toolkit.py preset --name validate_inspur`
    - `mx_toolkit.py preset --name validate_luxshare`
-4. `Source health check`
+4. `Step 4: Chain expansion and event overlays`
+   - `industry_chain.py`
+   - `news_iterator.py`
+   - `opening_window_checklist.py`
+5. `Source health check`
    - `benchmark_sources.py`
 
 ## GitHub Source Of Truth
@@ -103,6 +109,9 @@ All scripts live under `skill/a-share-decision-desk/scripts/` and use only the P
 - `mx_api.py`: Meixiang / Eastmoney API wrapper for news search, stock screen, and structured data queries
 - `mx_toolkit.py`: CLI wrapper for real MX calls, presets, and artifact outputs
 - `benchmark_sources.py`: public-source and MX-source latency / availability benchmark
+- `capital_flow.py`: main-force inflow/outflow monitor plus watchlist resonance scoreboard
+- `market_sentiment.py`: breadth + capital-flow + board-structure sentiment snapshot
+- `industry_chain.py`: event-aware industry-chain expansion that turns themes into stock pools
 - `fetch_quotes.py`: fetch Tencent quote snapshots for a watchlist
 - `fetch_market_snapshot.py`: fetch Eastmoney index and sector breadth snapshots
 - `morning_brief.py`: build a simple pre-open markdown brief from default watchlists
@@ -118,9 +127,13 @@ python3 skill/a-share-decision-desk/scripts/fetch_quotes.py sz300502 sz300308 sh
 python3 skill/a-share-decision-desk/scripts/runtime_config.py status
 python3 skill/a-share-decision-desk/scripts/mx_toolkit.py list-presets
 python3 skill/a-share-decision-desk/scripts/mx_toolkit.py preset --name preopen_repair_chain
+python3 skill/a-share-decision-desk/scripts/mx_toolkit.py preset --name flow_main_force
 python3 skill/a-share-decision-desk/scripts/mx_toolkit.py news-search --query '立讯精密 最新资讯'
 python3 skill/a-share-decision-desk/scripts/mx_toolkit.py stock-screen --keyword 'A股 光模块概念股' --page-size 10 --csv-out /tmp/cpo.csv --desc-out /tmp/cpo-columns.md
 python3 skill/a-share-decision-desk/scripts/mx_toolkit.py query --tool-query '浪潮信息 最新价 市值'
+python3 skill/a-share-decision-desk/scripts/capital_flow.py --groups tech_repair defensive_gauge
+python3 skill/a-share-decision-desk/scripts/market_sentiment.py
+python3 skill/a-share-decision-desk/scripts/industry_chain.py --groups tech_repair defensive_gauge
 python3 skill/a-share-decision-desk/scripts/benchmark_sources.py
 python3 skill/a-share-decision-desk/scripts/morning_brief.py --groups core10 tech_repair
 python3 skill/a-share-decision-desk/scripts/news_iterator.py poll

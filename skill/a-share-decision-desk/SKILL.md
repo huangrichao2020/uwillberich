@@ -20,6 +20,9 @@ Best fit:
 - distinguishing defensive leadership from true market repair
 - persistent message iteration that maps high-attention news into watchlist overlays
 - automatic event-driven stock pools that feed directly into desk reports
+- main-force capital-flow confirmation for watchlists and market-wide risk tone
+- industry-chain expansion that turns event themes into fresh stock pools
+- sentiment scoring built from breadth, sector dispersion, and capital flow
 
 ## Core Workflow
 
@@ -46,12 +49,17 @@ Best fit:
   - `scripts/mx_toolkit.py preset --name preopen_global_risk`
 - `Step 2: board resonance`
   - `scripts/fetch_market_snapshot.py`
+  - `scripts/capital_flow.py`
+  - `scripts/market_sentiment.py`
   - `scripts/mx_toolkit.py preset --name board_optical_module`
   - `scripts/mx_toolkit.py preset --name board_compute_power`
 - `Step 3: single-name validation`
   - `scripts/fetch_quotes.py`
   - `scripts/mx_toolkit.py preset --name validate_inspur`
   - `scripts/mx_toolkit.py preset --name validate_luxshare`
+- `Step 4: event-to-chain expansion`
+  - `scripts/industry_chain.py`
+  - `scripts/news_iterator.py`
 - `Source benchmark`
   - `scripts/benchmark_sources.py`
 
@@ -73,8 +81,14 @@ Use these scripts before writing the decision note:
   - Pulls Tencent quote snapshots for user-specified names.
 - `scripts/morning_brief.py`
   - Builds a markdown brief from the default watchlists in `assets/default_watchlists.json`.
+- `scripts/capital_flow.py`
+  - Pulls the whole-market main-force snapshot plus top inflow/outflow names and intersects them with watchlists.
+- `scripts/market_sentiment.py`
+  - Scores the tape as `抱团行情`, `科技修复`, `修复扩散`, or `分化偏弱` using breadth, sector dispersion, and capital flow.
 - `scripts/opening_window_checklist.py`
   - Builds a first-30-minute observation sheet with time gates, group scoreboards, and watchlist signal tables.
+- `scripts/industry_chain.py`
+  - Uses event summaries and desk groups to expand into industry-chain stock pools through live MX stock screens.
 - `scripts/news_iterator.py`
   - Continuously polls public RSS feeds, classifies high-attention events, maps them into watchlist overlays, and writes dynamic event-driven stock pools.
 - `scripts/runtime_config.py`
@@ -110,6 +124,8 @@ Read only what you need:
   - How to run the persistent RSS iterator, generate event-driven stock pools, and feed them into the desk workflow.
 - `assets/mx_presets.json`
   - Preset MX workflows for policy scan, global-risk scan, board resonance, and single-name validation.
+- `assets/industry_chains.json`
+  - Theme-to-chain map for optical module, compute power, semiconductors, robotics, oil and coal, and IDC/power-cost overlays.
 
 ## Output Standard
 

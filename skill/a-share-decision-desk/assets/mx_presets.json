@@ -69,6 +69,67 @@
       }
     ]
   },
+  "flow_main_force": {
+    "description": "Capital-flow check for the whole market plus top inflow and outflow names.",
+    "steps": [
+      {
+        "slug": "market_main_flow",
+        "tool": "query",
+        "tool_query": "全部A股 主力净流入资金 今日 大单净流入 中单净流入 小单净流入",
+        "limit": 10
+      },
+      {
+        "slug": "top_main_force_inflow",
+        "tool": "stock-screen",
+        "keyword": "A股 主力资金净流入前20股票",
+        "page_no": 1,
+        "page_size": 20,
+        "limit": 10
+      },
+      {
+        "slug": "top_main_force_outflow",
+        "tool": "stock-screen",
+        "keyword": "A股 主力资金净流出前20股票",
+        "page_no": 1,
+        "page_size": 20,
+        "limit": 10
+      }
+    ]
+  },
+  "chain_optical_module": {
+    "description": "Industry-chain scan for optical module and CPO names.",
+    "steps": [
+      {
+        "slug": "optical_module_chain",
+        "tool": "stock-screen",
+        "keyword": "A股 光模块产业链股票",
+        "page_no": 1,
+        "page_size": 15,
+        "limit": 10
+      }
+    ]
+  },
+  "chain_conflict_energy": {
+    "description": "Industry-chain overlay for conflict-beneficiary energy names.",
+    "steps": [
+      {
+        "slug": "oil_gas_chain",
+        "tool": "stock-screen",
+        "keyword": "A股 石油天然气概念股",
+        "page_no": 1,
+        "page_size": 15,
+        "limit": 10
+      },
+      {
+        "slug": "coal_chain",
+        "tool": "stock-screen",
+        "keyword": "A股 煤炭概念股",
+        "page_no": 1,
+        "page_size": 15,
+        "limit": 10
+      }
+    ]
+  },
   "validate_inspur": {
     "description": "Structured data check for Inspur core trading metrics.",
     "steps": [

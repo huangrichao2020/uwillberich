@@ -8,6 +8,8 @@ import tempfile
 from pathlib import Path
 
 from market_data import fetch_index_snapshot, fetch_sector_movers, fetch_tencent_quotes
+from industry_chain import load_json as load_chain_json, select_chain_themes
+from market_sentiment import build_sentiment_snapshot
 from mx_toolkit import load_presets
 from news_iterator import FeedItem, build_event_watchlists_payload, classify_item
 from opening_window_checklist import classify_state
@@ -48,6 +50,7 @@ def main() -> None:
 
     watchlists = json.loads((ROOT / "assets" / "default_watchlists.json").read_text(encoding="utf-8"))
     iterator_config = json.loads((ROOT / "assets" / "news_iterator_config.json").read_text(encoding="utf-8"))
+    chain_config = load_chain_json(str(ROOT / "assets" / "industry_chains.json"))
     mx_presets = load_presets(str(ROOT / "assets" / "mx_presets.json"))
     assert_true("cross_cycle_anchor12" in watchlists, "missing cross_cycle_anchor12")
     assert_true("cross_cycle_core" in watchlists, "missing cross_cycle_core")
@@ -57,6 +60,7 @@ def main() -> None:
     assert_true(len(watchlists["cross_cycle_anchor12"]) >= 10, "anchor watchlist too small")
     assert_true("feeds" in iterator_config and len(iterator_config["feeds"]) >= 5, "news iterator feeds missing")
     assert_true("conflict_entities" in iterator_config, "news iterator conflict entities missing")
+    assert_true(len(chain_config.get("themes", [])) >= 5, "industry chain config missing themes")
     assert_true("preopen_policy" in mx_presets, "missing MX preset preopen_policy")
     assert_true("preopen_repair_chain" in mx_presets, "missing MX preset preopen_repair_chain")
 
@@ -121,6 +125,10 @@ def main() -> None:
         any(item["symbol"] == "sh600938" for item in payload["groups"]["event_focus_huge_conflict_benefit"]),
         "expected China Offshore Oil in conflict event pool",
     )
+    chain_themes = select_chain_themes(payload, ["tech_repair", "defensive_gauge"], chain_config, max_themes=3)
+    chain_ids = {item["id"] for item in chain_themes}
+    assert_true("optical_module_chain" in chain_ids, "expected optical-module chain theme")
+    assert_true("oil_gas_chain" in chain_ids or "coal_chain" in chain_ids, "expected energy chain theme")
 
     state = classify_state(
         [
@@ -130,6 +138,13 @@ def main() -> None:
         ]
     )
     assert_true("true repair" in state.lower(), "opening-window classifier mismatch")
+    sentiment = build_sentiment_snapshot(
+        group_flow_rows=[
+            {"group": "tech_repair", "net_flow_yi": 6.5},
+            {"group": "defensive_gauge", "net_flow_yi": -2.3},
+        ]
+    )
+    assert_true(sentiment["label"] in {"科技修复", "修复扩散", "分化震荡", "抱团行情", "分化偏弱"}, "unexpected sentiment label")
 
     print("smoke test passed")
     print(f"indices: {len(indices)}")

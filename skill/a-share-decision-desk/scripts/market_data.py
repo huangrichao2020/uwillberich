@@ -162,6 +162,6 @@ def format_markdown_table(rows: list[dict], columns: list[tuple[str, str]]) -> s
                     value = int(value)
                 else:
                     value = f"{value:.2f}"
-            values.append(str(value))
+            values.append(str(value).replace("|", "\\|").replace("\n", " "))
         body.append("| " + " | ".join(values) + " |")
     return "\n".join([header, separator, *body])

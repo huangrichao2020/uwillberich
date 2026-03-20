@@ -32,13 +32,19 @@ https://github.com/huangrichao2020/a-share-decision-kit
 2. `Step 2: board resonance`
    - `scripts/fetch_market_snapshot.py`
    - `scripts/morning_brief.py`
+   - `scripts/capital_flow.py`
+   - `scripts/market_sentiment.py`
    - `scripts/mx_toolkit.py preset --name board_optical_module`
    - `scripts/mx_toolkit.py preset --name board_compute_power`
 3. `Step 3: single-name validation`
    - `scripts/fetch_quotes.py`
    - `scripts/mx_toolkit.py preset --name validate_inspur`
    - `scripts/mx_toolkit.py preset --name validate_luxshare`
-4. `Source benchmark`
+4. `Step 4: chain expansion`
+   - `scripts/industry_chain.py`
+   - `scripts/news_iterator.py`
+   - `scripts/opening_window_checklist.py`
+5. `Source benchmark`
    - `scripts/benchmark_sources.py`
 
 ## What This Skill Contains
@@ -55,7 +61,10 @@ https://github.com/huangrichao2020/a-share-decision-kit
 - `scripts/fetch_market_snapshot.py`: index and sector breadth snapshot
 - `scripts/fetch_quotes.py`: Tencent quote watchlist snapshot
 - `scripts/morning_brief.py`: one-command markdown morning brief
+- `scripts/capital_flow.py`: main-force capital-flow overlay for the market and watchlists
+- `scripts/market_sentiment.py`: breadth + board-dispersion + capital-flow sentiment classifier
 - `scripts/opening_window_checklist.py`: first-30-minute decision sheet
+- `scripts/industry_chain.py`: event-to-industry-chain expansion for fresh stock pools
 - `scripts/news_iterator.py`: RSS polling, classification, SQLite state, markdown/jsonl outputs, and automatic event stock pools
 - `scripts/runtime_config.py`: local credential helper for the required `EM_API_KEY`
 - `scripts/mx_api.py`: Meixiang / Eastmoney API wrapper for live finance queries
@@ -120,9 +129,13 @@ python3 scripts/smoke_test.py
 python3 scripts/runtime_config.py status
 python3 scripts/mx_toolkit.py list-presets
 python3 scripts/mx_toolkit.py preset --name preopen_repair_chain
+python3 scripts/mx_toolkit.py preset --name flow_main_force
 python3 scripts/mx_toolkit.py news-search --query '立讯精密 最新资讯'
 python3 scripts/mx_toolkit.py stock-screen --keyword 'A股 光模块概念股' --page-size 10 --csv-out /tmp/cpo.csv --desc-out /tmp/cpo-columns.md
 python3 scripts/mx_toolkit.py query --tool-query '浪潮信息 最新价 市值'
+python3 scripts/capital_flow.py --groups tech_repair defensive_gauge
+python3 scripts/market_sentiment.py
+python3 scripts/industry_chain.py --groups tech_repair defensive_gauge
 python3 scripts/benchmark_sources.py
 python3 scripts/fetch_market_snapshot.py --format markdown
 python3 scripts/fetch_quotes.py sz300502 sh688981 sh600938

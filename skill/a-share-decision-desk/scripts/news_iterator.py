@@ -18,6 +18,7 @@ from datetime import UTC, datetime, timedelta
 from email.utils import parsedate_to_datetime
 from pathlib import Path
 
+from industry_chain import enrich_event_payload_with_chain_focus
 from runtime_config import load_runtime_env, require_em_api_key
 
 
@@ -789,6 +790,17 @@ def render_event_watchlists(payload: dict) -> str:
             lines.append(
                 f"- {item['name']} `{item['symbol'][2:]}` | score `{item['event_score']}` | triggers `{item['trigger_count']}` | {item['event_driver']}"
             )
+    chain_summary = payload.get("chain_summary", [])
+    if chain_summary:
+        lines.append("\n## Industry Chain Focus")
+        lines.append("")
+        lines.append("| Theme | Score | Group | Reasons |")
+        lines.append("| --- | ---: | --- | --- |")
+        for item in chain_summary:
+            reasons = " / ".join(item.get("reasons", [])[:3]) or "n/a"
+            lines.append(f"| {item['theme']} | {item['score']} | {item['group']} | {reasons} |")
+    for error in payload.get("chain_errors", []):
+        lines.append(f"- chain_error: `{error['theme']}` | {error['error']}")
     return "\n".join(lines) + "\n"
 
 
@@ -803,6 +815,10 @@ def run_poll(args: argparse.Namespace) -> int:
             recent_alerts,
             load_base_watchlists(args.watchlist_path),
             args.report_hours,
+        )
+        event_payload = enrich_event_payload_with_chain_focus(
+            event_payload,
+            load_base_watchlists(args.watchlist_path),
         )
         write_event_watchlists(event_payload, Path(args.event_watchlist_path))
         markdown = render_report(recent_alerts, args.report_hours)
@@ -850,6 +866,10 @@ def run_report(args: argparse.Namespace) -> int:
             alerts,
             load_base_watchlists(args.watchlist_path),
             args.hours,
+        )
+        event_payload = enrich_event_payload_with_chain_focus(
+            event_payload,
+            load_base_watchlists(args.watchlist_path),
         )
         report += render_event_watchlists(event_payload)
         if args.event_watchlist_path:
