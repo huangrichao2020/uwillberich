@@ -5,7 +5,7 @@ This repo is designed so another agent can take the GitHub URL and use it with m
 ## Repo
 
 ```text
-https://github.com/huangrichao2020/a-share-decision-kit
+https://github.com/huangrichao2020/uwillberich
 ```
 
 ## What To Install
@@ -24,21 +24,21 @@ Install it into one of these locations:
 Example:
 
 ```bash
-git clone https://github.com/huangrichao2020/a-share-decision-kit.git
+git clone https://github.com/huangrichao2020/uwillberich.git
 mkdir -p ~/.codex/skills
-cp -R a-share-decision-kit/skill/uwillberich ~/.codex/skills/uwillberich
+cp -R uwillberich/skill/uwillberich ~/.codex/skills/uwillberich
 ```
 
 One-line install for Codex:
 
 ```bash
-git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-share-decision-kit && ./install_skill.sh
+git clone https://github.com/huangrichao2020/uwillberich.git && cd uwillberich && ./install_skill.sh
 ```
 
 One-line install for OpenClaw:
 
 ```bash
-git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-share-decision-kit && ./install_skill.sh openclaw
+git clone https://github.com/huangrichao2020/uwillberich.git && cd uwillberich && ./install_skill.sh openclaw
 ```
 
 ## What The Skill Can Do

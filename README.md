@@ -1,4 +1,4 @@
-# A-Share Decision Kit
+# uwillberich
 
 Reusable materials for a discretionary A-share decision workflow:
 
@@ -41,7 +41,7 @@ The repo is organized around a direct desk workflow instead of disconnected tool
 Use the GitHub repo as the primary distribution source:
 
 ```bash
-https://github.com/huangrichao2020/a-share-decision-kit
+https://github.com/huangrichao2020/uwillberich
 ```
 
 Agents only need the skill folder:
@@ -64,13 +64,13 @@ OpenClaw users can do the same with `~/.openclaw/skills/`.
 One-line install from GitHub:
 
 ```bash
-git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-share-decision-kit && ./install_skill.sh
+git clone https://github.com/huangrichao2020/uwillberich.git && cd uwillberich && ./install_skill.sh
 ```
 
 For OpenClaw:
 
 ```bash
-git clone https://github.com/huangrichao2020/a-share-decision-kit.git && cd a-share-decision-kit && ./install_skill.sh openclaw
+git clone https://github.com/huangrichao2020/uwillberich.git && cd uwillberich && ./install_skill.sh openclaw
 ```
 
 ## Runtime Keys

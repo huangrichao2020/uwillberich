@@ -1,7 +1,7 @@
 ---
 name: uwillberich
 description: Build next-session A-share game plans from market structure, overnight macro shocks, policy timing, and watchlist leadership. Use when the user asks what A-shares may do tomorrow, which sectors may repair first, how to read the open, or wants a reusable pre-open discretionary decision workflow.
-metadata: {"openclaw":{"emoji":"📈","homepage":"https://github.com/huangrichao2020/a-share-decision-kit","requires":{"bins":["python3"]}}}
+metadata: {"openclaw":{"emoji":"📈","homepage":"https://github.com/huangrichao2020/uwillberich","requires":{"bins":["python3"]}}}
 ---
 
 # uwillberich
