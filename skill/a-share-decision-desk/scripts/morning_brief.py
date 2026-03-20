@@ -22,6 +22,29 @@ from market_sentiment import build_sentiment_snapshot
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_WATCHLIST = ROOT / "assets" / "default_watchlists.json"
 DEFAULT_EVENT_WATCHLIST = Path.home() / ".a-share-decision-desk" / "news-iterator" / "event_watchlists.json"
+EVENT_CATEGORY_ORDER = ["huge_conflict", "huge_future", "huge_name_release"]
+CATEGORY_LABELS = {
+    "huge_conflict": "巨大冲突",
+    "huge_future": "巨大前景",
+    "huge_name_release": "巨头名人",
+}
+SIGNAL_LABELS = {"high": "高", "medium": "中", "low": "低"}
+KEYWORD_LABELS = {
+    "war": "战争",
+    "oil": "原油",
+    "energy": "能源",
+    "chips": "芯片",
+    "chip": "芯片",
+    "robots": "机器人",
+    "robot": "机器人",
+    "launch": "发布",
+    "launches": "发布",
+    "announces": "宣布",
+    "announce": "宣布",
+    "unveils": "亮相",
+    "unveil": "亮相",
+    "data center": "数据中心",
+}
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -74,6 +97,20 @@ def load_event_payload(path: str) -> dict:
     if not event_path.exists():
         return {}
     return json.loads(event_path.read_text(encoding="utf-8"))
+
+
+def category_display_name(category: str) -> str:
+    return CATEGORY_LABELS.get(category, category)
+
+
+def signal_display_name(signal: str) -> str:
+    return SIGNAL_LABELS.get(signal, signal)
+
+
+def format_keyword_list(keywords: list[str]) -> str:
+    if not keywords:
+        return "n/a"
+    return ", ".join(KEYWORD_LABELS.get(keyword, keyword) for keyword in keywords)
 
 
 def build_rows(items: list[dict], quotes: list[dict]) -> list[dict]:
@@ -136,25 +173,44 @@ def render_event_summary(payload: dict) -> None:
         return
     rows = [
         {
-            "category": item["category"],
+            "category": category_display_name(item["category"]),
             "alert_count": item["alert_count"],
             "total_score": item["total_score"],
-            "top_keywords": ", ".join(item.get("top_keywords", [])) or "n/a",
+            "top_keywords": format_keyword_list(item.get("top_keywords", [])),
         }
         for item in summary
     ]
-    print("\n## Event Summary")
+    print("\n## 事件驱动层总结")
     print(
         format_markdown_table(
             rows,
             [
-                ("Category", "category"),
-                ("Alerts", "alert_count"),
-                ("Total Score", "total_score"),
-                ("Top Keywords", "top_keywords"),
+                ("类别", "category"),
+                ("条数", "alert_count"),
+                ("总分", "total_score"),
+                ("高频关键词", "top_keywords"),
             ],
         )
     )
+
+
+def render_event_top_alerts(payload: dict) -> None:
+    top_alerts = payload.get("top_alerts", {})
+    if not top_alerts:
+        return
+    print("\n## 事件信息源链接")
+    for category in EVENT_CATEGORY_ORDER:
+        items = top_alerts.get(category, [])
+        if not items:
+            continue
+        print(f"\n### {category_display_name(category)} Top 10 信息源")
+        for index, item in enumerate(items, start=1):
+            print(f"{index}. [{item['title']}]({item['link']})")
+            print(
+                f"   - 来源: {item['source']} | 信号: `{signal_display_name(item['signal'])}` | 分值: `{item['score']}`"
+            )
+            print(f"   - 实体: {', '.join(item.get('entities', [])) or 'n/a'}")
+            print(f"   - 关键词: {format_keyword_list(item.get('keywords', []))}")
 
 
 def render_chain_summary(payload: dict) -> None:
@@ -327,6 +383,7 @@ def main() -> None:
 
     if event_groups and selected_event_groups:
         render_event_summary(event_payload)
+        render_event_top_alerts(event_payload)
         render_chain_summary(event_payload)
         for group in selected_event_groups:
             items = event_groups.get(group, [])

@@ -31,6 +31,29 @@ DEFAULT_MARKDOWN = DEFAULT_STATE_DIR / "latest_alerts.md"
 DEFAULT_JSONL = DEFAULT_STATE_DIR / "alerts.jsonl"
 DEFAULT_EVENT_WATCHLIST = DEFAULT_STATE_DIR / "event_watchlists.json"
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
+EVENT_CATEGORY_ORDER = ["huge_conflict", "huge_future", "huge_name_release"]
+CATEGORY_LABELS = {
+    "huge_conflict": "巨大冲突",
+    "huge_future": "巨大前景",
+    "huge_name_release": "巨头名人",
+}
+SIGNAL_LABELS = {"high": "高", "medium": "中", "low": "低"}
+KEYWORD_LABELS = {
+    "war": "战争",
+    "oil": "原油",
+    "energy": "能源",
+    "chips": "芯片",
+    "chip": "芯片",
+    "robots": "机器人",
+    "robot": "机器人",
+    "launch": "发布",
+    "launches": "发布",
+    "announces": "宣布",
+    "announce": "宣布",
+    "unveils": "亮相",
+    "unveil": "亮相",
+    "data center": "数据中心",
+}
 
 
 load_runtime_env()
@@ -110,6 +133,24 @@ def normalize_match_text(value: str) -> str:
     cleaned = re.sub(r"https?://\S+", " ", cleaned)
     cleaned = re.sub(r"\bnews\.google\.com\b", " ", cleaned, flags=re.IGNORECASE)
     return cleaned.lower()
+
+
+def category_display_name(category: str) -> str:
+    return CATEGORY_LABELS.get(category, category)
+
+
+def signal_display_name(signal: str) -> str:
+    return SIGNAL_LABELS.get(signal, signal)
+
+
+def keyword_display_name(keyword: str) -> str:
+    return KEYWORD_LABELS.get(keyword, keyword)
+
+
+def format_keyword_list(keywords: list[str]) -> str:
+    if not keywords:
+        return "n/a"
+    return ", ".join(keyword_display_name(keyword) for keyword in keywords)
 
 
 def term_pattern(term: str) -> re.Pattern[str]:
@@ -509,24 +550,60 @@ def fetch_recent_alerts(conn: sqlite3.Connection, hours: int) -> list[dict]:
     return result
 
 
+def top_alerts_by_category(alerts: list[dict], limit: int = 10) -> dict[str, list[dict]]:
+    grouped: dict[str, list[dict]] = {}
+    for category in EVENT_CATEGORY_ORDER:
+        ranked = sorted(
+            [alert for alert in alerts if alert["category"] == category],
+            key=lambda item: (item["score"], item.get("published_at") or "", item["title"]),
+            reverse=True,
+        )
+        if ranked:
+            deduped: list[dict] = []
+            seen_links: set[str] = set()
+            for item in ranked:
+                link = item.get("link") or item.get("title")
+                if link in seen_links:
+                    continue
+                seen_links.add(link)
+                deduped.append(item)
+                if len(deduped) >= limit:
+                    break
+            grouped[category] = deduped
+    return grouped
+
+
 def render_report(alerts: list[dict], hours: int) -> str:
     lines = [f"# News Iterator Report", f"", f"Window: last {hours} hours"]
     if not alerts:
         lines.append("\nNo alerts in the selected window.")
         return "\n".join(lines) + "\n"
 
-    current_category = None
-    for alert in alerts:
-        if alert["category"] != current_category:
-            current_category = alert["category"]
-            lines.append(f"\n## {current_category}")
-        lines.append(f"- [{alert['title']}]({alert['link']})")
-        lines.append(
-            f"  source: {alert['source']} | signal: `{alert['signal']}` | score: `{alert['score']}`"
-        )
-        lines.append(f"  watchlists: {', '.join(alert['watchlists']) or 'n/a'}")
-        lines.append(f"  entities: {', '.join(alert['entities']) or 'n/a'}")
-        lines.append(f"  keywords: {', '.join(alert['keywords']) or 'n/a'}")
+    summary = summarize_alert_categories(alerts)
+    if summary:
+        lines.append("")
+        lines.append("## Event Summary")
+        lines.append("")
+        lines.append("| 类别 | 条数 | 总分 | 高频关键词 |")
+        lines.append("| --- | ---: | ---: | --- |")
+        for item in summary:
+            lines.append(
+                f"| {category_display_name(item['category'])} | {item['alert_count']} | {item['total_score']} | {format_keyword_list(item.get('top_keywords', []))} |"
+            )
+
+    grouped = top_alerts_by_category(alerts, limit=10)
+    for category in EVENT_CATEGORY_ORDER:
+        items = grouped.get(category, [])
+        if not items:
+            continue
+        lines.append(f"\n## {category_display_name(category)} Top 10 信息源")
+        for index, alert in enumerate(items, start=1):
+            lines.append(f"{index}. [{alert['title']}]({alert['link']})")
+            lines.append(
+                f"   - 来源: {alert['source']} | 信号: `{signal_display_name(alert['signal'])}` | 分值: `{alert['score']}`"
+            )
+            lines.append(f"   - 实体: {', '.join(alert['entities']) or 'n/a'}")
+            lines.append(f"   - 关键词: {format_keyword_list(alert['keywords'])}")
     return "\n".join(lines) + "\n"
 
 
@@ -682,7 +759,7 @@ def build_event_watchlists_payload(alerts: list[dict], base_watchlists: dict, ho
     groups["event_focus_core"] = rank_pool_items(all_stats, symbol_index, limit=12, category="event_focus_core")
 
     category_summary = summarize_alert_categories(alerts)
-    for category in ["huge_conflict", "huge_future", "huge_name_release"]:
+    for category in EVENT_CATEGORY_ORDER:
         category_alerts = [alert for alert in alerts if alert["category"] == category]
         if not category_alerts:
             continue
@@ -754,6 +831,7 @@ def build_event_watchlists_payload(alerts: list[dict], base_watchlists: dict, ho
         "generated_at": datetime.now(UTC).isoformat(),
         "lookback_hours": hours,
         "summary": category_summary,
+        "top_alerts": top_alerts_by_category(alerts, limit=10),
         "default_report_groups": list(dict.fromkeys(default_report_groups)),
         "groups": {name: items for name, items in groups.items() if items},
     }
@@ -770,17 +848,6 @@ def render_event_watchlists(payload: dict) -> str:
         return ""
 
     lines = ["\n## Event Pools"]
-    summary = payload.get("summary", [])
-    if summary:
-        lines.append("")
-        lines.append("| Category | Alerts | Total Score | Top Keywords |")
-        lines.append("| --- | ---: | ---: | --- |")
-        for item in summary:
-            keywords = ", ".join(item.get("top_keywords", [])) or "n/a"
-            lines.append(
-                f"| {item['category']} | {item['alert_count']} | {item['total_score']} | {keywords} |"
-            )
-
     for group_name in payload.get("default_report_groups", []):
         items = groups.get(group_name, [])
         if not items:
