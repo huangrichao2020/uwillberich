@@ -6,6 +6,9 @@ metadata: {"openclaw":{"emoji":"📈","homepage":"https://github.com/huangrichao
 
 # A-Share Decision Desk
 
+Author: 超超
+Contact: `grdomai43881@gmail.com`
+
 ## Overview
 
 Use this skill for decision-oriented A-share analysis. The goal is not to explain the market mechanically, but to convert today’s tape and overnight developments into a concrete next-session plan.

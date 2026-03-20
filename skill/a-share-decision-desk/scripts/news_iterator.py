@@ -555,7 +555,11 @@ def top_alerts_by_category(alerts: list[dict], limit: int = 10) -> dict[str, lis
     for category in EVENT_CATEGORY_ORDER:
         ranked = sorted(
             [alert for alert in alerts if alert["category"] == category],
-            key=lambda item: (item["score"], item.get("published_at") or "", item["title"]),
+            key=lambda item: (
+                item["score"],
+                item.get("published_at") or "",
+                item.get("title") or item.get("headline") or "",
+            ),
             reverse=True,
         )
         if ranked:

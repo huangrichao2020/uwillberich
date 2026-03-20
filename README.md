@@ -2,6 +2,9 @@
 
 Reusable materials for a discretionary A-share decision workflow:
 
+Author: 超超
+Contact: `grdomai43881@gmail.com`
+
 - `prompts/persona-prompt.md`: decision-maker persona prompt
 - `prompts/trading-mode-prompt.md`: daily execution-mode prompt
 - `skill/a-share-decision-desk/`: installable Codex skill

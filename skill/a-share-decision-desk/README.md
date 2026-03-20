@@ -4,6 +4,9 @@ A ClawHub/OpenClaw-ready skill for next-session A-share discretionary planning.
 
 It is designed for one job: turn today’s tape and overnight developments into a concrete game plan for tomorrow’s open.
 
+Author: 超超
+Contact: `grdomai43881@gmail.com`
+
 GitHub is the main source of truth for installation and updates:
 
 ```text
