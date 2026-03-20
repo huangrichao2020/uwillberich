@@ -1,0 +1,17 @@
+{
+  "user": {
+    "owner_name": "超超",
+    "owner_email": "grdomai43881@gmail.com"
+  },
+  "project": {
+    "skill_name": "uwillberich",
+    "skill_slug": "uwillberich",
+    "github_repo": "https://github.com/huangrichao2020/uwillberich",
+    "reports_repo": "https://github.com/huangrichao2020/uwillberich-reports",
+    "pages_base": "https://huangrichao2020.github.io/uwillberich-reports/"
+  },
+  "policy": {
+    "handoff_refresh_interval": "60 minutes",
+    "handoff_skip_if_idle": "skip updates when no dialogue activity in the last 60 minutes"
+  }
+}

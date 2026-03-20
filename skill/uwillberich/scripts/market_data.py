@@ -3,14 +3,19 @@
 from __future__ import annotations
 
 import json
+import time
 import urllib.parse
 import urllib.request
+from http.client import RemoteDisconnected
 from typing import Iterable
+from urllib.error import HTTPError, URLError
 
 from runtime_config import load_runtime_env, require_em_api_key
 
 
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
+DEFAULT_RETRY_ATTEMPTS = 3
+DEFAULT_RETRY_BACKOFF_SECONDS = 1.0
 
 
 load_runtime_env()
@@ -19,8 +24,19 @@ require_em_api_key(script_hint="python3 skill/uwillberich/scripts/runtime_config
 
 def _get_text(url: str, encoding: str = "utf-8") -> str:
     request = urllib.request.Request(url, headers=DEFAULT_HEADERS)
-    with urllib.request.urlopen(request, timeout=10) as response:
-        return response.read().decode(encoding, errors="replace")
+    last_error: Exception | None = None
+    for attempt in range(1, DEFAULT_RETRY_ATTEMPTS + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=10) as response:
+                return response.read().decode(encoding, errors="replace")
+        except (HTTPError, URLError, TimeoutError, RemoteDisconnected, ConnectionResetError) as exc:
+            last_error = exc
+            if attempt >= DEFAULT_RETRY_ATTEMPTS:
+                break
+            time.sleep(DEFAULT_RETRY_BACKOFF_SECONDS * attempt)
+    if last_error is not None:
+        raise last_error
+    raise RuntimeError(f"failed to fetch url: {url}")
 
 
 def _get_json(url: str) -> dict:

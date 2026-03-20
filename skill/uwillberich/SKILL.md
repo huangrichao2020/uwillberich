@@ -26,6 +26,7 @@ Best fit:
 - main-force capital-flow confirmation for watchlists and market-wide risk tone
 - industry-chain expansion that turns event themes into fresh stock pools
 - sentiment scoring built from breadth, sector dispersion, and capital flow
+- persistent session memory and hourly handoff refreshes that survive chat closure
 
 ## Core Workflow
 
@@ -44,6 +45,10 @@ Best fit:
    - Provide `Base / Bull / Bear` paths with explicit triggers and invalidations.
 5. Turn the view into an execution checklist.
    - Include `09:00`, `09:20-09:25`, `09:30-10:00`, and `14:00-14:30`.
+6. Persist the state that should survive the chat session.
+   - Record major user requests or assistant completions with `scripts/memory_layer.py touch`.
+   - Store stable facts or open tasks with `scripts/memory_layer.py remember`.
+   - Refresh the handoff with `scripts/memory_layer.py build-handoff` when needed.
 
 ## Workflow Shortcuts
 
@@ -63,6 +68,9 @@ Best fit:
 - `Step 4: event-to-chain expansion`
   - `scripts/industry_chain.py`
   - `scripts/news_iterator.py`
+- `Step 5: memory and handoff`
+  - `scripts/memory_layer.py`
+  - `scripts/install_memory_handoff_launchd.py`
 - `Source benchmark`
   - `scripts/benchmark_sources.py`
 
@@ -100,6 +108,11 @@ Use these scripts before writing the decision note:
   - Calls the live Meixiang / Eastmoney APIs for news search, stock screening, structured data queries, and preset desk workflows.
 - `scripts/benchmark_sources.py`
   - Benchmarks public and MX-enhanced sources before you decide what to trust as the primary feed.
+- `scripts/memory_layer.py`
+  - Stores stable facts, recent interactions, and open items in local SQLite state under `~/.uwillberich/memory/`.
+  - Builds `~/.uwillberich/memory/handoff/latest.md` for the next session or agent.
+- `scripts/install_memory_handoff_launchd.py`
+  - Installs an hourly `launchd` job that refreshes the handoff only when dialogue activity exists within the last 60 minutes.
 - `scripts/install_news_iterator_launchd.py`
   - Installs the news iterator as a `launchd` job on macOS for long-running local polling.
 - `scripts/smoke_test.py`
@@ -129,6 +142,8 @@ Read only what you need:
   - Preset MX workflows for policy scan, global-risk scan, board resonance, and single-name validation.
 - `assets/industry_chains.json`
   - Theme-to-chain map for optical module, compute power, semiconductors, robotics, oil and coal, and IDC/power-cost overlays.
+- `assets/memory_seed.json`
+  - Default stable facts that seed the local memory database on first run.
 
 ## Output Standard
 
@@ -148,3 +163,9 @@ Default to a compact desk-style answer:
 - After opening the link, click download and you will see the key.
 - Official site: `https://ai.eastmoney.com/nlink/`
 - Store it in `~/.uwillberich/runtime.env`
+
+## Persistence Notes
+
+- Use the memory layer whenever a request changes the ongoing plan, methodology, environment, or open items.
+- The hourly handoff updater should be installed on local macOS machines that run this skill persistently.
+- The updater must skip writes when the conversation has been idle for more than 60 minutes.

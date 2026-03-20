@@ -77,11 +77,33 @@ def classify_group_tone(group_flow_rows: list[dict]) -> tuple[str, int]:
     return tone, score
 
 
-def build_sentiment_snapshot(group_flow_rows: list[dict] | None = None) -> dict:
-    indices = fetch_index_snapshot()
-    top_sectors = fetch_sector_movers(limit=5, rising=True)
-    bottom_sectors = fetch_sector_movers(limit=5, rising=False)
-    flow_snapshot = fetch_market_flow_snapshot()
+def safe_fetch_list(fetcher, *args, **kwargs) -> list[dict]:
+    try:
+        return fetcher(*args, **kwargs)
+    except Exception:
+        return []
+
+
+def safe_fetch_dict(fetcher, *args, **kwargs) -> dict:
+    try:
+        return fetcher(*args, **kwargs)
+    except Exception:
+        return {}
+
+
+def build_sentiment_snapshot(
+    group_flow_rows: list[dict] | None = None,
+    indices: list[dict] | None = None,
+    top_sectors: list[dict] | None = None,
+    bottom_sectors: list[dict] | None = None,
+    flow_snapshot: dict | None = None,
+) -> dict:
+    indices = indices if indices is not None else safe_fetch_list(fetch_index_snapshot)
+    top_sectors = top_sectors if top_sectors is not None else safe_fetch_list(fetch_sector_movers, limit=5, rising=True)
+    bottom_sectors = (
+        bottom_sectors if bottom_sectors is not None else safe_fetch_list(fetch_sector_movers, limit=5, rising=False)
+    )
+    flow_snapshot = flow_snapshot if flow_snapshot is not None else safe_fetch_dict(fetch_market_flow_snapshot)
     breadth = compute_breadth(indices)
     top_avg = safe_avg([item.get("change_pct") for item in top_sectors])
     bottom_avg = safe_avg([item.get("change_pct") for item in bottom_sectors])

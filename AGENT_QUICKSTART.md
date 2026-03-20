@@ -51,6 +51,8 @@ git clone https://github.com/huangrichao2020/uwillberich.git && cd uwillberich &
 - score the tape with breadth + capital-flow sentiment
 - cross-check watchlists against main-force inflow and outflow lists
 - append those event pools automatically to the brief and checklist
+- persist stable memory and recent interactions in local SQLite state
+- generate a rolling handoff document for the next session or agent
 - call Meixiang / Eastmoney live APIs for news search, stock screening, and structured data queries
 - run preset desk workflows that map `Step 1 / Step 2 / Step 3` into repeatable commands
 - benchmark public and MX sources before assigning a source as primary
@@ -99,6 +101,9 @@ python3 ~/.codex/skills/uwillberich/scripts/benchmark_sources.py
 python3 ~/.codex/skills/uwillberich/scripts/news_iterator.py poll
 python3 ~/.codex/skills/uwillberich/scripts/morning_brief.py
 python3 ~/.codex/skills/uwillberich/scripts/opening_window_checklist.py
+python3 ~/.codex/skills/uwillberich/scripts/memory_layer.py status --json
+python3 ~/.codex/skills/uwillberich/scripts/memory_layer.py touch --role user --summary 'Asked for a next-session A-share plan'
+python3 ~/.codex/skills/uwillberich/scripts/memory_layer.py build-handoff --force
 ```
 
 ## Long-Running News Iterator
@@ -114,6 +119,20 @@ On Linux or other environments:
 ```bash
 nohup python3 ~/.codex/skills/uwillberich/scripts/news_iterator.py loop --interval-seconds 300 > ~/uwillberich-news-iterator.log 2>&1 &
 ```
+
+## Hourly Handoff Updater
+
+On macOS:
+
+```bash
+python3 ~/.codex/skills/uwillberich/scripts/install_memory_handoff_launchd.py install
+```
+
+Behavior:
+
+- updates `~/.uwillberich/memory/handoff/latest.md` every hour
+- skips updates when no dialogue activity exists within the last 60 minutes
+- reads and writes persistent memory in `~/.uwillberich/memory/`
 
 ## Output State
 
@@ -134,3 +153,4 @@ Generated artifact directories:
 
 - `~/.uwillberich/data/mx-presets/`
 - `~/.uwillberich/data/benchmarks/`
+- `~/.uwillberich/memory/`

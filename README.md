@@ -33,7 +33,11 @@ The repo is organized around a direct desk workflow instead of disconnected tool
    - `industry_chain.py`
    - `news_iterator.py`
    - `opening_window_checklist.py`
-5. `Source health check`
+5. `Step 5: Persistent memory and handoff`
+   - `memory_layer.py touch`
+   - `memory_layer.py build-handoff`
+   - `install_memory_handoff_launchd.py`
+6. `Source health check`
    - `benchmark_sources.py`
 
 ## GitHub Source Of Truth
@@ -122,6 +126,8 @@ All scripts live under `skill/uwillberich/scripts/` and use only the Python stan
 - `opening_window_checklist.py`: build an opening decision sheet
 - `news_iterator.py`: poll public news and auto-build event-driven stock pools
 - `install_news_iterator_launchd.py`: install the message iterator as a local macOS job
+- `memory_layer.py`: persistent SQLite memory plus handoff document builder
+- `install_memory_handoff_launchd.py`: install the hourly handoff updater on macOS
 
 ## Example Usage
 
@@ -142,11 +148,17 @@ python3 skill/uwillberich/scripts/benchmark_sources.py
 python3 skill/uwillberich/scripts/morning_brief.py --groups core10 tech_repair
 python3 skill/uwillberich/scripts/news_iterator.py poll
 python3 skill/uwillberich/scripts/morning_brief.py
+python3 skill/uwillberich/scripts/memory_layer.py status --json
+python3 skill/uwillberich/scripts/memory_layer.py touch --role user --summary 'Asked for next-session plan'
+python3 skill/uwillberich/scripts/memory_layer.py build-handoff --force
+python3 skill/uwillberich/scripts/install_memory_handoff_launchd.py install
 ```
 
 ## Notes
 
 - Market endpoints can change or throttle. Use the scripts as fast data collectors, then verify high-stakes conclusions with official or primary news sources.
 - Generated benchmark and preset artifacts default to `~/.uwillberich/data/`.
+- Persistent memory lives under `~/.uwillberich/memory/`.
+- The handoff updater refreshes `~/.uwillberich/memory/handoff/latest.md` once per hour, but only when dialogue activity exists within the last 60 minutes.
 - On monthly `LPR` days, the workflow assumes the `9:00` release window.
-- On macOS, use `install_news_iterator_launchd.py`; on Linux or other environments, use `nohup` or the local scheduler of your choice.
+- On macOS, use `install_news_iterator_launchd.py` and `install_memory_handoff_launchd.py`; on Linux or other environments, use `nohup` or the local scheduler of your choice.

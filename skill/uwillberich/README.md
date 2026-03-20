@@ -23,6 +23,7 @@ https://github.com/huangrichao2020/uwillberich
 - "Use the cross-cycle core stock pool to narrow tomorrow's key observation list."
 - "In a war-oil shock regime, tell me which A-share groups benefit and which ones get hurt."
 - "Continuously watch public news and map major events into A-share watchlists."
+- "Persist session memory locally and generate a rolling handoff note for the next agent session."
 - "Run a preset `Step 1 / Step 2 / Step 3` desk workflow and save all artifacts."
 - "Benchmark which public and MX data sources are healthy before the open."
 
@@ -47,7 +48,10 @@ https://github.com/huangrichao2020/uwillberich
    - `scripts/industry_chain.py`
    - `scripts/news_iterator.py`
    - `scripts/opening_window_checklist.py`
-5. `Source benchmark`
+5. `Step 5: memory and handoff`
+   - `scripts/memory_layer.py`
+   - `scripts/install_memory_handoff_launchd.py`
+6. `Source benchmark`
    - `scripts/benchmark_sources.py`
 
 ## What This Skill Contains
@@ -74,6 +78,8 @@ https://github.com/huangrichao2020/uwillberich
 - `scripts/mx_toolkit.py`: CLI wrapper for real news search, stock screen, structured data queries, and desk presets
 - `scripts/benchmark_sources.py`: source latency / availability benchmark
 - `scripts/install_news_iterator_launchd.py`: macOS launchd installer for scheduled polling
+- `scripts/memory_layer.py`: local SQLite memory, interaction log, persistent facts, and handoff builder
+- `scripts/install_memory_handoff_launchd.py`: macOS launchd installer for hourly handoff refreshes
 - `scripts/smoke_test.py`: local smoke test for the bundled scripts
 
 ## Agent Install
@@ -152,6 +158,11 @@ python3 scripts/opening_window_checklist.py --groups tech_repair defensive_gauge
 python3 scripts/news_iterator.py poll
 python3 scripts/news_iterator.py report --hours 12
 python3 scripts/install_news_iterator_launchd.py install --interval-seconds 300
+python3 scripts/memory_layer.py status --json
+python3 scripts/memory_layer.py touch --role user --summary 'Asked for a handoff-safe workflow'
+python3 scripts/memory_layer.py remember --scope open_item --key next_step --value 'Refresh the pre-open note before 09:00'
+python3 scripts/memory_layer.py build-handoff --force
+python3 scripts/install_memory_handoff_launchd.py install
 python3 scripts/morning_brief.py
 python3 scripts/opening_window_checklist.py
 ```
@@ -172,6 +183,8 @@ clawhub publish /absolute/path/to/uwillberich --slug uwillberich --name "uwillbe
 - `EM_API_KEY` is mandatory for this skill.
 - The runtime helper automatically maps `EM_API_KEY` to the `MX_APIKEY` convention used by the public MX skills.
 - Preset and benchmark outputs default to `~/.uwillberich/data/`.
+- Persistent memory state defaults to `~/.uwillberich/memory/`.
+- The handoff updater refreshes `~/.uwillberich/memory/handoff/latest.md` once per hour, but skips the write when no dialogue activity exists in the last 60 minutes.
 - If `clawhub publish .` misreads the folder, use an absolute path or pass `--workdir` explicitly.
 - The opening-window script is intended for `09:00-10:00` use, especially the first 30 minutes after the A-share cash open.
 - For the larger quality pool, use `cross_cycle_anchor12` daily and reserve `cross_cycle_core` for weekly or phase-rotation review.
