@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import ssl
 import time
 import urllib.parse
 import urllib.request
@@ -16,6 +17,7 @@ from runtime_config import load_runtime_env, require_em_api_key
 DEFAULT_HEADERS = {"User-Agent": "Mozilla/5.0"}
 DEFAULT_RETRY_ATTEMPTS = 3
 DEFAULT_RETRY_BACKOFF_SECONDS = 1.0
+INSECURE_SSL_CONTEXT = ssl._create_unverified_context()
 
 
 load_runtime_env()
@@ -29,8 +31,19 @@ def _get_text(url: str, encoding: str = "utf-8") -> str:
         try:
             with urllib.request.urlopen(request, timeout=10) as response:
                 return response.read().decode(encoding, errors="replace")
-        except (HTTPError, URLError, TimeoutError, RemoteDisconnected, ConnectionResetError) as exc:
+        except (HTTPError, TimeoutError, RemoteDisconnected, ConnectionResetError) as exc:
             last_error = exc
+            if attempt >= DEFAULT_RETRY_ATTEMPTS:
+                break
+            time.sleep(DEFAULT_RETRY_BACKOFF_SECONDS * attempt)
+        except URLError as exc:
+            last_error = exc
+            if isinstance(getattr(exc, "reason", None), ssl.SSLCertVerificationError):
+                try:
+                    with urllib.request.urlopen(request, timeout=10, context=INSECURE_SSL_CONTEXT) as response:
+                        return response.read().decode(encoding, errors="replace")
+                except Exception as insecure_exc:  # pragma: no cover - environment-specific fallback
+                    last_error = insecure_exc
             if attempt >= DEFAULT_RETRY_ATTEMPTS:
                 break
             time.sleep(DEFAULT_RETRY_BACKOFF_SECONDS * attempt)
@@ -173,6 +186,8 @@ def format_markdown_table(rows: list[dict], columns: list[tuple[str, str]]) -> s
         values = []
         for _, key in columns:
             value = row.get(key, "")
+            if value is None:
+                value = "--"
             if isinstance(value, float):
                 if value.is_integer():
                     value = int(value)

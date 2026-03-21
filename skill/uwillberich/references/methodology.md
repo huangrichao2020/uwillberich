@@ -24,6 +24,60 @@ Use this chain as the base mental model:
 
 This does not mean every attention event becomes a trade. It means the real job is to judge where the event currently sits in the chain and whether it is accelerating or already entering distribution.
 
+## Human Nature Overlay
+
+Markets are not only pricing facts. They are pricing how groups of people relate to those facts.
+
+Use this translation layer:
+
+- facts are neutral until capital assigns meaning
+- the same event means different things to institutions, fast money, trapped holders, and late retail
+- what matters is not just whether an event is "positive" or "negative", but who feels forced to buy, who wants to sell, and who is emotionally trapped
+
+Practical translation:
+
+- demand = attention + narrative belief + fear of missing out + career pressure + recovery impulse
+- supply = profit-taking + trapped-holder selling + laggard rotation + large-holder distribution + forced selling
+
+The best trades usually happen when:
+
+- the narrative is becoming common, but not yet universally accepted
+- demand is still expanding faster than quality float supply
+- leaders still lead instead of laggards merely rotating
+
+The most dangerous phase appears when:
+
+- the crowd starts treating a temporary truth as a permanent truth
+- people speak in absolute terms
+- leaders stall while smaller same-theme names surge in sequence
+
+That is often the beginning of distribution rather than the continuation of accumulation.
+
+## Obsession And Board Life Cycle
+
+Every durable mainline carries some form of group obsession:
+
+- policy obsession
+- technology obsession
+- scarcity obsession
+- national-substitution obsession
+- recovery obsession after losses
+
+Track where the board sits in this human cycle:
+
+1. minority early-recognition
+2. institutional probing
+3. fast-money ignition
+4. retail consensus expansion
+5. crowd fixation
+6. leader stall and distribution
+
+The strategic stance changes with the phase:
+
+- early: be willing to be early and small
+- middle: let the crowd carry the move
+- late: sell into the crowd's certainty
+
 ## Market State Classifier
 
 Classify the tape into one of three states before discussing stock ideas.

@@ -213,7 +213,7 @@ def build_group_flow_scoreboard(watchlists: dict, groups: list[str], flow_lookup
         else:
             bias = "中性"
         leaders = inflow_hits if inflow_hits else outflow_hits
-        top_names = "、".join(flow["name"] for flow in leaders[:3]) or "n/a"
+        top_names = "、".join(flow["name"] for flow in leaders[:3]) or "暂无"
         scoreboard.append(
             {
                 "group": group,

@@ -77,6 +77,16 @@ def classify_group_tone(group_flow_rows: list[dict]) -> tuple[str, int]:
     return tone, score
 
 
+def display_group_tone(tone: str) -> str:
+    mapping = {
+        "mixed": "混合",
+        "defensive": "防御占优",
+        "growth": "成长占优",
+        "policy-growth": "政策成长共振",
+    }
+    return mapping.get(tone, tone)
+
+
 def safe_fetch_list(fetcher, *args, **kwargs) -> list[dict]:
     try:
         return fetcher(*args, **kwargs)
@@ -141,14 +151,18 @@ def build_sentiment_snapshot(
         {
             "component": "主力资金",
             "score": flow_score,
-            "detail": f"{flow_snapshot.get('main_net_yi')}亿" if flow_snapshot.get("main_net_yi") is not None else "n/a",
+            "detail": f"{flow_snapshot.get('main_net_yi')}亿" if flow_snapshot.get("main_net_yi") is not None else "暂缺",
         },
         {
             "component": "板块扩散",
             "score": dispersion_score,
-            "detail": f"强势板块均值 {top_avg}%，弱势板块均值 {bottom_avg}%",
+            "detail": (
+                f"强势板块均值 {top_avg}%，弱势板块均值 {bottom_avg}%"
+                if top_avg is not None and bottom_avg is not None
+                else "板块扩散数据暂缺"
+            ),
         },
-        {"component": "观察池风格", "score": group_score, "detail": group_tone},
+        {"component": "观察池风格", "score": group_score, "detail": display_group_tone(group_tone)},
     ]
 
     return {
