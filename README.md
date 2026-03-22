@@ -2,7 +2,7 @@
 
 Reusable materials for a discretionary A-share decision workflow:
 
-Author: 超超
+Author: 熊萌
 Contact: `grdomai43881@gmail.com`
 
 - `prompts/persona-prompt.md`: decision-maker persona prompt

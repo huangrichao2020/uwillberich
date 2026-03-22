@@ -6,7 +6,7 @@ metadata: {"openclaw":{"emoji":"📈","homepage":"https://github.com/huangrichao
 
 # uwillberich
 
-Author: 超超
+Author: 熊萌
 Contact: `grdomai43881@gmail.com`
 
 ## Overview

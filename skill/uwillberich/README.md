@@ -11,7 +11,7 @@ Boundary:
 - this skill does not own GitHub Pages deployment
 - HTML rendering and publishing belong to the repo-level `docs/` layer and the `uwillberich-reports` repo
 
-Author: 超超
+Author: 熊萌
 Contact: `grdomai43881@gmail.com`
 
 GitHub is the main source of truth for installation and updates:
