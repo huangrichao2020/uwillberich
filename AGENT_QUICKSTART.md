@@ -21,6 +21,7 @@ Boundary first:
 - `uwillberich` repo root
   - full workflow
   - use this if you need report generation plus HTML rendering inputs under `docs/`
+  - repo-level HTML enhancement now reads structured event payloads from `docs/report_data/` via `scripts/render_report_event_module.py`
 - `uwillberich-reports`
   - deployment target only
   - use this if you need to publish or host generated HTML on GitHub Pages
@@ -77,6 +78,18 @@ git clone https://github.com/huangrichao2020/uwillberich.git && cd uwillberich &
 - call Meixiang / Eastmoney live APIs for news search, stock screening, and structured data queries
 - run preset desk workflows that map `Step 1 / Step 2 / Step 3` into repeatable commands
 - benchmark public and MX sources before assigning a source as primary
+
+## Repo-Level HTML Flow
+
+If you are working at the repo root instead of only installing the skill, the standardized report page enhancement command is:
+
+```bash
+python3 scripts/render_report_event_module.py \
+  --data docs/report_data/2026-03-20-postclose-2026-03-23-event.json \
+  --desktop docs/reports/2026-03-20-postclose-2026-03-23-preopen.html \
+  --mobile docs/reports/2026-03-20-postclose-2026-03-23-mobile.html \
+  --publish-dir ../uwillberich-reports/reports
+```
 
 ## What The Skill Does Not Do
 

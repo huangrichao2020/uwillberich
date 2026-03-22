@@ -166,6 +166,8 @@ All scripts live under `skill/uwillberich/scripts/` and use only the Python stan
 - `memory_layer.py`: persistent SQLite memory plus handoff document builder
 - `install_memory_handoff_launchd.py`: install the hourly handoff updater on macOS
 - `docs/`: rendered HTML reports and static-page source artifacts for publishing
+- `scripts/render_report_event_module.py`: repo-level HTML enhancer that applies the standardized `盘后 + 盘前` title and structured event-news module from JSON data
+- `docs/report_data/`: structured event payloads used by the HTML enhancer
 - `skill/mx_selfselect/scripts/mx_selfselect.py`: query, add, and remove Eastmoney self-select names with natural-language requests
 
 ## Example Usage
@@ -191,6 +193,7 @@ python3 skill/uwillberich/scripts/memory_layer.py status --json
 python3 skill/uwillberich/scripts/memory_layer.py touch --role user --summary 'Asked for next-session plan'
 python3 skill/uwillberich/scripts/memory_layer.py build-handoff --force
 python3 skill/uwillberich/scripts/install_memory_handoff_launchd.py install
+python3 scripts/render_report_event_module.py --data docs/report_data/2026-03-20-postclose-2026-03-23-event.json --desktop docs/reports/2026-03-20-postclose-2026-03-23-preopen.html --mobile docs/reports/2026-03-20-postclose-2026-03-23-mobile.html --publish-dir ../uwillberich-reports/reports
 ```
 
 ## Notes
@@ -200,6 +203,7 @@ python3 skill/uwillberich/scripts/install_memory_handoff_launchd.py install
 - Persistent memory lives under `~/.uwillberich/memory/`.
 - The handoff updater refreshes `~/.uwillberich/memory/handoff/latest.md` once per hour, but only when dialogue activity exists within the last 60 minutes.
 - `skill/uwillberich` is the report-generation engine only; HTML rendering and GitHub Pages deployment belong to the repo-level `docs/` layer and the `uwillberich-reports` repo.
+- Repo-level HTML enhancement now uses structured JSON event payloads under `docs/report_data/`; do not keep hand-editing the event-news block inside `docs/reports/*.html` once a payload file exists.
 - `skill/mx_selfselect` is the execution-side companion for syncing chosen names into Eastmoney self-select after the report is already written.
 - Closed loop example:
   `python3 skill/mx_selfselect/scripts/mx_selfselect.py sync-groups --groups tech_repair defensive_gauge --dry-run`
