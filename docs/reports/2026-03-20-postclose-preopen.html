@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2026-03-20 A股盘后与 2026-03-23 盘前关注报告</title>
+    <meta
+      name="description"
+      content="2026-03-20 A股盘后总结与 2026-03-23 下个交易日盘前关注报告。"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="2026-03-20 A股盘后与 2026-03-23 盘前关注报告" />
+    <meta property="og:description" content="防御先行，科技择强修复。中东冲击、能源主线、CPO 活口、算力修复确认。" />
+    <meta property="og:url" content="https://huangrichao2020.github.io/uwillberich-reports/reports/2026-03-20-postclose-preopen.html" />
+    <meta property="og:image" content="https://huangrichao2020.github.io/uwillberich-reports/assets/report-cover-2026-03-20.svg" />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="2026-03-20 A股盘后与 2026-03-23 盘前关注报告" />
+    <meta name="twitter:description" content="防御先行，科技择强修复。中东冲击、能源主线、CPO 活口、算力修复确认。" />
+    <meta name="twitter:image" content="https://huangrichao2020.github.io/uwillberich-reports/assets/report-cover-2026-03-20.svg" />
+    <style>
+      :root {
+        --bg: #f7f3ea;
+        --paper: #fffdf8;
+        --panel: rgba(255, 255, 255, 0.85);
+        --text: #202733;
+        --muted: #5d6775;
+        --line: rgba(32, 39, 51, 0.12);
+        --accent: #b45309;
+        --accent-2: #0f766e;
+        --danger: #b91c1c;
+        --good: #047857;
+        --shadow: 0 24px 60px rgba(27, 31, 35, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB",
+          "Noto Sans SC", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(180, 83, 9, 0.18), transparent 22%),
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.12), transparent 28%),
+          linear-gradient(180deg, #fcfaf5 0%, var(--bg) 100%);
+      }
+
+      .page {
+        width: min(1180px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 32px 0 72px;
+      }
+
+      .hero,
+      .section,
+      .toc {
+        background: var(--panel);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 34px 36px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(180, 83, 9, 0.1);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(34px, 6vw, 64px);
+        line-height: 0.94;
+        letter-spacing: -0.045em;
+      }
+
+      .subtitle {
+        margin: 0;
+        max-width: 850px;
+        font-size: 18px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .meta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .metric {
+        padding: 16px 18px;
+        background: rgba(255, 253, 248, 0.92);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      .metric .label {
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .metric .value {
+        margin-top: 8px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 22px;
+        margin-top: 22px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 18px;
+        align-self: start;
+        padding: 24px;
+      }
+
+      .toc h2 {
+        margin: 0 0 14px;
+        font-size: 18px;
+      }
+
+      .toc a {
+        display: block;
+        padding: 8px 0;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      .toc a:hover {
+        color: var(--accent);
+      }
+
+      .content {
+        display: grid;
+        gap: 22px;
+      }
+
+      .section {
+        padding: 28px 30px;
+      }
+
+      .section h2 {
+        margin: 0 0 14px;
+        font-size: 28px;
+        letter-spacing: -0.03em;
+      }
+
+      .section h3 {
+        margin: 26px 0 12px;
+        font-size: 18px;
+      }
+
+      p,
+      li {
+        font-size: 15px;
+        line-height: 1.8;
+      }
+
+      p {
+        margin: 0 0 14px;
+        color: var(--text);
+      }
+
+      ul {
+        margin: 0 0 14px;
+        padding-left: 18px;
+      }
+
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+      }
+
+      .cover-strip {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .cover-card {
+        padding: 18px 20px;
+        border-radius: 22px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .cover-card.dark {
+        color: white;
+        background: linear-gradient(145deg, #1f2937 0%, #273444 100%);
+      }
+
+      .cover-card h3 {
+        margin: 0 0 8px;
+      }
+
+      .cover-card ul {
+        margin-top: 10px;
+      }
+
+      .summary-card {
+        padding: 18px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .summary-card strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+      }
+
+      th,
+      td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+        font-size: 14px;
+      }
+
+      th {
+        background: rgba(180, 83, 9, 0.07);
+        font-weight: 700;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .tag {
+        display: inline-flex;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .tag-accent {
+        color: var(--accent);
+        background: rgba(180, 83, 9, 0.1);
+      }
+
+      .tag-good {
+        color: var(--good);
+        background: rgba(4, 120, 87, 0.1);
+      }
+
+      .tag-danger {
+        color: var(--danger);
+        background: rgba(185, 28, 28, 0.1);
+      }
+
+      .callout {
+        padding: 16px 18px;
+        border-left: 4px solid var(--accent);
+        border-radius: 16px;
+        background: rgba(180, 83, 9, 0.08);
+      }
+
+      .footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .site-note {
+        margin-top: 8px;
+      }
+
+      code {
+        font-family: "IBM Plex Mono", "SFMono-Regular", monospace;
+        font-size: 0.94em;
+        padding: 2px 6px;
+        border-radius: 8px;
+        background: rgba(32, 39, 51, 0.07);
+      }
+
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .toc {
+          position: static;
+        }
+
+        .cover-strip {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          width: min(100vw - 18px, 1180px);
+          padding: 14px 0 40px;
+        }
+
+        .hero,
+        .toc,
+        .section {
+          border-radius: 22px;
+          padding: 22px;
+        }
+
+        th,
+        td {
+          padding: 10px 10px;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="hero">
+        <span class="eyebrow">超超盘前盘后笔记</span>
+        <h1>2026-03-20 盘后与 2026-03-23 盘前关注报告</h1>
+        <p class="subtitle">
+          这份报告基于 <code>uwillberich</code> 的收盘结构、观察池、
+          event overlay、MX 增强查询和开盘模板生成。当前主判断是：A 股仍处在
+          <strong>防御集中</strong> 状态，周一先看防御延续，再看科技最强分支能否把修复扩散出去。
+        </p>
+
+        <section class="meta-grid" aria-label="report meta">
+          <div class="metric">
+            <div class="label">报告日期</div>
+            <div class="value">2026-03-20</div>
+          </div>
+          <div class="metric">
+            <div class="label">下个交易日</div>
+            <div class="value">2026-03-23 周一</div>
+          </div>
+          <div class="metric">
+            <div class="label">市场状态</div>
+            <div class="value">抱团行情</div>
+          </div>
+          <div class="metric">
+            <div class="label">核心方向</div>
+            <div class="value">防御优先，科技择强修复</div>
+          </div>
+        </section>
+
+        <section class="cover-strip" aria-label="cover summary">
+          <div class="cover-card">
+            <h3>封面摘要</h3>
+            <p>
+              周一最重要的不是指数能不能翻红，而是市场叙事主导权究竟在
+              <strong>中国海油</strong> 还是 <strong>新易盛</strong> 手里。
+            </p>
+            <ul>
+              <li>防御延续：油气、煤炭、银行、电信继续强</li>
+              <li>科技修复：新易盛、华工科技继续强并带动浪潮、海光、曙光</li>
+              <li>继续回避：锂矿、小金属、磷化工、稀土、黄金</li>
+            </ul>
+          </div>
+          <div class="cover-card dark">
+            <h3>最先盯的 5 个锚</h3>
+            <ul>
+              <li>中国海油</li>
+              <li>中国石油</li>
+              <li>新易盛</li>
+              <li>华工科技</li>
+              <li>浪潮信息 / 海光信息 / 中科曙光</li>
+            </ul>
+          </div>
+        </section>
+      </header>
+
+      <div class="layout">
+        <aside class="toc">
+          <h2>目录</h2>
+          <a href="#postclose">一、盘后总结</a>
+          <a href="#leaders">二、核心观察股</a>
+          <a href="#events">三、事件驱动层</a>
+          <a href="#preopen">四、周一盘前关注</a>
+          <a href="#watch">五、周一重点观察板块</a>
+          <a href="#open-checklist">六、开盘观察清单</a>
+          <a href="#key-stocks">七、重点观察股</a>
+          <a href="#execution">八、执行建议</a>
+          <a href="#conclusion">九、一句话结论</a>
+        </aside>
+
+        <div class="content">
+          <section class="section" id="postclose">
+            <h2>一、2026-03-20 盘后总结</h2>
+            <div class="summary">
+              <div class="summary-card">
+                <strong>指数层</strong>
+                上证 <span class="tag tag-danger">-1.39%</span>，深成指
+                <span class="tag tag-danger">-2.02%</span>，科创50
+                <span class="tag tag-danger">-2.44%</span>。
+              </div>
+              <div class="summary-card">
+                <strong>广度层</strong>
+                沪市上涨/下跌 <code>257 / 2075</code>，深市
+                <code>241 / 2661</code>，典型个股普跌。
+              </div>
+              <div class="summary-card">
+                <strong>风格层</strong>
+                油气、煤炭、银行、电信占优，成长和高波动方向继续承压。
+              </div>
+            </div>
+
+            <h3>1. 指数与市场广度</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>指数</th>
+                  <th>收盘</th>
+                  <th>涨跌幅</th>
+                  <th>上涨家数</th>
+                  <th>下跌家数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>上证指数</td><td>4006.55</td><td>-1.39%</td><td>257</td><td>2075</td></tr>
+                <tr><td>深证成指</td><td>13901.57</td><td>-2.02%</td><td>241</td><td>2661</td></tr>
+                <tr><td>创业板指</td><td>3309.10</td><td>-1.11%</td><td>119</td><td>1266</td></tr>
+                <tr><td>沪深300</td><td>4583.25</td><td>-1.61%</td><td>37</td><td>258</td></tr>
+                <tr><td>科创50</td><td>1339.03</td><td>-2.44%</td><td>6</td><td>44</td></tr>
+                <tr><td>北证50</td><td>1329.56</td><td>-3.33%</td><td>13</td><td>286</td></tr>
+              </tbody>
+            </table>
+
+            <h3>2. 盘面定性</h3>
+            <ul>
+              <li>今天不是指数级崩盘，而是结构性很差的个股普跌。</li>
+              <li>盘面主导逻辑是中东冲突带来的能源与避险定价。</li>
+              <li>市场更接近 <code>抱团行情</code>，不是全面修复市。</li>
+              <li>指数并不能代表体感，真正难看的是中小票和高波动方向。</li>
+            </ul>
+
+            <h3>3. 强势与弱势板块</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>方向</th>
+                  <th>板块</th>
+                  <th>涨跌幅</th>
+                  <th>解读</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>强势</td><td>国资云概念</td><td>+1.85%</td><td>科技里少数逆势强的方向</td></tr>
+                <tr><td>强势</td><td>天然气</td><td>+0.88%</td><td>能源冲击的直接受益方向</td></tr>
+                <tr><td>强势</td><td>资源开采概念</td><td>+0.66%</td><td>上游资源受资金偏好</td></tr>
+                <tr><td>弱势</td><td>小金属概念</td><td>-4.86%</td><td>高位获利盘集中兑现</td></tr>
+                <tr><td>弱势</td><td>锂矿概念</td><td>-4.74%</td><td>成长资源双杀</td></tr>
+                <tr><td>弱势</td><td>磷化工</td><td>-4.60%</td><td>资源链补跌</td></tr>
+                <tr><td>弱势</td><td>黄金概念</td><td>-4.33%</td><td>并非所有避险逻辑都受益</td></tr>
+              </tbody>
+            </table>
+
+            <div class="callout">
+              今天真正领涨的是 <strong>油气 + 煤炭 + 银行 + 电信</strong>。
+              这叫防御集中，不叫市场全面回暖。
+            </div>
+          </section>
+
+          <section class="section" id="leaders">
+            <h2>二、核心观察股盘后状态</h2>
+
+            <h3>1. 防御与战争受益组</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>股票</th>
+                  <th>收盘价</th>
+                  <th>涨跌幅</th>
+                  <th>盘后解读</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>中国海油</td><td>42.24</td><td>+5.86%</td><td>战争溢价核心风向标</td></tr>
+                <tr><td>中国石油</td><td>12.48</td><td>+5.23%</td><td>油气中军确认防御逻辑</td></tr>
+                <tr><td>中国神华</td><td>49.47</td><td>+4.19%</td><td>高股息煤炭防御强化</td></tr>
+                <tr><td>陕西煤业</td><td>26.62</td><td>+3.90%</td><td>煤炭弹性扩散</td></tr>
+                <tr><td>工商银行</td><td>7.53</td><td>+1.89%</td><td>低波高股息仍被抱团</td></tr>
+                <tr><td>中国移动</td><td>98.59</td><td>+0.83%</td><td>电信防御仍有效</td></tr>
+              </tbody>
+            </table>
+
+            <h3>2. 科技修复组</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>股票</th>
+                  <th>收盘价</th>
+                  <th>涨跌幅</th>
+                  <th>盘后解读</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>新易盛</td><td>440.40</td><td>+2.20%</td><td>科技最强修复锚</td></tr>
+                <tr><td>华工科技</td><td>119.99</td><td>+4.54%</td><td>光模块扩散确认票</td></tr>
+                <tr><td>浪潮信息</td><td>61.40</td><td>-1.54%</td><td>算力链仍未完整修复</td></tr>
+                <tr><td>海光信息</td><td>222.63</td><td>-3.79%</td><td>高弹性成长承压</td></tr>
+                <tr><td>中科曙光</td><td>84.77</td><td>-3.11%</td><td>平台链修复不足</td></tr>
+                <tr><td>工业富联</td><td>50.46</td><td>-3.07%</td><td>AI 硬件制造没有接力</td></tr>
+              </tbody>
+            </table>
+
+            <h3>3. 结构结论</h3>
+            <ul>
+              <li>科技里当前最强的是 <code>CPO / 光模块</code>，不是整个算力链。</li>
+              <li>真正完整的防御主线是 <code>中国海油 / 中国石油 / 中国神华</code>。</li>
+              <li>周一如果科技要修复，必须从 <code>新易盛 / 华工科技</code> 扩散到 <code>浪潮信息 / 海光信息 / 中科曙光</code>。</li>
+            </ul>
+          </section>
+
+          <section class="section" id="events">
+            <h2>三、事件驱动层总结</h2>
+
+            <h3>1. 消息流强度</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>类别</th>
+                  <th>事件数</th>
+                  <th>总分</th>
+                  <th>关键词</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>巨大冲突（huge_conflict）</td><td>140</td><td>1347</td><td>原油、战争、能源</td></tr>
+                <tr><td>巨大前景（huge_future）</td><td>48</td><td>218</td><td>芯片、算力芯片、数据中心</td></tr>
+                <tr><td>巨头/名人发布（huge_name_release）</td><td>30</td><td>165</td><td>发布、亮相、推出</td></tr>
+              </tbody>
+            </table>
+
+            <h3>2. 解读</h3>
+            <ul>
+              <li><code>巨大冲突（huge_conflict）</code> 明显压倒其他事件流，当前最强叙事仍是中东冲突与能源扰动。</li>
+              <li><code>冲突受益池（event_focus_huge_conflict_benefit）</code> 全线确认，说明油气煤炭方向具备持续性。</li>
+              <li><code>冲突受损池（event_focus_huge_conflict_headwind）</code> 偏弱，说明算力、IDC、火电还在受约束。</li>
+              <li><code>巨大前景池（event_focus_huge_future）</code> 更像中期逻辑储备，暂时盖不过战争冲击的短线定价。</li>
+            </ul>
+
+            <h3>3. 中文财经口径反馈</h3>
+            <p>
+              中文财经资讯已经明确把 <strong>石油、煤炭、公用事业、光模块</strong>
+              识别为当日异动核心。市场并不缺“冲突是否影响A股”的认知，缺的是周一早盘到底交易
+              <strong>防御延续</strong> 还是 <strong>科技修复扩散</strong>。
+            </p>
+          </section>
+
+          <section class="section" id="preopen">
+            <h2>四、2026-03-23 盘前关注报告</h2>
+
+            <h3>1. 总体判断</h3>
+            <p>
+              下个交易日先按 <strong>防御优先，科技择强修复</strong> 处理。不是先赌全面反转，也不是简单追油气煤炭，而是看周一早盘资金是在继续强化防御，还是从最强科技分支向外扩散。
+            </p>
+
+            <h3>2. 三种路径</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>路径</th>
+                  <th>概率</th>
+                  <th>条件</th>
+                  <th>市场表现</th>
+                  <th>应对</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>基准情景：防御延续</td>
+                  <td>55%</td>
+                  <td>周末冲突无明显缓和，油价维持高位</td>
+                  <td>油气、煤炭、银行、电信继续偏强</td>
+                  <td>继续按防御市处理</td>
+                </tr>
+                <tr>
+                  <td>乐观情景：科技修复扩散</td>
+                  <td>25%</td>
+                  <td>局势边际缓和，油价回落，风险偏好改善</td>
+                  <td><code>新易盛 / 华工科技</code> 继续强，算力平台跟上</td>
+                  <td>只做最强科技修复</td>
+                </tr>
+                <tr>
+                  <td>风险情景：冲击再升级</td>
+                  <td>20%</td>
+                  <td>周末再出霍尔木兹、油气设施、航运中断类消息</td>
+                  <td>防御继续抱团，成长再被压一轮</td>
+                  <td>回避高弹性补跌方向</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="section" id="watch">
+            <h2>五、周一最值得关注的板块</h2>
+
+            <h3>1. 第一优先：战争受益与防御验证</h3>
+            <ul>
+              <li>石油石化</li>
+              <li>煤炭</li>
+              <li>银行</li>
+              <li>电信</li>
+            </ul>
+            <p>代表股：<code>中国海油 / 中国石油 / 中国神华 / 陕西煤业 / 工商银行 / 中国移动</code></p>
+
+            <h3>2. 第二优先：科技修复最强分支</h3>
+            <ul>
+              <li>CPO</li>
+              <li>光模块</li>
+              <li>光通信设备</li>
+            </ul>
+            <p>代表股：<code>新易盛 / 华工科技</code></p>
+
+            <h3>3. 第三优先：修复扩散确认层</h3>
+            <ul>
+              <li>服务器</li>
+              <li>国产算力</li>
+              <li>平台链</li>
+            </ul>
+            <p>代表股：<code>浪潮信息 / 海光信息 / 中科曙光</code></p>
+
+            <h3>4. 暂不优先</h3>
+            <p>
+              <code>锂矿 / 小金属 / 磷化工 / 黄金 / 稀土永磁</code>
+              周五更像高位兑现和被动杀跌。周一即使反抽，也先按技术性自救，不先按新主线处理。
+            </p>
+          </section>
+
+          <section class="section" id="open-checklist">
+            <h2>六、周一开盘观察清单</h2>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>时间</th>
+                  <th>看什么</th>
+                  <th>强信号</th>
+                  <th>弱信号</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>09:00</td>
+                  <td>政策与增量催化</td>
+                  <td>有新增明确支持性政策</td>
+                  <td>无政策且政策敏感板块偏弱</td>
+                </tr>
+                <tr>
+                  <td>09:20-09:25</td>
+                  <td>集合竞价领导权</td>
+                  <td><code>新易盛 / 华工科技</code> 不弱，科技修复仍活</td>
+                  <td>只有油气煤炭银行电信领先</td>
+                </tr>
+                <tr>
+                  <td>09:30-10:00</td>
+                  <td>昨收回补与指数支撑</td>
+                  <td>科技修复组至少两只翻回昨收</td>
+                  <td>只有防御红，成长继续水下</td>
+                </tr>
+                <tr>
+                  <td>10:00-10:30</td>
+                  <td>修复是否扩散</td>
+                  <td>从龙头扩散到更多科技中军</td>
+                  <td>只剩 2-3 只孤立强势股</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="callout">
+              周一最重要的不是指数是不是翻红，而是
+              <strong>谁在主导盘面叙事</strong>：
+              是 <code>中国海油</code> 继续带防御，还是 <code>新易盛</code>
+              把科技修复带扩散。
+            </div>
+          </section>
+
+          <section class="section" id="key-stocks">
+            <h2>七、周一重点观察股</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>角色</th>
+                  <th>股票</th>
+                  <th>作用</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>环境总风向</td><td>中国海油</td><td>看战争溢价是否继续主导市场</td></tr>
+                <tr><td>防御中军</td><td>中国石油</td><td>看油气逻辑是否扩散</td></tr>
+                <tr><td>防御确认</td><td>中国神华</td><td>看高股息煤炭是否继续抱团</td></tr>
+                <tr><td>防御确认</td><td>工商银行</td><td>看风险偏好是否仍低</td></tr>
+                <tr><td>防御确认</td><td>中国移动</td><td>看低波红利是否继续有效</td></tr>
+                <tr><td>科技龙头</td><td>新易盛</td><td>看科技修复是否真实</td></tr>
+                <tr><td>科技扩散</td><td>华工科技</td><td>看光模块是否从龙头走向中军</td></tr>
+                <tr><td>修复确认</td><td>浪潮信息</td><td>看算力链是否开始跟随</td></tr>
+                <tr><td>修复确认</td><td>海光信息</td><td>看高弹性是否回暖</td></tr>
+                <tr><td>修复确认</td><td>中科曙光</td><td>看平台链是否补涨</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="section" id="execution">
+            <h2>八、执行建议</h2>
+
+            <h3>执行</h3>
+            <ul>
+              <li>先看相对强度，不看跌幅榜抄底。</li>
+              <li>先看 <code>中国海油</code> 和 <code>新易盛</code> 谁在主导市场叙事。</li>
+              <li>科技只做最强分支，不做全面铺开。</li>
+              <li>把防御票当环境指示器，不只是交易标的。</li>
+            </ul>
+
+            <h3>回避</h3>
+            <ul>
+              <li>不先抄 <code>锂矿 / 小金属 / 磷化工 / 稀土 / 黄金</code>。</li>
+              <li>不把油服小票脉冲误判成完整新主线。</li>
+              <li>不因为指数翻红就判断市场转暖。</li>
+              <li>没有扩散确认前，不把局部强势当成全面科技修复。</li>
+            </ul>
+          </section>
+
+          <section class="section" id="conclusion">
+            <h2>九、一句话结论</h2>
+            <p>
+              <strong>
+                2026-03-23 周一，A 股更大概率仍先走“防御优先”的结构。真正值得观察的不是指数能不能红，而是
+                <code>新易盛 / 华工科技</code> 能否把修复扩散到
+                <code>浪潮信息 / 海光信息 / 中科曙光</code>；如果做不到，市场就仍然在交易
+                <code>中国海油 / 中国石油 / 中国神华</code> 这条战争与避险主线。
+              </strong>
+            </p>
+            <p class="footer">
+              本页由本地脚本产出：
+              <code>fetch_market_snapshot.py</code>,
+              <code>morning_brief.py</code>,
+              <code>news_iterator.py</code>,
+              <code>opening_window_checklist.py</code>、
+              <code>mx_toolkit.py</code>.
+            </p>
+            <p class="footer site-note">
+              © 2026 超超盘前盘后笔记. 保留所有权利. 本网站仅供学习交流使用.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

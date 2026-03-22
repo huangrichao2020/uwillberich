@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">2026-03-20 A股盘后与2026-03-23盘前关注报告</title>
+  <desc id="desc">防御先行，科技择强修复。中东冲击、能源主线、CPO活口。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8ed" />
+      <stop offset="52%" stop-color="#f5ead5" />
+      <stop offset="100%" stop-color="#e8f2ef" />
+    </linearGradient>
+    <radialGradient id="glowA" cx="0%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#de7e1b" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#de7e1b" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowB" cx="100%" cy="0%" r="100%">
+      <stop offset="0%" stop-color="#0f766e" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#0f766e" stop-opacity="0" />
+    </radialGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="28" flood-color="#17202a" flood-opacity="0.12" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glowA)" />
+  <rect width="1200" height="630" fill="url(#glowB)" />
+
+  <circle cx="1068" cy="118" r="120" fill="#ffffff" fill-opacity="0.72" />
+  <circle cx="1108" cy="160" r="56" fill="#d7791f" fill-opacity="0.18" />
+  <circle cx="154" cy="524" r="148" fill="#0f766e" fill-opacity="0.08" />
+
+  <g filter="url(#shadow)">
+    <rect x="58" y="54" width="1084" height="522" rx="34" fill="#fffdf8" fill-opacity="0.82" />
+  </g>
+
+  <g font-family="'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif">
+    <rect x="90" y="88" width="246" height="42" rx="21" fill="#f5d9bc" />
+      <text x="113" y="116" font-size="20" font-weight="700" fill="#9a4a11">超超盘前盘后笔记</text>
+
+    <text x="90" y="196" font-size="74" font-weight="800" fill="#1f2937">防御先行</text>
+    <text x="90" y="280" font-size="74" font-weight="800" fill="#1f2937">科技择强修复</text>
+
+    <text x="90" y="340" font-size="28" font-weight="500" fill="#5f6875">
+      2026-03-20 盘后总结  ·  2026-03-23 盘前关注
+    </text>
+    <text x="90" y="386" font-size="26" font-weight="500" fill="#5f6875">
+      中东冲击、能源主线、防御抱团、CPO 活口、算力修复确认
+    </text>
+
+    <g>
+      <rect x="90" y="434" width="210" height="88" rx="24" fill="#fff7ed" stroke="#efd6bf" />
+      <text x="116" y="466" font-size="18" font-weight="700" fill="#9a4a11">市场状态</text>
+      <text x="116" y="503" font-size="28" font-weight="800" fill="#1f2937">抱团行情</text>
+    </g>
+
+    <g>
+      <rect x="320" y="434" width="168" height="88" rx="24" fill="#f3faf8" stroke="#d3ece7" />
+      <text x="346" y="466" font-size="18" font-weight="700" fill="#0f766e">上证指数</text>
+      <text x="346" y="503" font-size="28" font-weight="800" fill="#1f2937">4006.55</text>
+    </g>
+
+    <g>
+      <rect x="508" y="434" width="168" height="88" rx="24" fill="#fff4f2" stroke="#efd4cf" />
+      <text x="534" y="466" font-size="18" font-weight="700" fill="#b42318">涨跌幅</text>
+      <text x="534" y="503" font-size="28" font-weight="800" fill="#b42318">-1.39%</text>
+    </g>
+
+    <g>
+      <rect x="716" y="124" width="364" height="352" rx="28" fill="#1f2937" fill-opacity="0.96" />
+      <text x="746" y="176" font-size="22" font-weight="700" fill="#f5f7fa">周一最先盯的 5 个点</text>
+
+      <rect x="746" y="204" width="148" height="34" rx="17" fill="#d7791f" fill-opacity="0.18" />
+      <text x="772" y="227" font-size="17" font-weight="700" fill="#ffd6af">防御风向标</text>
+      <text x="746" y="266" font-size="28" font-weight="800" fill="#ffffff">中国海油 / 中国石油</text>
+
+      <rect x="746" y="298" width="148" height="34" rx="17" fill="#0f766e" fill-opacity="0.22" />
+      <text x="776" y="321" font-size="17" font-weight="700" fill="#baf0e5">科技活口</text>
+      <text x="746" y="360" font-size="28" font-weight="800" fill="#ffffff">新易盛 / 华工科技</text>
+
+      <rect x="746" y="392" width="168" height="34" rx="17" fill="#ffffff" fill-opacity="0.12" />
+      <text x="776" y="415" font-size="17" font-weight="700" fill="#ebedf0">修复确认层</text>
+      <text x="746" y="454" font-size="24" font-weight="700" fill="#ffffff">浪潮 / 海光 / 曙光</text>
+    </g>
+
+    <text x="90" y="558" font-size="18" font-weight="600" fill="#7a8492">
+      结论：先看油气煤炭银行电信是否继续主导，再看 CPO 能否把修复扩散到算力平台链。
+    </text>
+  </g>
+</svg>

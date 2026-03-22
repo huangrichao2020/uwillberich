@@ -1,0 +1,361 @@
+{
+  "title_left": "3月20日盘后",
+  "title_right": "3月23日盘前",
+  "event": {
+    "intro": "过去 24 小时里，外部消息仍然以中东冲突为主导，但真正值得交易的不是“知道新闻”，而是把新闻翻译成 会影响哪些板块、哪些龙头最容易承接、哪条线更可能走出持续性 。",
+    "summary": [
+      {
+        "label": "巨大冲突",
+        "count": 216,
+        "score": 2016,
+        "keywords": "战争、原油、能源"
+      },
+      {
+        "label": "巨大前景",
+        "count": 70,
+        "score": 320,
+        "keywords": "芯片、算力、机器人"
+      },
+      {
+        "label": "巨头名人",
+        "count": 39,
+        "score": 213,
+        "keywords": "亮相、发布、宣布"
+      }
+    ],
+    "outlook": [
+      {
+        "title": "消息综合结论",
+        "text": "冲突线决定风险偏好和能源定价，前景线决定中期弹性，巨头名人线决定短期催化。把三类消息合并看，最容易反复有行情的方向已经收敛到少数几条主线。"
+      },
+      {
+        "title": "未来最可能有行情的板块",
+        "text": "石油天然气 / 油运，光模块 / CPO（共封装光学）/ AI 服务器，人形机器人 / AI 芯片 / 自动驾驶，这三条线的消息密度、映射度和延展性都最强。"
+      },
+      {
+        "title": "优先观察龙头",
+        "text": "中国海油 / 中国石油 / 中远海能；新易盛 / 中际旭创 / 浪潮信息；鸣志电器 / 汇川技术 / 海光信息。短线看前两组，中线留意第三组。"
+      }
+    ],
+    "groups": [
+      {
+        "label": "巨大冲突",
+        "intro": "这组消息直接决定全球风险偏好、原油天然气价格和运输安全，是最容易立刻传导到 A 股能源、油运和军工链的外部变量。",
+        "items": [
+          {
+            "title": "Iran hits Gulf energy sites, escalating war, as U.S. mulls sanctions rollback",
+            "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZm05M1lGcFZGVEVReFcyb3pUWjlEdjRhVHNEeHJYNGhMSHh2b0JLVVZ3eGFzdFNRcWFxekR0clBLNVlYRjl3VFNLYTZ3ZEZNRkwxcUdOamdTU1UzWGVQVXJ2SVBCYTJabmFfdEowZkk5SGotUzUzT0lPV0NSQTN4eUpNclg3QnNpQVpZ?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：伊朗袭击海湾能源设施，战争升级，美国考虑放松制裁。",
+            "impact_sectors": "石油石化 / 天然气 / 油运",
+            "leaders": "中国海油 / 中国石油 / 中远海能",
+            "source": "华盛顿邮报",
+            "score": 26
+          },
+          {
+            "title": "Pete Hegseth says \"largest strike package yet\" coming today in Iran war",
+            "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQT3Rtb2dwU0xxWVVBclg4cERXS0RoQWJqRFlmRWEtbk83dXdwU2RvOE9lV0NSdHJRc2dMY1Aycm1EUmRqdTVSdXlLZGZPS2Z1dXNJZDJRcUx3UGxPZFJKSTNhaFhUel9vM2UzdGpic1NDNlVoeGZ6ckU3enB6ZUhqQjU2UXVud9IBiwFBVV95cUxOcWVwTFVTa2hTVFFMaFFkWFFtUTduNnRLcFdtY3hEREJodHlRWVcwS1FfTE4tNnFOcUVGMkFCTklSOTQzbTJJQTJJZVE1bkpIM0dScmZyMEMzTWxLaWV4YnM4ckRhUlFQWm85djJEWmQzNzFQamVuTTdsRUxGWVhseXZiNDRPaG1iX0Nz?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：皮特·赫格塞思称，针对伊朗的“迄今最大规模打击”将于今天展开。",
+            "impact_sectors": "油气 / 军工 / 黄金避险",
+            "leaders": "中国海油 / 光启技术 / 中航光电",
+            "source": "CBS新闻",
+            "score": 23
+          },
+          {
+            "title": "Gas price soars 25% after strikes on Qatar hub",
+            "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9xbzhyMWZiNjFEcEl2SVMtSGdXbFdVWmNndWU2bkNxQS05YmpmaEFlcTgxbHZEQWpOdjZnVnVoM2lNRE9obVNBcGN0dnJnZmJVZnRXVU0tc2hCQQ?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：卡塔尔枢纽遭袭后，天然气价格飙升 25%。",
+            "impact_sectors": "天然气 / LNG（液化天然气）/ 煤炭替代",
+            "leaders": "广汇能源 / 新奥股份 / 中国神华",
+            "source": "BBC",
+            "score": 23
+          },
+          {
+            "title": "Strait of Hormuz Siege Leaves Sailors Dodging Missiles and GPS Jamming",
+            "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOMHVjMG51TlkxdVRSVV9iTWE4RHVaa1lRU3FHRm1mdE1WSlFodU5GUGh0ZWc1TEhTY1owOGVHOG5tS3phYjFtdG5QQVJ2Z3lhRnFRVVFLSWQ0dXlRTU5ocUFWNTZLTnlKVjlRWmRwTWlTYkFHQTlqVTI3UkpkR1Z0RXpvNWdnNi04WEI5SGpRa2UteEtzSVZ3akhFdw?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：霍尔木兹海峡陷入围困，船员躲避导弹与 GPS（全球定位系统）干扰。",
+            "impact_sectors": "油运 / 航运 / 军工",
+            "leaders": "中远海能 / 招商轮船 / 光启技术",
+            "source": "彭博",
+            "score": 23
+          },
+          {
+            "title": "On 20th day of war, Netanyahu says Iran can no longer enrich uranium, build missiles",
+            "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxNSkgzcVFSRHdwd3BNd3NXcjdJMmUtYkNuZEJ3Vnc2Um1VQlU1czJqWDlMa21iakRsajV5Yk1qS1oxSzROTUlXeHZqZ1o2NzUwQlA5UzhQVE1NQ0dfM1ZtNFByXzl6NWRBUk5CN3FMRTRCVkZBT2hIeWVPUVVkRWVSS25OeGpid0Z0RW1rTzhuakowUV96NFdmYlpjSlhYRWNkN09QYWRBZC1NaV94RzdiTzlDTdIBuAFBVV95cUxORkN6Q3dpTnRMeVIwbGF1TGE0NlJNd2w2RzRhV1dvWktuanZhd3hqc3dwZkpoZk9ZQnEwd05mS3hWQ0VIb2RZa2pnQnU0Mzl3S2c2R1NVdERkaFhMeWR6alRTVi1tV1FRN1Rqd2RwcUM2N0JFWmQtdFpSWGhqT3dGS3k2SFN5RDBQRGpOVmdwb2dySFJXaWR6dlM5RXZpS2drakxwZ0h3Vk54WmJRMy1qQ2xRUnFEMGNU?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：战争进入第 20 天，内塔尼亚胡称伊朗已无法继续浓缩铀和制造导弹。",
+            "impact_sectors": "军工 / 能源安全 / 黄金避险",
+            "leaders": "光启技术 / 新余国科 / 中航光电",
+            "source": "以色列时报",
+            "score": 20
+          },
+          {
+            "title": "Global oil prices trade at $112 a barrel after Trump threatens to ‘blow up’ the world’s largest gas field",
+            "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPVnBTV2F3WmVXdjhibmZPLXpSUHpDTlpkV1h4SDA2dkVfM0w4UXk3cjZFNXBNVDhCbTBKeXBDNzMxTHV0Y2ZtWmF4SEdrTjVzWTNTWEladG50QmFwRWhXMDJpRHFua0NSTS1wS3pZandacHJHSENwdFdyN0FvbDR3OVJXVzRYcjMybDBGYllPY193YnZvYVN0anJHMXM1ZGp6cEkzb2hiTXFtNjNp?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：特朗普威胁摧毁全球最大气田后，国际油价升至每桶 112 美元。",
+            "impact_sectors": "石油石化 / 高股息能源 / 煤炭",
+            "leaders": "中国海油 / 中国石油 / 中国神华",
+            "source": "市场观察",
+            "score": 20
+          },
+          {
+            "title": "India’s Energy Supply at Risk? 37 Indian Oil &amp; LPG Tankers Stuck Near Strait of Hormuz",
+            "link": "https://news.google.com/rss/articles/CBMilgJBVV95cUxNLU4ybnhPTXhzblJfYVJqLThfTFpidzNzNC14eUFGR2tsVm1BUmtUaVJsX1N4cmp6RHc1Y0JrWlUtYTdFV2hpMjVzSGxBOEY0OUN5V2preEVYQkRoMldHVVlzT1AtWm5KUDJ4WTdLOTFLaFNWUWFmdjJEVi1fT1dBdE56d1pUMVlNNDNSZFBPV3dLa08wOGtEVzVsZUJTbGUteW5wLWxhdzJ4Vi1KOGM2RGJXdy1kdWRIZDZySUpzX0w2RTR6UVhRZkR4RDFFV1ltMUJScTc5M2R5cHFCZVdNTVhuWnJTeWdxaVpnamwyaDN1SUdRaXktZk9NSnh0UEg0anlMcFRrbGZlMzBaVndVY3gwRktLdw?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：37 艘印度油轮和液化气船滞留霍尔木兹海峡附近，印度能源供应面临风险。",
+            "impact_sectors": "LNG（液化天然气）/ 原油储运 / 油运",
+            "leaders": "广汇能源 / 中远海能 / 招商轮船",
+            "source": "星期日卫报",
+            "score": 20
+          },
+          {
+            "title": "Are US and Israel aligned on Iran war? Deciphering Trump's post after gas field attacks",
+            "link": "https://www.bbc.com/news/articles/c8x7leknlywo?at_medium=RSS&amp;at_campaign=rss",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：美以是否在伊朗战争问题上保持一致？从特朗普表态中找线索。",
+            "impact_sectors": "油气 / 军工 / 全球避险链",
+            "leaders": "中国海油 / 光启技术 / 中国神华",
+            "source": "BBC国际",
+            "score": 17
+          },
+          {
+            "title": "Iran War Live Updates: U.S. Scrambles to Ease Energy Crisis as Attacks Rattle Markets",
+            "link": "https://www.nytimes.com/live/2026/03/19/world/iran-war-news-trump-oil",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：伊朗战争直播更新：袭击震动市场，美国紧急应对能源危机。",
+            "impact_sectors": "石油天然气 / 煤炭 / 电力成本扰动",
+            "leaders": "中国海油 / 中国神华 / 华能国际",
+            "source": "纽约时报",
+            "score": 17
+          },
+          {
+            "title": "Tehran intensifies attacks on Gulf energy facilities after Israel hits Iranian gas field",
+            "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOYk8ybDZOMU5LelNtTF9wQUxtVGk4d1UxM1lRU1dFbHYyYkFyQkVUWEZWMzYwVlhoa2lQTkFON29qd01fUURfWkd2cnJiVm9TdXcxWDVZV2pHWkc2VTBuWks5aHphaHFOenR4bE9RWUNibkFlcVFHcFZ6bXQzM045XzVRcms?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：以色列袭击伊朗气田后，德黑兰加码攻击海湾能源设施。",
+            "impact_sectors": "天然气 / 石油石化 / 油服",
+            "leaders": "广汇能源 / 中国石油 / 海油工程",
+            "source": "加拿大广播公司",
+            "score": 17
+          }
+        ]
+      },
+      {
+        "label": "巨大前景",
+        "intro": "这组消息不一定明天立刻兑现，但最容易演化成中期持续题材。关键不是科技新闻多，而是它们能否找到 A 股里可承接的大票和中军。",
+        "items": [
+          {
+            "title": "Nvidia launches Jetson Thor compute modules for humanoid robots",
+            "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNS2ZDVjlNR2tPeU9vVVRKSjVIZ3pxUHpWQlpPU1JfQzVkMl9xUnlab05fSFZPa2pZb1oxQmtWVDB6R3FhSE1ETW9TQXlIV196Ulo4ZjFYR0JUUnhPc0RqX0RZNC1leFF6N05EcFh5aFU4aVNmM3JvdDhva2xwbFpRTjBUVDJoU2RBeEZYNldWUXhyVG5xMEM0M1prZnowbE9qUVlQQWI1X2dGaWs?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：英伟达发布面向人形机器人的 Jetson Thor 计算模组。",
+            "impact_sectors": "人形机器人 / 伺服电机 / 运动控制",
+            "leaders": "鸣志电器 / 汇川技术 / 领益智造",
+            "source": "数据中心动态",
+            "score": 8
+          },
+          {
+            "title": "Nvidia CEO Huang unveils latest AI products and humanoid robot capabilities",
+            "link": "https://news.google.com/rss/articles/CBMirAJBVV95cUxNM2JNdXRwSExXdXBEVi1RUDhjamRsYV9SWml2eGFVWWhIZzFOb0ktd2NGLUY1eC1ndV9CbHYtX19ZRUk5OTBfeE5YaTI2VU5lYWFyMnZKbUJ2M1I0TzhBMGk1OGMxbnRTU25nSVc0V2VNR3hBRldVS2hJV1hPVnZyWFNGem01bkxrLUxmRW1BSEFvd3ZOTlkyMFBQMHFRM1NjQjAtM09ZNUwwUmw2R0NtbHNXSVJMOWppN2VGMTNxclhQSUhCQlJaQVlTUlowMXNTZnVuRlpwVV9xd0R2RUZ2QWQ5dVVlQUI1a3VkaTlSdmRYMGtnN0RpNWpYbzJ0SUZ0dkExYmprcUZFOU5RQ0E3UjVYbERBOFdIM1lYemFEcTVmY3AtZEpMNXg1cGs?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：黄仁勋展示最新 AI 产品与人形机器人能力。",
+            "impact_sectors": "光模块 / 算力硬件 / 机器人",
+            "leaders": "新易盛 / 中际旭创 / 鸣志电器",
+            "source": "Notebookcheck（笔记本资讯）",
+            "score": 8
+          },
+          {
+            "title": "NVIDIA Announces Project GR00T Foundation Model for Humanoid Robots",
+            "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNcXZtbDltOGs2NWJ3RldVZUxic0VJZklYcUo0dmxGb2xpQ0dxMWhXRVprWTFGcU9WbnhGUE1IcXcxVUQwX216ZjFyeTZMc1BfVWI1dEszcjJCb216Yk5tb1FrbzVYYWxJVGhRNmVzdUJRQmVfVTVZMGU5cHRMSkRwRg?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：英伟达发布面向人形机器人的 Project GR00T 基础模型。",
+            "impact_sectors": "机器人软件脑 / 机器视觉 / 执行器",
+            "leaders": "鸣志电器 / 汇川技术 / 科大讯飞",
+            "source": "英伟达新闻室",
+            "score": 8
+          },
+          {
+            "title": "Musk says Tesla may 'tape out' next-generation AI6 chips in December",
+            "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxORzdFamR0NG4tb19pT1ROUUc5SFlrSVI3N3pEVDF1dWF2alVFdzFNeWE1QnVrbjBFMm5acXUxSUhWX1VCQXBmc01mWVRwdThOcmMtNndhbTJtYWpqNmRvRXhKUURiU2JYQXQ3SF9IT1JFMFRxTWV1VWE3ZEQxV1ZQT1owcS02VUhKM2VUTWNEQ1FPcUZyUXc0X1hNYWZVQ1FUdFd2eE9yS3pPNXExdXdyMlZiTXk0RUQzNHVLcTVjRWdVQ01hTzdBWg?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：马斯克称特斯拉下一代 AI6 芯片或于 12 月流片。",
+            "impact_sectors": "自动驾驶 / 汽车电子 / 车载算力",
+            "leaders": "立讯精密 / 光弘科技 / 领益智造",
+            "source": "路透",
+            "score": 6
+          },
+          {
+            "title": "Nvidia launches Alpamayo open AI models for autonomous vehicles",
+            "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQeGlLbkdnbUlYM1RIR3dwTGdNdUhRTzFYemJxeldrcVdtRXNhZzZsNTFNelBSZm5rMy0zbFR6RGRIX0hsRERaa3hwM0dJY3M4QjBFZWVQRmpjaVJBdm5URy1wOEd1aUpoZFZ5Z2VxcFUtRS1xYmk4UTAwWWEtLXpud2RLWko0c0lEeF9GZS14RUxKWWxVQXY4Q3BNVGJDWGhSYUxCeVlJdlpxaTVYSDVGeHhIbWJIX3pPOGl5Vlk0eWdIYjd4QkE?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：英伟达发布面向自动驾驶的 Alpamayo 开源 AI 模型。",
+            "impact_sectors": "自动驾驶 / 车载域控 / 算力",
+            "leaders": "光弘科技 / 中兴通讯 / 工业富联",
+            "source": "TechCrunch",
+            "score": 6
+          },
+          {
+            "title": "NVIDIA Presents Blueprint for the Future at CES",
+            "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFByOGd0Rnl2WmVXYnJvVTktQ3VFeUozR2VBWU9yYzF1dXdMREZrR3JVS3Y2amtUdU82ZUNzNFBxU0EwYVNWY0pLamhiR29TOXozRVJNaUxXMVlSc3VzeTJSNktGVkI2UHh4aEQ0SA?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：英伟达在 CES（国际消费电子展）上展示未来蓝图。",
+            "impact_sectors": "AI 硬件 / 服务器 / 光模块",
+            "leaders": "工业富联 / 新易盛 / 中际旭创",
+            "source": "英伟达博客",
+            "score": 6
+          },
+          {
+            "title": "Nvidia Chip on Satellite in Orbit Trains First AI Model in Space",
+            "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQR3p2TDlWUkVIV25WNDMybGt6T1lrYlpGVDQwWmZvSjBtVG9EVTljdG5iR3daTTExRHR6VF9NWG1Xc1RIajFmRWt0MmQ3dmw4dDF2ZTVPUXhfem1UMnJOMnBob1UwbFJjcFRQdkZ2R1dqczJjcEplaUNGZlljZXFPQnZYQktNZlFaWWNHVFdIMFdUaDBVcmhV?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：搭载英伟达芯片的卫星在轨训练出首个太空 AI 模型。",
+            "impact_sectors": "卫星互联网 / 航天算力 / 通信",
+            "leaders": "中兴通讯 / 海光信息 / 中科曙光",
+            "source": "Futurism（未来主义）",
+            "score": 6
+          },
+          {
+            "title": "Tech forecast 2026: AI hype, Apple foldable, 1000-watt chips and robot invasion",
+            "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNYWR5RDhreC13YUYtUHRYLUZLYWVZTWlqSXFwdnY0R1pjY0pSZXlENldKNDZ4OHE4QkJoVjVMOXNVeVFNc3pFVk1mSUpkcVVjR0IxdnZ0ZG9NSmRHRmU5V3pyZEQzdjZDbXpQbEtBNmNxNHhXaDhxd0JEaE5jOEY2TGg3cmRoZ0s5YUV3dEtHMWxBd1VQc01Zekp5UldpQWZrRHIwLW0xT1hLSkppOFZXRWhxWVA0dy0xTlFxd0RR?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：2026 科技前瞻：AI 热潮、苹果折叠机、千瓦级芯片与机器人浪潮。",
+            "impact_sectors": "AI 硬件 / 消费电子 / 机器人",
+            "leaders": "立讯精密 / 蓝思科技 / 鸣志电器",
+            "source": "Notebookcheck（笔记本资讯）",
+            "score": 6
+          },
+          {
+            "title": "Nvidia announces new open AI models and tools for autonomous driving research",
+            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNeEhVMzNqQUVQX0dkWW5Pb2pqWjlqOW5NWDl1RnlJUmlQcnZtVTQxZjFYTUJEbklPU21EMDNmdGM1d0loT0tha0VVMDNZWW51Rzl4aHNKd2h4NXpfc3ZFOVFWYjF0T0ZvNnNLYzJGTmJsRTMyeHlTQVZJLW1sMGNWTTh3RWtyU0k1c3dTMUVFbURyWlZLLS1vdjYzQVhvMDhBLWdUQm9NanlfdDRJNS1rTDJ3?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：英伟达发布自动驾驶研究用的新开源 AI 模型和工具。",
+            "impact_sectors": "自动驾驶 / GPU 服务器 / 光模块",
+            "leaders": "工业富联 / 新易盛 / 中际旭创",
+            "source": "TechCrunch",
+            "score": 6
+          },
+          {
+            "title": "Nvidia reveals next generation “robot brain” chip",
+            "link": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxON3ZZNERuOFU4YndoRlNTa3VORWRQNzlGNjhsOFcxRERZZGNzQ1k2QlJ6RTN4c2Z1anBZVFhuQzZ4M1JPWVZ4S0xWTExINl92YjRiZG03YzFuRHB0VXFHcmlOWU5sZTBEd2NmTm9kQ0dPZ0VqUXRaZTNBYmd1U19oX0NGOW9QUHp4VTF4U3B1RVFPYWlZX1BmWlhDc25iaW9PbFlOa091OElTNk9ZcFJ0NERvbG9DYjh1X3lTQVhrSmwzaUo1eGVpU0ZGVnJsLXliNnQ0WmJGNmZhTng2enNva19yaG9KZ2lMdkFXWUJfdUZfaDNyR3BRQkcxZUJyUDlydVQ5ZjdleWc1REFxRXdCUUFUZWhZaTBIMmxxUDVXWTA3VjlHZXZqWVNn?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：英伟达展示下一代“机器人大脑”芯片。",
+            "impact_sectors": "机器人本体 / 边缘 AI / 传感器",
+            "leaders": "鸣志电器 / 汇川技术 / 领益智造",
+            "source": "TechRadar",
+            "score": 6
+          }
+        ]
+      },
+      {
+        "label": "巨头名人",
+        "intro": "这组消息短线最像催化剂，决定资金会不会在老题材里做二次演绎。它们不一定比战争更强，但最容易在开盘前后触发情绪抢跑。",
+        "items": [
+          {
+            "title": "Elon Musk reveals date of Tesla Full Self-Driving’s next massive release",
+            "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPMFdZM0gyTXZrSUV0M2RnZHlfb2tEX1g1Y2lHZWhBSFhKdGh5ZHBwRHh1RTQ0b1BoeElRdnZURXpORTFoWWthNUpJRkFJcndBMTJtY003c2RkRjlMN1I4bHFCNG90SlNoenE5ajJxUWZINlZ3SDVzMGFqckJ0d19XQ0tpVk5xYjFHd29RNGloeUxaVzVDS2JPTGhxc0FBcVFi?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：马斯克披露特斯拉 FSD（完全自动驾驶）下一次重大版本发布时间。",
+            "impact_sectors": "智能驾驶 / 汽车电子 / 车载供应链",
+            "leaders": "立讯精密 / 领益智造 / 光弘科技",
+            "source": "Teslarati（特斯拉资讯）",
+            "score": 8
+          },
+          {
+            "title": "Microsoft Unveils Maia 200 AI Chip as Big Tech Accelerates Shift From NVIDIA",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTTdvZk5CanhqSWhFZ0ttZ3hjLTNhR2VEUUxWemJYT3M5RnJ6Q1N3b3c0dzBrcDFhU1ExckRLOG15a1FBYVk1WWxHSGFZZlFGNHdpb1VFR2pUb1g4MEZWMVB2QjI3N24zV2JDdEdXNjhIVE9rOW5nbmo5Vm43aThpcGVkWkhwS2tL?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：微软发布 Maia 200 AI 芯片，大厂加速摆脱对英伟达依赖。",
+            "impact_sectors": "国产算力替代 / 服务器 / 先进封装",
+            "leaders": "海光信息 / 浪潮信息 / 通富微电",
+            "source": "朝鲜日报",
+            "score": 8
+          },
+          {
+            "title": "CES 2026: Everything revealed, from Nvidia’s debuts to AMD’s new chips",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQR1N6NGY0Yk1fck9HLUhNeWk0bnJ3Yy16MVdzcmdEZm9fYkswRFJ6N2VfMXRxcUs5Mm5GSnZCbHllakJORExsWUViWVJTUXhET3BNbFRDNm9wUWlyR3BQQlRkUjQ0QWt5S0k1eHpYLUUxc2lISXRBTHdpVm9IbjhBd1pjNVU0NDg5czNzcVl1N2NMVktES0FyTzB0OS04Rno3YjZpWUc0ZXRBb1RVaDgzYkxLYU83RDVxZUFGVkZGTlk?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：CES 2026 看点汇总：从英伟达新品到 AMD 新芯片。",
+            "impact_sectors": "AI 芯片 / PCB（印制电路板）/ 光模块",
+            "leaders": "沪电股份 / 胜宏科技 / 新易盛",
+            "source": "TechCrunch",
+            "score": 8
+          },
+          {
+            "title": "Qualcomm announces AI chips to compete with AMD and Nvidia",
+            "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNN2U3bkkwSEVJdXJxZ3IySWRZQlZKcHl4TklYS0tMQjhvSUlNd1pELXc2Q1BaQ1Jfc3ZRX1RYRExXUjUxaDhHNXdXLUtLaTdCS01KNENsU2hkWkJiQWhJUjV5YXFWWTdha1ZaVWRnN1hYUnZHcUNlZlpRNVZ1eEx4Z2phMNIBiAFBVV95cUxNbjBaOWpHSkpIYzAycW5lZGU0UjBzbTNyTDhsdnQ1ejVKRzFpcjYwQjJVc2pFNGpkUDhqM0VoVmZWMEotOC1Jb1kwWEMzd09nUHFJRzZWR3UtWWpUTkx6MEZ6SDRwZzBnZTUweEhSdjk5bmZidFhPWGJBLWVZN24xcmpaRGxZcWh6?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：高通发布 AI 芯片，正面竞争 AMD 与英伟达。",
+            "impact_sectors": "AI 手机 / 物联网 / 射频链",
+            "leaders": "立讯精密 / 领益智造 / 光弘科技",
+            "source": "CNBC",
+            "score": 8
+          },
+          {
+            "title": "Elon Musk Gets Just-Launched NVIDIA DGX Spark",
+            "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBkc2tWYXYwd3d2dmExR1dhcWlQcHNZblJ4T013MDUweEhHRUNuS1ExRDVwUVJLNWF2UzNfRG9nREFCbVZ4ckI2U3Y0elF5YW5vYm5pcEZuQ2R2ZmI3Q2ktbnlHOWo?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：马斯克拿到刚发布的英伟达 DGX Spark。",
+            "impact_sectors": "AI 算力 / 服务器 / 液冷",
+            "leaders": "工业富联 / 英维克 / 浪潮信息",
+            "source": "英伟达博客",
+            "score": 8
+          },
+          {
+            "title": "Sam Altman admits OpenAI ‘totally screwed up’ its GPT-5 launch",
+            "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQYUlMRDYwTUNRazNSQzJYWDZETlBHRWRlMnRfdE5UTFZ4N0FKV3ZpdXdmMGxsbE0xUFR0QXRqMk1iMXA1TWViN2hmUDM0TTlTT3FFVHVZc2tPZmZneG9JcEktMFJxbjRZZk9IZDc2RUZDRW9Xbkg5c3lCdjVOaUp1UXZBV1BzSmRGR1U4akJZaFZHQkFq?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：奥特曼承认 OpenAI 的 GPT-5 发布“搞砸了”。",
+            "impact_sectors": "大模型应用 / AI 软件 / Agent（智能体）工具",
+            "leaders": "科大讯飞 / 润和软件 / 昆仑万维",
+            "source": "财富",
+            "score": 8
+          },
+          {
+            "title": "OpenAI Plans Launch of Desktop ‘Superapp’",
+            "link": "https://news.google.com/rss/articles/CBMiswNBVV95cUxNUjNsTWhnSzRaNXBPTHVtTDllMDVVemo3Y3J5ZVhzS1JrTWRyN3pXWU8ybUpWVHk1ZnREZ0hzZjhIYnRQTURRQzJlbUNHRmFTRk4xRzNEVWdLN3NVX3U0cldiVzhqOWFTOS1OMG9obWFtMlpwVzVnNmZmNEFVbmtJbkt0VUxhbjlHNkY5dlpFM3N1ZDk5RE1sdS1DeFcta3BhRkNCaXh6T3VBZVQ3eFI5bDl3aTVERzFTWU1oajZFYm9rSm4wZ0VOcm5sbHlkY19vLVpIWVltTXNiaTNreTNmREpOVmt4R2NDTlByUjJoU2E1ZHhrZWJJdHROWEotR3A0eXZRckdYMVNEOUJfVG9qQURnOVdmbkdBRFNkNkwxeThhS0JVNHJfNlk3LTVTQzBKUVlkZG5zMVMzWDZJZ2tDU0Y3QVNWazlWeGtzRTlKSnd3S2JsNk1VbzExSG8wdk5ZV2dYNGJ5Q3VRSmxRc0VNSWZ5ZmRmNDdBYVBOaG13UFZ4Q1JBUnBTYUZqNTgzT196YW1WZUJwOEs3MFROTm1nY0t6QjVtU2NYcHo1V2ZrNU52cmc?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：OpenAI 计划推出桌面版“超级应用”。",
+            "impact_sectors": "AI 应用 / 办公软件 / Agent 生态",
+            "leaders": "科大讯飞 / 中国软件 / 昆仑万维",
+            "source": "华尔街日报",
+            "score": 5
+          },
+          {
+            "title": "Figma's stock drops after Google releases 'vibe design' product",
+            "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOVWMtRjB5RXlUQkJ2T2ptdloyS3VzS0NIV0N2dkdBUnlfamFfdC1EdTc3Qll3a29FQnhUVVcwa2xGeGliNVBRYkFjVWlfUGs3dm9xRUwtRVFsUkdQcm1mZU1wdlhaN1BQWHNod3VqUUNJOG8wVkVJTUpwbkhWQ0RndVJBYm5hWVFZRjJ6WFBFdGJyeEdIUzZ6Njhuc3QyeHJNRndRLTNWSW1JZW9Va1FfQXRub9IBuAFBVV95cUxNZ1NwSWRjUENfRDhCYUhSaE1sa1VLMVdMT2M2NXdrOHJybnNWcXM3Sl9KcHVTRnhMel8xeE9vYmR6VW90RXRtVDRCeHJ3cjVuZ3hzVmJ2Nlo5QmN5NnhWeXJLNnljN0NzbXFnYWlEZVhCM0NiajZ0OXVHMmJRN25hbDA2SVNyZG1GM3VVSHJkamhKMDcyRXQ0OWZBdHRYdnozajV3STU2THlJNUhEd1J3cElNV3Z4amt3?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：谷歌发布 “vibe design” 产品后，Figma 股价下跌。",
+            "impact_sectors": "AIGC（生成式 AI 内容）/ 设计工具 / AI 软件",
+            "leaders": "昆仑万维 / 易点天下 / 润和软件",
+            "source": "CNBC",
+            "score": 5
+          },
+          {
+            "title": "Apple Health integrates with newly announced ‘Perplexity Health’ AI feature",
+            "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOMDlWR08zaUhEajNkUnltV2cwZEgxY0Zhd3doa2NEdVozYmZteXFnSTJqMzRwLVQ3Z2owZlNYZjY0MkQxY2E5MEtRTVFpclR0MFRLWElEU3ZEMGVCX094bGwwSk9nT1lBQWVIaktvUmx4NFZhR09PdXVxWldseGdTY1NNWGt6NzhsUUF5Yi1GSEdpb09STDNZcW9rTWRxYXFZcFlzeEI2VUY?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：苹果健康接入新发布的 Perplexity Health AI 功能。",
+            "impact_sectors": "AI 终端 / 可穿戴 / 消费电子",
+            "leaders": "歌尔股份 / 蓝思科技 / 立讯精密",
+            "source": "9to5Mac（苹果资讯）",
+            "score": 5
+          },
+          {
+            "title": "KUKA Unveils ‘KUKA AMP’ at NVIDIA GTC 2026",
+            "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxPMnVnT2RlRnA3bnJJdkktTmJ0ZDRGcHFDZjZpeGs0NkNYWFhoSm9JT21CV2ZxYmF6c295XzdnTXQwTk9QcVZUNWdDUnNoZFBzSzRMdXhiRlpGY21oMU5rN0dBSF83V1NjNGdJNnRYNENGaVlRdGJjbWxDVTd3cnQwMGh5MjVFSC1GUk9nSFRzamN5QngtQTNQVWNnelJac3gtMVptV1RrUU04aUdwOUNoUm9zTlZEcDN1VlhFYjhtQ2hGVERpdzluNUlqZk9ZNUV0Nkp6RnpJV0Nqa3NTbU1zX21jdWpGQzRJUjZmdnE1NGotT2FjbTF3cTZ3?oc=5",
+            "link_label": "打开原文链接",
+            "translation": "中文译意：KUKA 在 NVIDIA GTC 2026 上发布 KUKA AMP。",
+            "impact_sectors": "机器人本体 / 工控 / 自动化",
+            "leaders": "汇川技术 / 鸣志电器 / 领益智造",
+            "source": "Robotics Tomorrow（机器人前沿）",
+            "score": 5
+          }
+        ]
+      }
+    ]
+  }
+}

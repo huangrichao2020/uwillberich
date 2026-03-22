@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>超超盘前盘后笔记｜静态报告</title>
+    <style>
+      :root {
+        --bg: #f4f1e8;
+        --panel: rgba(255, 255, 255, 0.82);
+        --panel-strong: #fffdf8;
+        --text: #1f2937;
+        --muted: #5b6472;
+        --line: rgba(31, 41, 55, 0.12);
+        --accent: #b45309;
+        --accent-2: #0f766e;
+        --shadow: 0 24px 60px rgba(28, 31, 35, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB",
+          "Noto Sans SC", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(180, 83, 9, 0.16), transparent 28%),
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.14), transparent 26%),
+          linear-gradient(180deg, #f8f5ee 0%, var(--bg) 100%);
+      }
+
+      .wrap {
+        width: min(1040px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 56px 0 72px;
+      }
+
+      .hero,
+      .card {
+        background: var(--panel);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 36px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(180, 83, 9, 0.1);
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+      }
+
+      h1 {
+        margin: 18px 0 12px;
+        font-size: clamp(34px, 5vw, 56px);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+      }
+
+      .hero p {
+        max-width: 760px;
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .card {
+        padding: 24px;
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 22px;
+      }
+
+      .meta {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 700;
+        color: white;
+        background: linear-gradient(135deg, var(--accent), #d97706);
+      }
+
+      .secondary {
+        background: linear-gradient(135deg, var(--accent-2), #0ea5a4);
+      }
+
+      .link-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+
+      footer {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .site-note {
+        margin-top: 8px;
+      }
+
+      @media (max-width: 640px) {
+        .wrap {
+          width: min(100vw - 20px, 1040px);
+          padding: 20px 0 40px;
+        }
+
+        .hero,
+        .card {
+          border-radius: 20px;
+        }
+
+        .hero,
+        .card {
+          padding: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <section class="hero">
+        <span class="eyebrow">超超盘前盘后笔记</span>
+        <h1>静态报告入口</h1>
+        <p>
+          这里放的是用 <code>uwillberich</code>
+          生成并整理后的静态报告页面。当前置顶的是
+          <code>2026-03-20</code> A 股盘后总结与
+          <code>2026-03-23</code> 盘前关注报告。
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>2026-03-20 盘后与 2026-03-23 盘前</h2>
+          <p class="meta">
+            主题：弱势抱团、电池链、光模块、算力扩散、周一开盘观察
+          </p>
+          <ul>
+            <li>2026-03-20 盘后结构拆解</li>
+            <li>2026-03-23 盘前分支判断</li>
+            <li>电池链与光模块抱团是否延续</li>
+            <li>同时提供桌面完整版和移动端 H5 版</li>
+          </ul>
+          <div class="link-row">
+            <a class="link" href="./reports/2026-03-20-postclose-2026-03-23-preopen.html"
+              >桌面完整版</a
+            >
+            <a class="link secondary" href="./reports/2026-03-20-postclose-2026-03-23-mobile.html"
+              >移动端版</a
+            >
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>源码入口</h2>
+          <p class="meta">
+            源码、脚本、watchlist、news iterator 和方法论都在仓库里维护。
+          </p>
+          <p style="margin: 20px 0 0">
+            <a
+              class="link secondary"
+              href="https://github.com/huangrichao2020/uwillberich"
+              >查看源码仓库</a
+            >
+          </p>
+        </article>
+      </section>
+
+      <footer>
+        <div>最后更新：2026-03-20 北京时间</div>
+        <div class="site-note">
+          © 2026 超超盘前盘后笔记. 保留所有权利. 本网站仅供学习交流使用.
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

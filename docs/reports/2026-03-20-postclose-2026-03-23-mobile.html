@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#c76719" />
+    <title>2026-03-20 A股盘后与 2026-03-23 盘前关注报告｜移动版</title>
+    <meta
+      name="description"
+      content="移动端版：2026-03-20 A股盘后总结与 2026-03-23 盘前关注报告。"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="2026-03-20 A股盘后与 2026-03-23 盘前关注报告｜移动版" />
+    <meta
+      property="og:description"
+      content="弱势抱团行情延续。周一重点看电池链与光模块抱团能否扩散到更广的算力链。"
+    />
+    <meta
+      property="og:url"
+      content="https://huangrichao2020.github.io/uwillberich-reports/reports/2026-03-20-postclose-2026-03-23-mobile.html"
+    />
+    <meta
+      property="og:image"
+      content="https://huangrichao2020.github.io/uwillberich-reports/assets/report-cover-2026-03-20-close.svg"
+    />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="2026-03-20 A股盘后与 2026-03-23 盘前关注报告｜移动版" />
+    <meta
+      name="twitter:description"
+      content="弱势抱团行情延续。周一重点看新易盛、中际旭创能否把强度扩散到更广的算力链。"
+    />
+    <meta
+      name="twitter:image"
+      content="https://huangrichao2020.github.io/uwillberich-reports/assets/report-cover-2026-03-20-close.svg"
+    />
+    <style>
+      :root {
+        --bg: #f7f2e8;
+        --panel: rgba(255, 253, 248, 0.92);
+        --panel-strong: #fffdf8;
+        --text: #1f2937;
+        --muted: #5f6875;
+        --line: rgba(31, 41, 55, 0.11);
+        --accent: #c76719;
+        --accent-deep: #8f4308;
+        --teal: #0f766e;
+        --green: #0a7c52;
+        --red: #b42318;
+        --shadow: 0 18px 44px rgba(23, 28, 33, 0.11);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "IBM Plex Sans", "PingFang SC", "Hiragino Sans GB",
+          "Noto Sans SC", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(199, 103, 25, 0.18), transparent 34%),
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.12), transparent 30%),
+          linear-gradient(180deg, #fbf7f0 0%, var(--bg) 100%);
+      }
+
+      .app {
+        width: min(100vw, 520px);
+        margin: 0 auto;
+        padding: 16px 14px 96px;
+      }
+
+      .hero,
+      .card,
+      .section {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero {
+        padding: 22px 20px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(199, 103, 25, 0.1);
+        color: var(--accent-deep);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: 32px;
+        line-height: 1.02;
+        letter-spacing: -0.05em;
+      }
+
+      .subtitle {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--muted);
+      }
+
+      .chips,
+      .poster-pills,
+      .quick-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chips {
+        margin-top: 16px;
+      }
+
+      .quick-nav {
+        margin-top: 14px;
+      }
+
+      .chip,
+      .poster-pill,
+      .quick-nav a {
+        display: inline-flex;
+        padding: 7px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .quick-nav a {
+        color: var(--accent-deep);
+        text-decoration: none;
+        background: rgba(199, 103, 25, 0.08);
+        border: 1px solid rgba(199, 103, 25, 0.15);
+      }
+
+      .chip-accent {
+        background: rgba(199, 103, 25, 0.12);
+        color: var(--accent-deep);
+      }
+
+      .chip-teal {
+        background: rgba(15, 118, 110, 0.12);
+        color: var(--teal);
+      }
+
+      .chip-red {
+        background: rgba(180, 35, 24, 0.12);
+        color: var(--red);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .poster {
+        margin-top: 16px;
+        padding: 18px 16px;
+        border-radius: 24px;
+        color: white;
+        background:
+          radial-gradient(circle at top right, rgba(255, 212, 170, 0.24), transparent 28%),
+          linear-gradient(145deg, #1f2937 0%, #273444 54%, #184b47 100%);
+      }
+
+      .poster-label {
+        display: inline-flex;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .poster h2 {
+        margin: 14px 0 8px;
+        font-size: 28px;
+        line-height: 1.04;
+        letter-spacing: -0.05em;
+      }
+
+      .poster p {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .metric {
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+      }
+
+      .metric .label {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .metric .value {
+        margin-top: 8px;
+        font-size: 17px;
+        font-weight: 800;
+      }
+
+      .stack {
+        display: grid;
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .section {
+        padding: 18px 16px;
+      }
+
+      .section h2 {
+        margin: 0 0 10px;
+        font-size: 22px;
+        letter-spacing: -0.04em;
+      }
+
+      .section h3 {
+        margin: 18px 0 10px;
+        font-size: 16px;
+      }
+
+      p,
+      li {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      p + p,
+      p + ul,
+      ul + p,
+      ul + ul,
+      .card + .card {
+        margin-top: 10px;
+      }
+
+      ul {
+        padding-left: 18px;
+      }
+
+      .cards {
+        display: grid;
+        gap: 10px;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      .source-list {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .source-list li {
+        margin: 0 0 10px;
+      }
+
+      .source-list a {
+        color: var(--teal);
+        text-decoration: none;
+      }
+
+      .source-list a:hover {
+        text-decoration: underline;
+      }
+
+      .source-meta {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .source-translation {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.65;
+      }
+
+      .panel-tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .panel-tools button {
+        border: 1px solid rgba(15, 118, 110, 0.18);
+        background: rgba(15, 118, 110, 0.08);
+        color: var(--teal);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .source-panel {
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .source-panel summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .source-panel summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .source-panel summary::after {
+        content: "展开";
+        flex: none;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--accent-deep);
+      }
+
+      .source-panel[open] summary::after {
+        content: "收起";
+      }
+
+      .source-panel .panel-body {
+        padding: 0 14px 14px;
+      }
+
+      .card-title {
+        margin: 0 0 6px;
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .card-muted {
+        color: var(--muted);
+      }
+
+      .footer {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .bar {
+        position: fixed;
+        left: 50%;
+        bottom: max(12px, env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        width: min(calc(100vw - 22px), 520px);
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        box-shadow: 0 14px 34px rgba(17, 24, 39, 0.14);
+        backdrop-filter: blur(10px);
+      }
+
+      .bar a {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 10px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 800;
+        color: white;
+        background: linear-gradient(135deg, var(--accent), #d97706);
+      }
+
+      .bar a.secondary {
+        background: linear-gradient(135deg, var(--teal), #14b8a6);
+      }
+    
+/* report-event-enhancer:start */
+.hero h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.title-plus {
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.source-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.source-list li {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.news-title {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.55;
+}
+
+.news-title a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.news-link {
+  display: inline-flex;
+  margin-top: 2px;
+  font-size: 0.97rem;
+  font-weight: 900;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.source-translation {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.news-matrix {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.news-matrix span {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.04);
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.source-meta {
+  display: block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.event-outlook {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+/* report-event-enhancer:end */
+
+</style>
+  </head>
+  <body>
+    <main class="app">
+      <section class="hero">
+        <span class="eyebrow">超超盘前盘后笔记</span>
+        <h1><span>3月20日盘后</span><span class="title-plus">+</span><span>3月23日盘前</span></h1>
+        <p class="subtitle">
+          这不是全面修复，而是弱市里少数方向继续抱团。周一先看电池链与光模块，再看这种强度能不能传到更广的算力链。
+        </p>
+
+        <div class="chips">
+          <span class="chip chip-accent">弱势抱团行情</span>
+          <span class="chip chip-red">主力净流出 -742.7 亿</span>
+          <span class="chip chip-teal">下个交易日 3月23日</span>
+        </div>
+
+        <div class="grid-2">
+          <div class="metric">
+            <div class="label">市场广度</div>
+            <div class="value">631 / 4590</div>
+          </div>
+          <div class="metric">
+            <div class="label">核心问题</div>
+            <div class="value">光模块能否扩散</div>
+          </div>
+        </div>
+
+        <div class="poster">
+          <span class="poster-label">盘面速读</span>
+          <h2>今天最强的是电池链和光模块</h2>
+          <p>
+            周一不先猜指数。先看新易盛、中际旭创能不能继续站前排，再看浪潮信息、海光信息、中科曙光有没有跟强。
+          </p>
+          <div class="poster-pills">
+            <span class="poster-pill">先看扩散</span>
+            <span class="poster-pill">不抄跌深</span>
+            <span class="poster-pill">东方财富看情绪</span>
+          </div>
+        </div>
+
+        <nav class="quick-nav" aria-label="页面快捷导航">
+          <a href="#summary">结论</a>
+          <a href="#event">事件</a>
+          <a href="#preopen">情景</a>
+          <a href="#focus">重点股</a>
+        </nav>
+      </section>
+
+      <div class="stack">
+        <section class="section" id="summary">
+          <h2>一句话结论</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="card-title">今天不是全面修复</div>
+              <p class="card-muted">
+                创业板收红不代表市场转强。全市场上涨 631 家、下跌 4590 家，主力净流出 742.7 亿，典型弱市结构。
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-title">真正抱团的方向</div>
+              <p class="card-muted">
+                BC 电池（背接触电池）、HJT 电池（异质结）、TOPCon 电池（隧穿氧化层钝化接触）、麒麟电池以及少数光通信模块，是今天最有赚钱效应的地方。
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-title">最弱的一边</div>
+              <p class="card-muted">
+                东数西算、国资云、数据安全、华为昇腾、MLOps（机器学习工程化）、互联网服务，说明云与平台链仍承受明显抛压。
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="close">
+          <h2>盘后重点</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="card-title">最强股</div>
+              <p>新易盛 `+8.32%`，中际旭创 `+6.40%`</p>
+              <p class="card-muted">说明光模块是真强，不是单只票脉冲。</p>
+            </article>
+            <article class="card">
+              <div class="card-title">没跟上的票</div>
+              <p>浪潮信息 `-3.09%`，海光信息 `-2.79%`，兆易创新 `-4.44%`</p>
+              <p class="card-muted">说明科技修复还停留在单点，没有扩到更广的算力链。</p>
+            </article>
+            <article class="card">
+              <div class="card-title">风险偏好温度计</div>
+              <p>东方财富 `-5.25%`</p>
+              <p class="card-muted">券商还弱，市场暂时更像抱团市，而不是全面修复市。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="event">
+  <h2>事件驱动层</h2>
+  <div class="cards">
+<article class="card"><div class="card-title">巨大冲突</div><p>216 条，得分 2016</p><p class="card-muted">关键词：战争、原油、能源</p></article>
+<article class="card"><div class="card-title">巨大前景</div><p>70 条，得分 320</p><p class="card-muted">关键词：芯片、算力、机器人</p></article>
+<article class="card"><div class="card-title">巨头名人</div><p>39 条，得分 213</p><p class="card-muted">关键词：亮相、发布、宣布</p></article>
+  </div>
+  <p>过去 24 小时里，外部消息仍然以中东冲突为主导，但真正值得交易的不是“知道新闻”，而是把新闻翻译成 会影响哪些板块、哪些龙头最容易承接、哪条线更可能走出持续性 。</p>
+  <div class="event-outlook">
+<article class="card"><div class="card-title">消息综合结论</div><p class="card-muted">冲突线决定风险偏好和能源定价，前景线决定中期弹性，巨头名人线决定短期催化。把三类消息合并看，最容易反复有行情的方向已经收敛到少数几条主线。</p></article>
+<article class="card"><div class="card-title">未来最可能有行情的板块</div><p class="card-muted">石油天然气 / 油运，光模块 / CPO（共封装光学）/ AI 服务器，人形机器人 / AI 芯片 / 自动驾驶，这三条线的消息密度、映射度和延展性都最强。</p></article>
+<article class="card"><div class="card-title">优先观察龙头</div><p class="card-muted">中国海油 / 中国石油 / 中远海能；新易盛 / 中际旭创 / 浪潮信息；鸣志电器 / 汇川技术 / 海光信息。短线看前两组，中线留意第三组。</p></article>
+  </div>
+  <div class="panel-tools">
+    <button type="button" data-source-action="expand">展开全部信息源</button>
+    <button type="button" data-source-action="collapse">收起全部信息源</button>
+  </div>
+  <div class="cards">
+<details class="card source-panel" data-source-panel open><summary><div><div class="card-title">巨大冲突最重要 10 条信息源</div><p class="card-muted">这组消息直接决定全球风险偏好、原油天然气价格和运输安全，是最容易立刻传导到 A 股能源、油运和军工链的外部变量。</p></div></summary><div class="panel-body"><ol class="source-list"><li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZm05M1lGcFZGVEVReFcyb3pUWjlEdjRhVHNEeHJYNGhMSHh2b0JLVVZ3eGFzdFNRcWFxekR0clBLNVlYRjl3VFNLYTZ3ZEZNRkwxcUdOamdTU1UzWGVQVXJ2SVBCYTJabmFfdEowZkk5SGotUzUzT0lPV0NSQTN4eUpNclg3QnNpQVpZ?oc=5">Iran hits Gulf energy sites, escalating war, as U.S. mulls sanctions rollback</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiiwFBVV95cUxOZm05M1lGcFZGVEVReFcyb3pUWjlEdjRhVHNEeHJYNGhMSHh2b0JLVVZ3eGFzdFNRcWFxekR0clBLNVlYRjl3VFNLYTZ3ZEZNRkwxcUdOamdTU1UzWGVQVXJ2SVBCYTJabmFfdEowZkk5SGotUzUzT0lPV0NSQTN4eUpNclg3QnNpQVpZ?oc=5">打开原文链接</a><span class="source-translation">中文译意：伊朗袭击海湾能源设施，战争升级，美国考虑放松制裁。</span><div class="news-matrix"><span><strong>影响板块：</strong>石油石化 / 天然气 / 油运</span><span><strong>观察龙头：</strong>中国海油 / 中国石油 / 中远海能</span></div><span class="source-meta">华盛顿邮报｜分值 26</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQT3Rtb2dwU0xxWVVBclg4cERXS0RoQWJqRFlmRWEtbk83dXdwU2RvOE9lV0NSdHJRc2dMY1Aycm1EUmRqdTVSdXlLZGZPS2Z1dXNJZDJRcUx3UGxPZFJKSTNhaFhUel9vM2UzdGpic1NDNlVoeGZ6ckU3enB6ZUhqQjU2UXVud9IBiwFBVV95cUxOcWVwTFVTa2hTVFFMaFFkWFFtUTduNnRLcFdtY3hEREJodHlRWVcwS1FfTE4tNnFOcUVGMkFCTklSOTQzbTJJQTJJZVE1bkpIM0dScmZyMEMzTWxLaWV4YnM4ckRhUlFQWm85djJEWmQzNzFQamVuTTdsRUxGWVhseXZiNDRPaG1iX0Nz?oc=5">Pete Hegseth says &quot;largest strike package yet&quot; coming today in Iran war</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMihgFBVV95cUxQT3Rtb2dwU0xxWVVBclg4cERXS0RoQWJqRFlmRWEtbk83dXdwU2RvOE9lV0NSdHJRc2dMY1Aycm1EUmRqdTVSdXlLZGZPS2Z1dXNJZDJRcUx3UGxPZFJKSTNhaFhUel9vM2UzdGpic1NDNlVoeGZ6ckU3enB6ZUhqQjU2UXVud9IBiwFBVV95cUxOcWVwTFVTa2hTVFFMaFFkWFFtUTduNnRLcFdtY3hEREJodHlRWVcwS1FfTE4tNnFOcUVGMkFCTklSOTQzbTJJQTJJZVE1bkpIM0dScmZyMEMzTWxLaWV4YnM4ckRhUlFQWm85djJEWmQzNzFQamVuTTdsRUxGWVhseXZiNDRPaG1iX0Nz?oc=5">打开原文链接</a><span class="source-translation">中文译意：皮特·赫格塞思称，针对伊朗的“迄今最大规模打击”将于今天展开。</span><div class="news-matrix"><span><strong>影响板块：</strong>油气 / 军工 / 黄金避险</span><span><strong>观察龙头：</strong>中国海油 / 光启技术 / 中航光电</span></div><span class="source-meta">CBS新闻｜分值 23</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE9xbzhyMWZiNjFEcEl2SVMtSGdXbFdVWmNndWU2bkNxQS05YmpmaEFlcTgxbHZEQWpOdjZnVnVoM2lNRE9obVNBcGN0dnJnZmJVZnRXVU0tc2hCQQ?oc=5">Gas price soars 25% after strikes on Qatar hub</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiWkFVX3lxTE9xbzhyMWZiNjFEcEl2SVMtSGdXbFdVWmNndWU2bkNxQS05YmpmaEFlcTgxbHZEQWpOdjZnVnVoM2lNRE9obVNBcGN0dnJnZmJVZnRXVU0tc2hCQQ?oc=5">打开原文链接</a><span class="source-translation">中文译意：卡塔尔枢纽遭袭后，天然气价格飙升 25%。</span><div class="news-matrix"><span><strong>影响板块：</strong>天然气 / LNG（液化天然气）/ 煤炭替代</span><span><strong>观察龙头：</strong>广汇能源 / 新奥股份 / 中国神华</span></div><span class="source-meta">BBC｜分值 23</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOMHVjMG51TlkxdVRSVV9iTWE4RHVaa1lRU3FHRm1mdE1WSlFodU5GUGh0ZWc1TEhTY1owOGVHOG5tS3phYjFtdG5QQVJ2Z3lhRnFRVVFLSWQ0dXlRTU5ocUFWNTZLTnlKVjlRWmRwTWlTYkFHQTlqVTI3UkpkR1Z0RXpvNWdnNi04WEI5SGpRa2UteEtzSVZ3akhFdw?oc=5">Strait of Hormuz Siege Leaves Sailors Dodging Missiles and GPS Jamming</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMimwFBVV95cUxOMHVjMG51TlkxdVRSVV9iTWE4RHVaa1lRU3FHRm1mdE1WSlFodU5GUGh0ZWc1TEhTY1owOGVHOG5tS3phYjFtdG5QQVJ2Z3lhRnFRVVFLSWQ0dXlRTU5ocUFWNTZLTnlKVjlRWmRwTWlTYkFHQTlqVTI3UkpkR1Z0RXpvNWdnNi04WEI5SGpRa2UteEtzSVZ3akhFdw?oc=5">打开原文链接</a><span class="source-translation">中文译意：霍尔木兹海峡陷入围困，船员躲避导弹与 GPS（全球定位系统）干扰。</span><div class="news-matrix"><span><strong>影响板块：</strong>油运 / 航运 / 军工</span><span><strong>观察龙头：</strong>中远海能 / 招商轮船 / 光启技术</span></div><span class="source-meta">彭博｜分值 23</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNSkgzcVFSRHdwd3BNd3NXcjdJMmUtYkNuZEJ3Vnc2Um1VQlU1czJqWDlMa21iakRsajV5Yk1qS1oxSzROTUlXeHZqZ1o2NzUwQlA5UzhQVE1NQ0dfM1ZtNFByXzl6NWRBUk5CN3FMRTRCVkZBT2hIeWVPUVVkRWVSS25OeGpid0Z0RW1rTzhuakowUV96NFdmYlpjSlhYRWNkN09QYWRBZC1NaV94RzdiTzlDTdIBuAFBVV95cUxORkN6Q3dpTnRMeVIwbGF1TGE0NlJNd2w2RzRhV1dvWktuanZhd3hqc3dwZkpoZk9ZQnEwd05mS3hWQ0VIb2RZa2pnQnU0Mzl3S2c2R1NVdERkaFhMeWR6alRTVi1tV1FRN1Rqd2RwcUM2N0JFWmQtdFpSWGhqT3dGS3k2SFN5RDBQRGpOVmdwb2dySFJXaWR6dlM5RXZpS2drakxwZ0h3Vk54WmJRMy1qQ2xRUnFEMGNU?oc=5">On 20th day of war, Netanyahu says Iran can no longer enrich uranium, build missiles</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxNSkgzcVFSRHdwd3BNd3NXcjdJMmUtYkNuZEJ3Vnc2Um1VQlU1czJqWDlMa21iakRsajV5Yk1qS1oxSzROTUlXeHZqZ1o2NzUwQlA5UzhQVE1NQ0dfM1ZtNFByXzl6NWRBUk5CN3FMRTRCVkZBT2hIeWVPUVVkRWVSS25OeGpid0Z0RW1rTzhuakowUV96NFdmYlpjSlhYRWNkN09QYWRBZC1NaV94RzdiTzlDTdIBuAFBVV95cUxORkN6Q3dpTnRMeVIwbGF1TGE0NlJNd2w2RzRhV1dvWktuanZhd3hqc3dwZkpoZk9ZQnEwd05mS3hWQ0VIb2RZa2pnQnU0Mzl3S2c2R1NVdERkaFhMeWR6alRTVi1tV1FRN1Rqd2RwcUM2N0JFWmQtdFpSWGhqT3dGS3k2SFN5RDBQRGpOVmdwb2dySFJXaWR6dlM5RXZpS2drakxwZ0h3Vk54WmJRMy1qQ2xRUnFEMGNU?oc=5">打开原文链接</a><span class="source-translation">中文译意：战争进入第 20 天，内塔尼亚胡称伊朗已无法继续浓缩铀和制造导弹。</span><div class="news-matrix"><span><strong>影响板块：</strong>军工 / 能源安全 / 黄金避险</span><span><strong>观察龙头：</strong>光启技术 / 新余国科 / 中航光电</span></div><span class="source-meta">以色列时报｜分值 20</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPVnBTV2F3WmVXdjhibmZPLXpSUHpDTlpkV1h4SDA2dkVfM0w4UXk3cjZFNXBNVDhCbTBKeXBDNzMxTHV0Y2ZtWmF4SEdrTjVzWTNTWEladG50QmFwRWhXMDJpRHFua0NSTS1wS3pZandacHJHSENwdFdyN0FvbDR3OVJXVzRYcjMybDBGYllPY193YnZvYVN0anJHMXM1ZGp6cEkzb2hiTXFtNjNp?oc=5">Global oil prices trade at $112 a barrel after Trump threatens to ‘blow up’ the world’s largest gas field</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPVnBTV2F3WmVXdjhibmZPLXpSUHpDTlpkV1h4SDA2dkVfM0w4UXk3cjZFNXBNVDhCbTBKeXBDNzMxTHV0Y2ZtWmF4SEdrTjVzWTNTWEladG50QmFwRWhXMDJpRHFua0NSTS1wS3pZandacHJHSENwdFdyN0FvbDR3OVJXVzRYcjMybDBGYllPY193YnZvYVN0anJHMXM1ZGp6cEkzb2hiTXFtNjNp?oc=5">打开原文链接</a><span class="source-translation">中文译意：特朗普威胁摧毁全球最大气田后，国际油价升至每桶 112 美元。</span><div class="news-matrix"><span><strong>影响板块：</strong>石油石化 / 高股息能源 / 煤炭</span><span><strong>观察龙头：</strong>中国海油 / 中国石油 / 中国神华</span></div><span class="source-meta">市场观察｜分值 20</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMilgJBVV95cUxNLU4ybnhPTXhzblJfYVJqLThfTFpidzNzNC14eUFGR2tsVm1BUmtUaVJsX1N4cmp6RHc1Y0JrWlUtYTdFV2hpMjVzSGxBOEY0OUN5V2preEVYQkRoMldHVVlzT1AtWm5KUDJ4WTdLOTFLaFNWUWFmdjJEVi1fT1dBdE56d1pUMVlNNDNSZFBPV3dLa08wOGtEVzVsZUJTbGUteW5wLWxhdzJ4Vi1KOGM2RGJXdy1kdWRIZDZySUpzX0w2RTR6UVhRZkR4RDFFV1ltMUJScTc5M2R5cHFCZVdNTVhuWnJTeWdxaVpnamwyaDN1SUdRaXktZk9NSnh0UEg0anlMcFRrbGZlMzBaVndVY3gwRktLdw?oc=5">India’s Energy Supply at Risk? 37 Indian Oil &amp; LPG Tankers Stuck Near Strait of Hormuz</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMilgJBVV95cUxNLU4ybnhPTXhzblJfYVJqLThfTFpidzNzNC14eUFGR2tsVm1BUmtUaVJsX1N4cmp6RHc1Y0JrWlUtYTdFV2hpMjVzSGxBOEY0OUN5V2preEVYQkRoMldHVVlzT1AtWm5KUDJ4WTdLOTFLaFNWUWFmdjJEVi1fT1dBdE56d1pUMVlNNDNSZFBPV3dLa08wOGtEVzVsZUJTbGUteW5wLWxhdzJ4Vi1KOGM2RGJXdy1kdWRIZDZySUpzX0w2RTR6UVhRZkR4RDFFV1ltMUJScTc5M2R5cHFCZVdNTVhuWnJTeWdxaVpnamwyaDN1SUdRaXktZk9NSnh0UEg0anlMcFRrbGZlMzBaVndVY3gwRktLdw?oc=5">打开原文链接</a><span class="source-translation">中文译意：37 艘印度油轮和液化气船滞留霍尔木兹海峡附近，印度能源供应面临风险。</span><div class="news-matrix"><span><strong>影响板块：</strong>LNG（液化天然气）/ 原油储运 / 油运</span><span><strong>观察龙头：</strong>广汇能源 / 中远海能 / 招商轮船</span></div><span class="source-meta">星期日卫报｜分值 20</span></li>
+<li><div class="news-title"><a href="https://www.bbc.com/news/articles/c8x7leknlywo?at_medium=RSS&amp;at_campaign=rss">Are US and Israel aligned on Iran war? Deciphering Trump&#x27;s post after gas field attacks</a></div><a class="news-link" href="https://www.bbc.com/news/articles/c8x7leknlywo?at_medium=RSS&amp;at_campaign=rss">打开原文链接</a><span class="source-translation">中文译意：美以是否在伊朗战争问题上保持一致？从特朗普表态中找线索。</span><div class="news-matrix"><span><strong>影响板块：</strong>油气 / 军工 / 全球避险链</span><span><strong>观察龙头：</strong>中国海油 / 光启技术 / 中国神华</span></div><span class="source-meta">BBC国际｜分值 17</span></li>
+<li><div class="news-title"><a href="https://www.nytimes.com/live/2026/03/19/world/iran-war-news-trump-oil">Iran War Live Updates: U.S. Scrambles to Ease Energy Crisis as Attacks Rattle Markets</a></div><a class="news-link" href="https://www.nytimes.com/live/2026/03/19/world/iran-war-news-trump-oil">打开原文链接</a><span class="source-translation">中文译意：伊朗战争直播更新：袭击震动市场，美国紧急应对能源危机。</span><div class="news-matrix"><span><strong>影响板块：</strong>石油天然气 / 煤炭 / 电力成本扰动</span><span><strong>观察龙头：</strong>中国海油 / 中国神华 / 华能国际</span></div><span class="source-meta">纽约时报｜分值 17</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMihAFBVV95cUxOYk8ybDZOMU5LelNtTF9wQUxtVGk4d1UxM1lRU1dFbHYyYkFyQkVUWEZWMzYwVlhoa2lQTkFON29qd01fUURfWkd2cnJiVm9TdXcxWDVZV2pHWkc2VTBuWks5aHphaHFOenR4bE9RWUNibkFlcVFHcFZ6bXQzM045XzVRcms?oc=5">Tehran intensifies attacks on Gulf energy facilities after Israel hits Iranian gas field</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMihAFBVV95cUxOYk8ybDZOMU5LelNtTF9wQUxtVGk4d1UxM1lRU1dFbHYyYkFyQkVUWEZWMzYwVlhoa2lQTkFON29qd01fUURfWkd2cnJiVm9TdXcxWDVZV2pHWkc2VTBuWks5aHphaHFOenR4bE9RWUNibkFlcVFHcFZ6bXQzM045XzVRcms?oc=5">打开原文链接</a><span class="source-translation">中文译意：以色列袭击伊朗气田后，德黑兰加码攻击海湾能源设施。</span><div class="news-matrix"><span><strong>影响板块：</strong>天然气 / 石油石化 / 油服</span><span><strong>观察龙头：</strong>广汇能源 / 中国石油 / 海油工程</span></div><span class="source-meta">加拿大广播公司｜分值 17</span></li></ol></div></details><details class="card source-panel" data-source-panel open><summary><div><div class="card-title">巨大前景最重要 10 条信息源</div><p class="card-muted">这组消息不一定明天立刻兑现，但最容易演化成中期持续题材。关键不是科技新闻多，而是它们能否找到 A 股里可承接的大票和中军。</p></div></summary><div class="panel-body"><ol class="source-list"><li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNS2ZDVjlNR2tPeU9vVVRKSjVIZ3pxUHpWQlpPU1JfQzVkMl9xUnlab05fSFZPa2pZb1oxQmtWVDB6R3FhSE1ETW9TQXlIV196Ulo4ZjFYR0JUUnhPc0RqX0RZNC1leFF6N05EcFh5aFU4aVNmM3JvdDhva2xwbFpRTjBUVDJoU2RBeEZYNldWUXhyVG5xMEM0M1prZnowbE9qUVlQQWI1X2dGaWs?oc=5">Nvidia launches Jetson Thor compute modules for humanoid robots</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNS2ZDVjlNR2tPeU9vVVRKSjVIZ3pxUHpWQlpPU1JfQzVkMl9xUnlab05fSFZPa2pZb1oxQmtWVDB6R3FhSE1ETW9TQXlIV196Ulo4ZjFYR0JUUnhPc0RqX0RZNC1leFF6N05EcFh5aFU4aVNmM3JvdDhva2xwbFpRTjBUVDJoU2RBeEZYNldWUXhyVG5xMEM0M1prZnowbE9qUVlQQWI1X2dGaWs?oc=5">打开原文链接</a><span class="source-translation">中文译意：英伟达发布面向人形机器人的 Jetson Thor 计算模组。</span><div class="news-matrix"><span><strong>影响板块：</strong>人形机器人 / 伺服电机 / 运动控制</span><span><strong>观察龙头：</strong>鸣志电器 / 汇川技术 / 领益智造</span></div><span class="source-meta">数据中心动态｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMirAJBVV95cUxNM2JNdXRwSExXdXBEVi1RUDhjamRsYV9SWml2eGFVWWhIZzFOb0ktd2NGLUY1eC1ndV9CbHYtX19ZRUk5OTBfeE5YaTI2VU5lYWFyMnZKbUJ2M1I0TzhBMGk1OGMxbnRTU25nSVc0V2VNR3hBRldVS2hJV1hPVnZyWFNGem01bkxrLUxmRW1BSEFvd3ZOTlkyMFBQMHFRM1NjQjAtM09ZNUwwUmw2R0NtbHNXSVJMOWppN2VGMTNxclhQSUhCQlJaQVlTUlowMXNTZnVuRlpwVV9xd0R2RUZ2QWQ5dVVlQUI1a3VkaTlSdmRYMGtnN0RpNWpYbzJ0SUZ0dkExYmprcUZFOU5RQ0E3UjVYbERBOFdIM1lYemFEcTVmY3AtZEpMNXg1cGs?oc=5">Nvidia CEO Huang unveils latest AI products and humanoid robot capabilities</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMirAJBVV95cUxNM2JNdXRwSExXdXBEVi1RUDhjamRsYV9SWml2eGFVWWhIZzFOb0ktd2NGLUY1eC1ndV9CbHYtX19ZRUk5OTBfeE5YaTI2VU5lYWFyMnZKbUJ2M1I0TzhBMGk1OGMxbnRTU25nSVc0V2VNR3hBRldVS2hJV1hPVnZyWFNGem01bkxrLUxmRW1BSEFvd3ZOTlkyMFBQMHFRM1NjQjAtM09ZNUwwUmw2R0NtbHNXSVJMOWppN2VGMTNxclhQSUhCQlJaQVlTUlowMXNTZnVuRlpwVV9xd0R2RUZ2QWQ5dVVlQUI1a3VkaTlSdmRYMGtnN0RpNWpYbzJ0SUZ0dkExYmprcUZFOU5RQ0E3UjVYbERBOFdIM1lYemFEcTVmY3AtZEpMNXg1cGs?oc=5">打开原文链接</a><span class="source-translation">中文译意：黄仁勋展示最新 AI 产品与人形机器人能力。</span><div class="news-matrix"><span><strong>影响板块：</strong>光模块 / 算力硬件 / 机器人</span><span><strong>观察龙头：</strong>新易盛 / 中际旭创 / 鸣志电器</span></div><span class="source-meta">Notebookcheck（笔记本资讯）｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNcXZtbDltOGs2NWJ3RldVZUxic0VJZklYcUo0dmxGb2xpQ0dxMWhXRVprWTFGcU9WbnhGUE1IcXcxVUQwX216ZjFyeTZMc1BfVWI1dEszcjJCb216Yk5tb1FrbzVYYWxJVGhRNmVzdUJRQmVfVTVZMGU5cHRMSkRwRg?oc=5">NVIDIA Announces Project GR00T Foundation Model for Humanoid Robots</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMigAFBVV95cUxNcXZtbDltOGs2NWJ3RldVZUxic0VJZklYcUo0dmxGb2xpQ0dxMWhXRVprWTFGcU9WbnhGUE1IcXcxVUQwX216ZjFyeTZMc1BfVWI1dEszcjJCb216Yk5tb1FrbzVYYWxJVGhRNmVzdUJRQmVfVTVZMGU5cHRMSkRwRg?oc=5">打开原文链接</a><span class="source-translation">中文译意：英伟达发布面向人形机器人的 Project GR00T 基础模型。</span><div class="news-matrix"><span><strong>影响板块：</strong>机器人软件脑 / 机器视觉 / 执行器</span><span><strong>观察龙头：</strong>鸣志电器 / 汇川技术 / 科大讯飞</span></div><span class="source-meta">英伟达新闻室｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxORzdFamR0NG4tb19pT1ROUUc5SFlrSVI3N3pEVDF1dWF2alVFdzFNeWE1QnVrbjBFMm5acXUxSUhWX1VCQXBmc01mWVRwdThOcmMtNndhbTJtYWpqNmRvRXhKUURiU2JYQXQ3SF9IT1JFMFRxTWV1VWE3ZEQxV1ZQT1owcS02VUhKM2VUTWNEQ1FPcUZyUXc0X1hNYWZVQ1FUdFd2eE9yS3pPNXExdXdyMlZiTXk0RUQzNHVLcTVjRWdVQ01hTzdBWg?oc=5">Musk says Tesla may &#x27;tape out&#x27; next-generation AI6 chips in December</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxORzdFamR0NG4tb19pT1ROUUc5SFlrSVI3N3pEVDF1dWF2alVFdzFNeWE1QnVrbjBFMm5acXUxSUhWX1VCQXBmc01mWVRwdThOcmMtNndhbTJtYWpqNmRvRXhKUURiU2JYQXQ3SF9IT1JFMFRxTWV1VWE3ZEQxV1ZQT1owcS02VUhKM2VUTWNEQ1FPcUZyUXc0X1hNYWZVQ1FUdFd2eE9yS3pPNXExdXdyMlZiTXk0RUQzNHVLcTVjRWdVQ01hTzdBWg?oc=5">打开原文链接</a><span class="source-translation">中文译意：马斯克称特斯拉下一代 AI6 芯片或于 12 月流片。</span><div class="news-matrix"><span><strong>影响板块：</strong>自动驾驶 / 汽车电子 / 车载算力</span><span><strong>观察龙头：</strong>立讯精密 / 光弘科技 / 领益智造</span></div><span class="source-meta">路透｜分值 6</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQeGlLbkdnbUlYM1RIR3dwTGdNdUhRTzFYemJxeldrcVdtRXNhZzZsNTFNelBSZm5rMy0zbFR6RGRIX0hsRERaa3hwM0dJY3M4QjBFZWVQRmpjaVJBdm5URy1wOEd1aUpoZFZ5Z2VxcFUtRS1xYmk4UTAwWWEtLXpud2RLWko0c0lEeF9GZS14RUxKWWxVQXY4Q3BNVGJDWGhSYUxCeVlJdlpxaTVYSDVGeHhIbWJIX3pPOGl5Vlk0eWdIYjd4QkE?oc=5">Nvidia launches Alpamayo open AI models for autonomous vehicles</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMixgFBVV95cUxQeGlLbkdnbUlYM1RIR3dwTGdNdUhRTzFYemJxeldrcVdtRXNhZzZsNTFNelBSZm5rMy0zbFR6RGRIX0hsRERaa3hwM0dJY3M4QjBFZWVQRmpjaVJBdm5URy1wOEd1aUpoZFZ5Z2VxcFUtRS1xYmk4UTAwWWEtLXpud2RLWko0c0lEeF9GZS14RUxKWWxVQXY4Q3BNVGJDWGhSYUxCeVlJdlpxaTVYSDVGeHhIbWJIX3pPOGl5Vlk0eWdIYjd4QkE?oc=5">打开原文链接</a><span class="source-translation">中文译意：英伟达发布面向自动驾驶的 Alpamayo 开源 AI 模型。</span><div class="news-matrix"><span><strong>影响板块：</strong>自动驾驶 / 车载域控 / 算力</span><span><strong>观察龙头：</strong>光弘科技 / 中兴通讯 / 工业富联</span></div><span class="source-meta">TechCrunch｜分值 6</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMibEFVX3lxTFByOGd0Rnl2WmVXYnJvVTktQ3VFeUozR2VBWU9yYzF1dXdMREZrR3JVS3Y2amtUdU82ZUNzNFBxU0EwYVNWY0pLamhiR29TOXozRVJNaUxXMVlSc3VzeTJSNktGVkI2UHh4aEQ0SA?oc=5">NVIDIA Presents Blueprint for the Future at CES</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMibEFVX3lxTFByOGd0Rnl2WmVXYnJvVTktQ3VFeUozR2VBWU9yYzF1dXdMREZrR3JVS3Y2amtUdU82ZUNzNFBxU0EwYVNWY0pLamhiR29TOXozRVJNaUxXMVlSc3VzeTJSNktGVkI2UHh4aEQ0SA?oc=5">打开原文链接</a><span class="source-translation">中文译意：英伟达在 CES（国际消费电子展）上展示未来蓝图。</span><div class="news-matrix"><span><strong>影响板块：</strong>AI 硬件 / 服务器 / 光模块</span><span><strong>观察龙头：</strong>工业富联 / 新易盛 / 中际旭创</span></div><span class="source-meta">英伟达博客｜分值 6</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQR3p2TDlWUkVIV25WNDMybGt6T1lrYlpGVDQwWmZvSjBtVG9EVTljdG5iR3daTTExRHR6VF9NWG1Xc1RIajFmRWt0MmQ3dmw4dDF2ZTVPUXhfem1UMnJOMnBob1UwbFJjcFRQdkZ2R1dqczJjcEplaUNGZlljZXFPQnZYQktNZlFaWWNHVFdIMFdUaDBVcmhV?oc=5">Nvidia Chip on Satellite in Orbit Trains First AI Model in Space</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMilwFBVV95cUxQR3p2TDlWUkVIV25WNDMybGt6T1lrYlpGVDQwWmZvSjBtVG9EVTljdG5iR3daTTExRHR6VF9NWG1Xc1RIajFmRWt0MmQ3dmw4dDF2ZTVPUXhfem1UMnJOMnBob1UwbFJjcFRQdkZ2R1dqczJjcEplaUNGZlljZXFPQnZYQktNZlFaWWNHVFdIMFdUaDBVcmhV?oc=5">打开原文链接</a><span class="source-translation">中文译意：搭载英伟达芯片的卫星在轨训练出首个太空 AI 模型。</span><div class="news-matrix"><span><strong>影响板块：</strong>卫星互联网 / 航天算力 / 通信</span><span><strong>观察龙头：</strong>中兴通讯 / 海光信息 / 中科曙光</span></div><span class="source-meta">Futurism（未来主义）｜分值 6</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMivgFBVV95cUxNYWR5RDhreC13YUYtUHRYLUZLYWVZTWlqSXFwdnY0R1pjY0pSZXlENldKNDZ4OHE4QkJoVjVMOXNVeVFNc3pFVk1mSUpkcVVjR0IxdnZ0ZG9NSmRHRmU5V3pyZEQzdjZDbXpQbEtBNmNxNHhXaDhxd0JEaE5jOEY2TGg3cmRoZ0s5YUV3dEtHMWxBd1VQc01Zekp5UldpQWZrRHIwLW0xT1hLSkppOFZXRWhxWVA0dy0xTlFxd0RR?oc=5">Tech forecast 2026: AI hype, Apple foldable, 1000-watt chips and robot invasion</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxNYWR5RDhreC13YUYtUHRYLUZLYWVZTWlqSXFwdnY0R1pjY0pSZXlENldKNDZ4OHE4QkJoVjVMOXNVeVFNc3pFVk1mSUpkcVVjR0IxdnZ0ZG9NSmRHRmU5V3pyZEQzdjZDbXpQbEtBNmNxNHhXaDhxd0JEaE5jOEY2TGg3cmRoZ0s5YUV3dEtHMWxBd1VQc01Zekp5UldpQWZrRHIwLW0xT1hLSkppOFZXRWhxWVA0dy0xTlFxd0RR?oc=5">打开原文链接</a><span class="source-translation">中文译意：2026 科技前瞻：AI 热潮、苹果折叠机、千瓦级芯片与机器人浪潮。</span><div class="news-matrix"><span><strong>影响板块：</strong>AI 硬件 / 消费电子 / 机器人</span><span><strong>观察龙头：</strong>立讯精密 / 蓝思科技 / 鸣志电器</span></div><span class="source-meta">Notebookcheck（笔记本资讯）｜分值 6</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNeEhVMzNqQUVQX0dkWW5Pb2pqWjlqOW5NWDl1RnlJUmlQcnZtVTQxZjFYTUJEbklPU21EMDNmdGM1d0loT0tha0VVMDNZWW51Rzl4aHNKd2h4NXpfc3ZFOVFWYjF0T0ZvNnNLYzJGTmJsRTMyeHlTQVZJLW1sMGNWTTh3RWtyU0k1c3dTMUVFbURyWlZLLS1vdjYzQVhvMDhBLWdUQm9NanlfdDRJNS1rTDJ3?oc=5">Nvidia announces new open AI models and tools for autonomous driving research</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxNeEhVMzNqQUVQX0dkWW5Pb2pqWjlqOW5NWDl1RnlJUmlQcnZtVTQxZjFYTUJEbklPU21EMDNmdGM1d0loT0tha0VVMDNZWW51Rzl4aHNKd2h4NXpfc3ZFOVFWYjF0T0ZvNnNLYzJGTmJsRTMyeHlTQVZJLW1sMGNWTTh3RWtyU0k1c3dTMUVFbURyWlZLLS1vdjYzQVhvMDhBLWdUQm9NanlfdDRJNS1rTDJ3?oc=5">打开原文链接</a><span class="source-translation">中文译意：英伟达发布自动驾驶研究用的新开源 AI 模型和工具。</span><div class="news-matrix"><span><strong>影响板块：</strong>自动驾驶 / GPU 服务器 / 光模块</span><span><strong>观察龙头：</strong>工业富联 / 新易盛 / 中际旭创</span></div><span class="source-meta">TechCrunch｜分值 6</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiqgJBVV95cUxON3ZZNERuOFU4YndoRlNTa3VORWRQNzlGNjhsOFcxRERZZGNzQ1k2QlJ6RTN4c2Z1anBZVFhuQzZ4M1JPWVZ4S0xWTExINl92YjRiZG03YzFuRHB0VXFHcmlOWU5sZTBEd2NmTm9kQ0dPZ0VqUXRaZTNBYmd1U19oX0NGOW9QUHp4VTF4U3B1RVFPYWlZX1BmWlhDc25iaW9PbFlOa091OElTNk9ZcFJ0NERvbG9DYjh1X3lTQVhrSmwzaUo1eGVpU0ZGVnJsLXliNnQ0WmJGNmZhTng2enNva19yaG9KZ2lMdkFXWUJfdUZfaDNyR3BRQkcxZUJyUDlydVQ5ZjdleWc1REFxRXdCUUFUZWhZaTBIMmxxUDVXWTA3VjlHZXZqWVNn?oc=5">Nvidia reveals next generation “robot brain” chip</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiqgJBVV95cUxON3ZZNERuOFU4YndoRlNTa3VORWRQNzlGNjhsOFcxRERZZGNzQ1k2QlJ6RTN4c2Z1anBZVFhuQzZ4M1JPWVZ4S0xWTExINl92YjRiZG03YzFuRHB0VXFHcmlOWU5sZTBEd2NmTm9kQ0dPZ0VqUXRaZTNBYmd1U19oX0NGOW9QUHp4VTF4U3B1RVFPYWlZX1BmWlhDc25iaW9PbFlOa091OElTNk9ZcFJ0NERvbG9DYjh1X3lTQVhrSmwzaUo1eGVpU0ZGVnJsLXliNnQ0WmJGNmZhTng2enNva19yaG9KZ2lMdkFXWUJfdUZfaDNyR3BRQkcxZUJyUDlydVQ5ZjdleWc1REFxRXdCUUFUZWhZaTBIMmxxUDVXWTA3VjlHZXZqWVNn?oc=5">打开原文链接</a><span class="source-translation">中文译意：英伟达展示下一代“机器人大脑”芯片。</span><div class="news-matrix"><span><strong>影响板块：</strong>机器人本体 / 边缘 AI / 传感器</span><span><strong>观察龙头：</strong>鸣志电器 / 汇川技术 / 领益智造</span></div><span class="source-meta">TechRadar｜分值 6</span></li></ol></div></details><details class="card source-panel" data-source-panel open><summary><div><div class="card-title">巨头名人最重要 10 条信息源</div><p class="card-muted">这组消息短线最像催化剂，决定资金会不会在老题材里做二次演绎。它们不一定比战争更强，但最容易在开盘前后触发情绪抢跑。</p></div></summary><div class="panel-body"><ol class="source-list"><li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPMFdZM0gyTXZrSUV0M2RnZHlfb2tEX1g1Y2lHZWhBSFhKdGh5ZHBwRHh1RTQ0b1BoeElRdnZURXpORTFoWWthNUpJRkFJcndBMTJtY003c2RkRjlMN1I4bHFCNG90SlNoenE5ajJxUWZINlZ3SDVzMGFqckJ0d19XQ0tpVk5xYjFHd29RNGloeUxaVzVDS2JPTGhxc0FBcVFi?oc=5">Elon Musk reveals date of Tesla Full Self-Driving’s next massive release</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMioAFBVV95cUxPMFdZM0gyTXZrSUV0M2RnZHlfb2tEX1g1Y2lHZWhBSFhKdGh5ZHBwRHh1RTQ0b1BoeElRdnZURXpORTFoWWthNUpJRkFJcndBMTJtY003c2RkRjlMN1I4bHFCNG90SlNoenE5ajJxUWZINlZ3SDVzMGFqckJ0d19XQ0tpVk5xYjFHd29RNGloeUxaVzVDS2JPTGhxc0FBcVFi?oc=5">打开原文链接</a><span class="source-translation">中文译意：马斯克披露特斯拉 FSD（完全自动驾驶）下一次重大版本发布时间。</span><div class="news-matrix"><span><strong>影响板块：</strong>智能驾驶 / 汽车电子 / 车载供应链</span><span><strong>观察龙头：</strong>立讯精密 / 领益智造 / 光弘科技</span></div><span class="source-meta">Teslarati（特斯拉资讯）｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTTdvZk5CanhqSWhFZ0ttZ3hjLTNhR2VEUUxWemJYT3M5RnJ6Q1N3b3c0dzBrcDFhU1ExckRLOG15a1FBYVk1WWxHSGFZZlFGNHdpb1VFR2pUb1g4MEZWMVB2QjI3N24zV2JDdEdXNjhIVE9rOW5nbmo5Vm43aThpcGVkWkhwS2tL?oc=5">Microsoft Unveils Maia 200 AI Chip as Big Tech Accelerates Shift From NVIDIA</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiiAFBVV95cUxPTTdvZk5CanhqSWhFZ0ttZ3hjLTNhR2VEUUxWemJYT3M5RnJ6Q1N3b3c0dzBrcDFhU1ExckRLOG15a1FBYVk1WWxHSGFZZlFGNHdpb1VFR2pUb1g4MEZWMVB2QjI3N24zV2JDdEdXNjhIVE9rOW5nbmo5Vm43aThpcGVkWkhwS2tL?oc=5">打开原文链接</a><span class="source-translation">中文译意：微软发布 Maia 200 AI 芯片，大厂加速摆脱对英伟达依赖。</span><div class="news-matrix"><span><strong>影响板块：</strong>国产算力替代 / 服务器 / 先进封装</span><span><strong>观察龙头：</strong>海光信息 / 浪潮信息 / 通富微电</span></div><span class="source-meta">朝鲜日报｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQR1N6NGY0Yk1fck9HLUhNeWk0bnJ3Yy16MVdzcmdEZm9fYkswRFJ6N2VfMXRxcUs5Mm5GSnZCbHllakJORExsWUViWVJTUXhET3BNbFRDNm9wUWlyR3BQQlRkUjQ0QWt5S0k1eHpYLUUxc2lISXRBTHdpVm9IbjhBd1pjNVU0NDg5czNzcVl1N2NMVktES0FyTzB0OS04Rno3YjZpWUc0ZXRBb1RVaDgzYkxLYU83RDVxZUFGVkZGTlk?oc=5">CES 2026: Everything revealed, from Nvidia’s debuts to AMD’s new chips</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQR1N6NGY0Yk1fck9HLUhNeWk0bnJ3Yy16MVdzcmdEZm9fYkswRFJ6N2VfMXRxcUs5Mm5GSnZCbHllakJORExsWUViWVJTUXhET3BNbFRDNm9wUWlyR3BQQlRkUjQ0QWt5S0k1eHpYLUUxc2lISXRBTHdpVm9IbjhBd1pjNVU0NDg5czNzcVl1N2NMVktES0FyTzB0OS04Rno3YjZpWUc0ZXRBb1RVaDgzYkxLYU83RDVxZUFGVkZGTlk?oc=5">打开原文链接</a><span class="source-translation">中文译意：CES 2026 看点汇总：从英伟达新品到 AMD 新芯片。</span><div class="news-matrix"><span><strong>影响板块：</strong>AI 芯片 / PCB（印制电路板）/ 光模块</span><span><strong>观察龙头：</strong>沪电股份 / 胜宏科技 / 新易盛</span></div><span class="source-meta">TechCrunch｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMigwFBVV95cUxNN2U3bkkwSEVJdXJxZ3IySWRZQlZKcHl4TklYS0tMQjhvSUlNd1pELXc2Q1BaQ1Jfc3ZRX1RYRExXUjUxaDhHNXdXLUtLaTdCS01KNENsU2hkWkJiQWhJUjV5YXFWWTdha1ZaVWRnN1hYUnZHcUNlZlpRNVZ1eEx4Z2phMNIBiAFBVV95cUxNbjBaOWpHSkpIYzAycW5lZGU0UjBzbTNyTDhsdnQ1ejVKRzFpcjYwQjJVc2pFNGpkUDhqM0VoVmZWMEotOC1Jb1kwWEMzd09nUHFJRzZWR3UtWWpUTkx6MEZ6SDRwZzBnZTUweEhSdjk5bmZidFhPWGJBLWVZN24xcmpaRGxZcWh6?oc=5">Qualcomm announces AI chips to compete with AMD and Nvidia</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMigwFBVV95cUxNN2U3bkkwSEVJdXJxZ3IySWRZQlZKcHl4TklYS0tMQjhvSUlNd1pELXc2Q1BaQ1Jfc3ZRX1RYRExXUjUxaDhHNXdXLUtLaTdCS01KNENsU2hkWkJiQWhJUjV5YXFWWTdha1ZaVWRnN1hYUnZHcUNlZlpRNVZ1eEx4Z2phMNIBiAFBVV95cUxNbjBaOWpHSkpIYzAycW5lZGU0UjBzbTNyTDhsdnQ1ejVKRzFpcjYwQjJVc2pFNGpkUDhqM0VoVmZWMEotOC1Jb1kwWEMzd09nUHFJRzZWR3UtWWpUTkx6MEZ6SDRwZzBnZTUweEhSdjk5bmZidFhPWGJBLWVZN24xcmpaRGxZcWh6?oc=5">打开原文链接</a><span class="source-translation">中文译意：高通发布 AI 芯片，正面竞争 AMD 与英伟达。</span><div class="news-matrix"><span><strong>影响板块：</strong>AI 手机 / 物联网 / 射频链</span><span><strong>观察龙头：</strong>立讯精密 / 领益智造 / 光弘科技</span></div><span class="source-meta">CNBC｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiZEFVX3lxTFBkc2tWYXYwd3d2dmExR1dhcWlQcHNZblJ4T013MDUweEhHRUNuS1ExRDVwUVJLNWF2UzNfRG9nREFCbVZ4ckI2U3Y0elF5YW5vYm5pcEZuQ2R2ZmI3Q2ktbnlHOWo?oc=5">Elon Musk Gets Just-Launched NVIDIA DGX Spark</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiZEFVX3lxTFBkc2tWYXYwd3d2dmExR1dhcWlQcHNZblJ4T013MDUweEhHRUNuS1ExRDVwUVJLNWF2UzNfRG9nREFCbVZ4ckI2U3Y0elF5YW5vYm5pcEZuQ2R2ZmI3Q2ktbnlHOWo?oc=5">打开原文链接</a><span class="source-translation">中文译意：马斯克拿到刚发布的英伟达 DGX Spark。</span><div class="news-matrix"><span><strong>影响板块：</strong>AI 算力 / 服务器 / 液冷</span><span><strong>观察龙头：</strong>工业富联 / 英维克 / 浪潮信息</span></div><span class="source-meta">英伟达博客｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQYUlMRDYwTUNRazNSQzJYWDZETlBHRWRlMnRfdE5UTFZ4N0FKV3ZpdXdmMGxsbE0xUFR0QXRqMk1iMXA1TWViN2hmUDM0TTlTT3FFVHVZc2tPZmZneG9JcEktMFJxbjRZZk9IZDc2RUZDRW9Xbkg5c3lCdjVOaUp1UXZBV1BzSmRGR1U4akJZaFZHQkFq?oc=5">Sam Altman admits OpenAI ‘totally screwed up’ its GPT-5 launch</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMilAFBVV95cUxQYUlMRDYwTUNRazNSQzJYWDZETlBHRWRlMnRfdE5UTFZ4N0FKV3ZpdXdmMGxsbE0xUFR0QXRqMk1iMXA1TWViN2hmUDM0TTlTT3FFVHVZc2tPZmZneG9JcEktMFJxbjRZZk9IZDc2RUZDRW9Xbkg5c3lCdjVOaUp1UXZBV1BzSmRGR1U4akJZaFZHQkFq?oc=5">打开原文链接</a><span class="source-translation">中文译意：奥特曼承认 OpenAI 的 GPT-5 发布“搞砸了”。</span><div class="news-matrix"><span><strong>影响板块：</strong>大模型应用 / AI 软件 / Agent（智能体）工具</span><span><strong>观察龙头：</strong>科大讯飞 / 润和软件 / 昆仑万维</span></div><span class="source-meta">财富｜分值 8</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiswNBVV95cUxNUjNsTWhnSzRaNXBPTHVtTDllMDVVemo3Y3J5ZVhzS1JrTWRyN3pXWU8ybUpWVHk1ZnREZ0hzZjhIYnRQTURRQzJlbUNHRmFTRk4xRzNEVWdLN3NVX3U0cldiVzhqOWFTOS1OMG9obWFtMlpwVzVnNmZmNEFVbmtJbkt0VUxhbjlHNkY5dlpFM3N1ZDk5RE1sdS1DeFcta3BhRkNCaXh6T3VBZVQ3eFI5bDl3aTVERzFTWU1oajZFYm9rSm4wZ0VOcm5sbHlkY19vLVpIWVltTXNiaTNreTNmREpOVmt4R2NDTlByUjJoU2E1ZHhrZWJJdHROWEotR3A0eXZRckdYMVNEOUJfVG9qQURnOVdmbkdBRFNkNkwxeThhS0JVNHJfNlk3LTVTQzBKUVlkZG5zMVMzWDZJZ2tDU0Y3QVNWazlWeGtzRTlKSnd3S2JsNk1VbzExSG8wdk5ZV2dYNGJ5Q3VRSmxRc0VNSWZ5ZmRmNDdBYVBOaG13UFZ4Q1JBUnBTYUZqNTgzT196YW1WZUJwOEs3MFROTm1nY0t6QjVtU2NYcHo1V2ZrNU52cmc?oc=5">OpenAI Plans Launch of Desktop ‘Superapp’</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiswNBVV95cUxNUjNsTWhnSzRaNXBPTHVtTDllMDVVemo3Y3J5ZVhzS1JrTWRyN3pXWU8ybUpWVHk1ZnREZ0hzZjhIYnRQTURRQzJlbUNHRmFTRk4xRzNEVWdLN3NVX3U0cldiVzhqOWFTOS1OMG9obWFtMlpwVzVnNmZmNEFVbmtJbkt0VUxhbjlHNkY5dlpFM3N1ZDk5RE1sdS1DeFcta3BhRkNCaXh6T3VBZVQ3eFI5bDl3aTVERzFTWU1oajZFYm9rSm4wZ0VOcm5sbHlkY19vLVpIWVltTXNiaTNreTNmREpOVmt4R2NDTlByUjJoU2E1ZHhrZWJJdHROWEotR3A0eXZRckdYMVNEOUJfVG9qQURnOVdmbkdBRFNkNkwxeThhS0JVNHJfNlk3LTVTQzBKUVlkZG5zMVMzWDZJZ2tDU0Y3QVNWazlWeGtzRTlKSnd3S2JsNk1VbzExSG8wdk5ZV2dYNGJ5Q3VRSmxRc0VNSWZ5ZmRmNDdBYVBOaG13UFZ4Q1JBUnBTYUZqNTgzT196YW1WZUJwOEs3MFROTm1nY0t6QjVtU2NYcHo1V2ZrNU52cmc?oc=5">打开原文链接</a><span class="source-translation">中文译意：OpenAI 计划推出桌面版“超级应用”。</span><div class="news-matrix"><span><strong>影响板块：</strong>AI 应用 / 办公软件 / Agent 生态</span><span><strong>观察龙头：</strong>科大讯飞 / 中国软件 / 昆仑万维</span></div><span class="source-meta">华尔街日报｜分值 5</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOVWMtRjB5RXlUQkJ2T2ptdloyS3VzS0NIV0N2dkdBUnlfamFfdC1EdTc3Qll3a29FQnhUVVcwa2xGeGliNVBRYkFjVWlfUGs3dm9xRUwtRVFsUkdQcm1mZU1wdlhaN1BQWHNod3VqUUNJOG8wVkVJTUpwbkhWQ0RndVJBYm5hWVFZRjJ6WFBFdGJyeEdIUzZ6Njhuc3QyeHJNRndRLTNWSW1JZW9Va1FfQXRub9IBuAFBVV95cUxNZ1NwSWRjUENfRDhCYUhSaE1sa1VLMVdMT2M2NXdrOHJybnNWcXM3Sl9KcHVTRnhMel8xeE9vYmR6VW90RXRtVDRCeHJ3cjVuZ3hzVmJ2Nlo5QmN5NnhWeXJLNnljN0NzbXFnYWlEZVhCM0NiajZ0OXVHMmJRN25hbDA2SVNyZG1GM3VVSHJkamhKMDcyRXQ0OWZBdHRYdnozajV3STU2THlJNUhEd1J3cElNV3Z4amt3?oc=5">Figma&#x27;s stock drops after Google releases &#x27;vibe design&#x27; product</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiswFBVV95cUxOVWMtRjB5RXlUQkJ2T2ptdloyS3VzS0NIV0N2dkdBUnlfamFfdC1EdTc3Qll3a29FQnhUVVcwa2xGeGliNVBRYkFjVWlfUGs3dm9xRUwtRVFsUkdQcm1mZU1wdlhaN1BQWHNod3VqUUNJOG8wVkVJTUpwbkhWQ0RndVJBYm5hWVFZRjJ6WFBFdGJyeEdIUzZ6Njhuc3QyeHJNRndRLTNWSW1JZW9Va1FfQXRub9IBuAFBVV95cUxNZ1NwSWRjUENfRDhCYUhSaE1sa1VLMVdMT2M2NXdrOHJybnNWcXM3Sl9KcHVTRnhMel8xeE9vYmR6VW90RXRtVDRCeHJ3cjVuZ3hzVmJ2Nlo5QmN5NnhWeXJLNnljN0NzbXFnYWlEZVhCM0NiajZ0OXVHMmJRN25hbDA2SVNyZG1GM3VVSHJkamhKMDcyRXQ0OWZBdHRYdnozajV3STU2THlJNUhEd1J3cElNV3Z4amt3?oc=5">打开原文链接</a><span class="source-translation">中文译意：谷歌发布 “vibe design” 产品后，Figma 股价下跌。</span><div class="news-matrix"><span><strong>影响板块：</strong>AIGC（生成式 AI 内容）/ 设计工具 / AI 软件</span><span><strong>观察龙头：</strong>昆仑万维 / 易点天下 / 润和软件</span></div><span class="source-meta">CNBC｜分值 5</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOMDlWR08zaUhEajNkUnltV2cwZEgxY0Zhd3doa2NEdVozYmZteXFnSTJqMzRwLVQ3Z2owZlNYZjY0MkQxY2E5MEtRTVFpclR0MFRLWElEU3ZEMGVCX094bGwwSk9nT1lBQWVIaktvUmx4NFZhR09PdXVxWldseGdTY1NNWGt6NzhsUUF5Yi1GSEdpb09STDNZcW9rTWRxYXFZcFlzeEI2VUY?oc=5">Apple Health integrates with newly announced ‘Perplexity Health’ AI feature</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMiqAFBVV95cUxOMDlWR08zaUhEajNkUnltV2cwZEgxY0Zhd3doa2NEdVozYmZteXFnSTJqMzRwLVQ3Z2owZlNYZjY0MkQxY2E5MEtRTVFpclR0MFRLWElEU3ZEMGVCX094bGwwSk9nT1lBQWVIaktvUmx4NFZhR09PdXVxWldseGdTY1NNWGt6NzhsUUF5Yi1GSEdpb09STDNZcW9rTWRxYXFZcFlzeEI2VUY?oc=5">打开原文链接</a><span class="source-translation">中文译意：苹果健康接入新发布的 Perplexity Health AI 功能。</span><div class="news-matrix"><span><strong>影响板块：</strong>AI 终端 / 可穿戴 / 消费电子</span><span><strong>观察龙头：</strong>歌尔股份 / 蓝思科技 / 立讯精密</span></div><span class="source-meta">9to5Mac（苹果资讯）｜分值 5</span></li>
+<li><div class="news-title"><a href="https://news.google.com/rss/articles/CBMi-gFBVV95cUxPMnVnT2RlRnA3bnJJdkktTmJ0ZDRGcHFDZjZpeGs0NkNYWFhoSm9JT21CV2ZxYmF6c295XzdnTXQwTk9QcVZUNWdDUnNoZFBzSzRMdXhiRlpGY21oMU5rN0dBSF83V1NjNGdJNnRYNENGaVlRdGJjbWxDVTd3cnQwMGh5MjVFSC1GUk9nSFRzamN5QngtQTNQVWNnelJac3gtMVptV1RrUU04aUdwOUNoUm9zTlZEcDN1VlhFYjhtQ2hGVERpdzluNUlqZk9ZNUV0Nkp6RnpJV0Nqa3NTbU1zX21jdWpGQzRJUjZmdnE1NGotT2FjbTF3cTZ3?oc=5">KUKA Unveils ‘KUKA AMP’ at NVIDIA GTC 2026</a></div><a class="news-link" href="https://news.google.com/rss/articles/CBMi-gFBVV95cUxPMnVnT2RlRnA3bnJJdkktTmJ0ZDRGcHFDZjZpeGs0NkNYWFhoSm9JT21CV2ZxYmF6c295XzdnTXQwTk9QcVZUNWdDUnNoZFBzSzRMdXhiRlpGY21oMU5rN0dBSF83V1NjNGdJNnRYNENGaVlRdGJjbWxDVTd3cnQwMGh5MjVFSC1GUk9nSFRzamN5QngtQTNQVWNnelJac3gtMVptV1RrUU04aUdwOUNoUm9zTlZEcDN1VlhFYjhtQ2hGVERpdzluNUlqZk9ZNUV0Nkp6RnpJV0Nqa3NTbU1zX21jdWpGQzRJUjZmdnE1NGotT2FjbTF3cTZ3?oc=5">打开原文链接</a><span class="source-translation">中文译意：KUKA 在 NVIDIA GTC 2026 上发布 KUKA AMP。</span><div class="news-matrix"><span><strong>影响板块：</strong>机器人本体 / 工控 / 自动化</span><span><strong>观察龙头：</strong>汇川技术 / 鸣志电器 / 领益智造</span></div><span class="source-meta">Robotics Tomorrow（机器人前沿）｜分值 5</span></li></ol></div></details>
+  </div>
+</section>
+
+        <section class="section" id="preopen">
+          <h2>周一怎么判</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="card-title">基准情景 50%</div>
+              <p class="card-muted">弱势抱团延续。强者继续强，但大多数股票依旧难做。</p>
+            </article>
+            <article class="card">
+              <div class="card-title">偏强情景 30%</div>
+              <p class="card-muted">新易盛、中际旭创继续强，同时浪潮信息、海光信息、中科曙光至少两只跟强。</p>
+            </article>
+            <article class="card">
+              <div class="card-title">偏弱情景 20%</div>
+              <p class="card-muted">抱团高位松动，周一重新回到普跌结构。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="checklist">
+          <h2>开盘口令</h2>
+          <ul>
+            <li>`09:20-09:25` 看光模块和电池链谁更强。</li>
+            <li>`09:30-10:00` 看浪潮信息、海光信息、中科曙光是否至少两只转强。</li>
+            <li>`09:30-10:00` 看东方财富能否止跌。</li>
+            <li>`10:00-10:30` 看强度是扩散还是只剩龙头独强。</li>
+          </ul>
+        </section>
+
+        <section class="section" id="focus">
+          <h2>重点股票</h2>
+          <div class="cards">
+            <article class="card">
+              <div class="card-title">新易盛 / 中际旭创</div>
+              <p class="card-muted">这是周一最重要的方向标，决定光模块抱团有没有延续。</p>
+            </article>
+            <article class="card">
+              <div class="card-title">浪潮信息 / 海光信息 / 中科曙光</div>
+              <p class="card-muted">这是科技修复能否扩散的确认层。</p>
+            </article>
+            <article class="card">
+              <div class="card-title">东方财富 / 中国神华</div>
+              <p class="card-muted">一个看风险偏好，一个看防御对照。</p>
+            </article>
+          </div>
+        </section>
+
+        <footer class="footer">
+          <div>最后更新：2026-03-20 北京时间</div>
+          <div>© 2026 超超盘前盘后笔记. 保留所有权利. 本网站仅供学习交流使用.</div>
+        </footer>
+      </div>
+    </main>
+
+    <nav class="bar">
+      <a href="./2026-03-20-postclose-2026-03-23-preopen.html">桌面完整版</a>
+      <a
+        class="secondary"
+        href="https://github.com/huangrichao2020/uwillberich"
+        >源码仓库</a
+      >
+    </nav>
+
+    <script>
+      const sourcePanels = Array.from(document.querySelectorAll("[data-source-panel]"));
+      const sourceActionButtons = Array.from(
+        document.querySelectorAll("[data-source-action]")
+      );
+
+      sourceActionButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const action = button.getAttribute("data-source-action");
+          sourcePanels.forEach((panel) => {
+            panel.open = action === "expand";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
