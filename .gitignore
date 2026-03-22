@@ -1,6 +1,33 @@
+# .gitignore - 敏感数据保护
+
+# === 人格与灵魂数据 ===
+SOUL.md
+IDENTITY.md
+memory/
+
+# === 用户个人信息 ===
+USER.md
+TOOLS.md
+
+# === 敏感配置 ===
+.env
+*.env
+runtime.env
+.credentials
+*credentials*
+
+# === 本地规则 ===
+.github-push-rules.md
+.data-protection-rules.md
+GITHUB_PUSH_GUIDE.md
+
+# === 财务数据 ===
+analysis/
+trading_records/
+portfolio/
+
+# === 系统文件 ===
+.DS_Store
+*.swp
 __pycache__/
 *.pyc
-.DS_Store
-.env
-.env.local
-runtime.env
